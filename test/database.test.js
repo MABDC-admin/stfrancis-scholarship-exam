@@ -17,12 +17,12 @@ test('exam store persists exams and scored submissions', async () => {
     ]
   };
 
-  store.saveExam(exam);
-  const savedExam = store.getExam();
+  await store.saveExam(exam);
+  const savedExam = await store.getExam();
   assert.equal(savedExam.title, 'MAPEH Sample');
   assert.equal(savedExam.questions.length, 2);
 
-  const saved = store.saveSubmission({
+  const saved = await store.saveSubmission({
     studentName: 'Ana Cruz',
     studentEmail: 'ana@example.com',
     section: 'Grade 4',
@@ -33,7 +33,7 @@ test('exam store persists exams and scored submissions', async () => {
   assert.equal(saved.id, 1);
   assert.equal(saved.studentEmail, 'ana@example.com');
   assert.equal(saved.percentage, 100);
-  const submissions = store.listSubmissions();
+  const submissions = await store.listSubmissions();
   assert.equal(submissions.length, 1);
   assert.equal(submissions[0].studentName, 'Ana Cruz');
   assert.equal(submissions[0].studentEmail, 'ana@example.com');

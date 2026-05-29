@@ -8,7 +8,8 @@ const state = {
   timerId: null,
   questionStartedAt: Date.now(),
   warnings: 0,
-  submitting: false
+  submitting: false,
+  teacherExam: null
 };
 
 const $ = (id) => document.getElementById(id);
@@ -297,7 +298,7 @@ function answerDisplay(item, value) {
   return value || 'No answer';
 }
 
-async function loadDashboard() {
+async function loadDashboard({ refreshQuestions = true } = {}) {
   const search = encodeURIComponent($('studentSearch').value.trim());
   const sort = encodeURIComponent($('studentSort').value);
   const dashboard = await api(`/api/teacher/dashboard?search=${search}&sort=${sort}`);
@@ -395,6 +396,91 @@ async function loadDashboard() {
       </article>
     `;
   }).join('') : '<section class="panel result-panel"><h2>No submissions yet</h2></section>';
+
+  if (refreshQuestions) await loadQuestionEditor();
+}
+
+async function loadQuestionEditor() {
+  const exam = await api('/api/teacher/exam');
+  state.teacherExam = exam;
+  $('questionEditorList').innerHTML = exam.questions.map((question, index) => {
+    const choices = normalizeChoices(question) ?? [];
+    return `
+      <article class="editable-question" data-question-index="${index}">
+        <div class="editable-question-head">
+          <strong>Question ${index + 1}</strong>
+          <label>
+            Points
+            <input class="edit-points" type="number" min="1" step="1" value="${escapeHtml(question.points ?? 1)}">
+          </label>
+        </div>
+        <label>
+          Section
+          <input class="edit-section" value="${escapeHtml(question.section ?? '')}">
+        </label>
+        <label>
+          Question
+          <textarea class="edit-prompt" rows="3">${escapeHtml(question.prompt ?? '')}</textarea>
+        </label>
+        <div class="choice-editor-grid">
+          ${choices.map(({ key, label }) => `
+            <label>
+              Choice ${escapeHtml(key.toUpperCase())}
+              <input class="edit-choice" data-choice-key="${escapeHtml(key)}" value="${escapeHtml(label)}">
+            </label>
+          `).join('')}
+        </div>
+        <label>
+          Correct answer
+          <select class="edit-correct">
+            ${choices.map(({ key }) => `
+              <option value="${escapeHtml(key)}" ${String(question.correctAnswer) === String(key) ? 'selected' : ''}>${escapeHtml(key.toUpperCase())}</option>
+            `).join('')}
+          </select>
+        </label>
+      </article>
+    `;
+  }).join('');
+}
+
+async function saveQuestionReview(event) {
+  event.preventDefault();
+  if (!state.teacherExam) {
+    alert('Load the dashboard before saving question changes.');
+    return;
+  }
+  const shouldSave = confirm('Save question changes? Existing submissions will be cleared so scores stay accurate.');
+  if (!shouldSave) return;
+
+  const questions = [...document.querySelectorAll('.editable-question')].map((card) => {
+    const original = state.teacherExam.questions[Number(card.dataset.questionIndex)] ?? {};
+    const choices = Object.fromEntries([...card.querySelectorAll('.edit-choice')].map((input) => [
+      input.dataset.choiceKey,
+      input.value.trim()
+    ]));
+    return {
+      id: original.id,
+      section: card.querySelector('.edit-section').value.trim(),
+      prompt: card.querySelector('.edit-prompt').value.trim(),
+      choices,
+      correctAnswer: card.querySelector('.edit-correct').value,
+      points: Number(card.querySelector('.edit-points').value || 1)
+    };
+  });
+
+  const result = await api('/api/teacher/exam', {
+    method: 'PUT',
+    body: JSON.stringify({
+      exam: {
+        title: state.teacherExam.title,
+        source: 'Teacher edited exam',
+        questions
+      }
+    })
+  });
+  await loadExam();
+  await loadDashboard();
+  alert(`Saved ${result.questions} questions.`);
 }
 
 function scholarshipBadgeText(student) {
@@ -424,9 +510,10 @@ modes.forEach((button) => button.addEventListener('click', () => switchMode(butt
 $('startForm').addEventListener('submit', beginExam);
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));
 $('loadDashboard').addEventListener('click', () => loadDashboard().catch((error) => alert(error.message)));
-$('studentSearch').addEventListener('input', () => loadDashboard().catch(() => {}));
-$('studentSort').addEventListener('change', () => loadDashboard().catch(() => {}));
+$('studentSearch').addEventListener('input', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
+$('studentSort').addEventListener('change', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
 $('docxUpload').addEventListener('change', () => importDocx().catch((error) => alert(error.message)));
+$('questionReviewForm').addEventListener('submit', (event) => saveQuestionReview(event).catch((error) => alert(error.message)));
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) showIntegrityWarning();
 });
