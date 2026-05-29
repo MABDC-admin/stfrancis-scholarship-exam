@@ -120,6 +120,10 @@ textarea {
   width: auto;
 }
 
+.route-locked .mode-switch {
+  display: none;
+}
+
 .mode-button, .primary, .ghost, .upload-button {
   border: 0;
   border-radius: 8px;

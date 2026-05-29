@@ -68,6 +68,10 @@ app.use(express.static(publicDir, {
   }
 }));
 
+app.get(['/student', '/teacher'], (req, res) => {
+  res.sendFile(resolve(publicDir, 'index.html'));
+});
+
 app.get('/api/exam', async (req, res) => {
   const exam = await store.getExam();
   if (!exam) {

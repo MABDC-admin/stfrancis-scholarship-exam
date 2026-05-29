@@ -17,6 +17,22 @@ const state = {
 const $ = (id) => document.getElementById(id);
 const modes = document.querySelectorAll('.mode-button');
 
+function normalizedRoutePath() {
+  return window.location.pathname.replace(/\/+$/, '') || '/';
+}
+
+function routeMode() {
+  const path = normalizedRoutePath();
+  if (path === '/teacher') return 'teacher';
+  if (path === '/student') return 'student';
+  return 'student';
+}
+
+function applyProductionRouteLock() {
+  const path = normalizedRoutePath();
+  document.body.classList.toggle('route-locked', path === '/student' || path === '/teacher');
+}
+
 function isTestingMode() {
   const params = new URLSearchParams(window.location.search);
   return params.has('testing') || params.has('test');
@@ -730,6 +746,9 @@ document.addEventListener('contextmenu', (event) => {
 document.addEventListener('copy', (event) => {
   if (!$('examPanel').classList.contains('hidden')) event.preventDefault();
 });
+
+applyProductionRouteLock();
+switchMode(routeMode());
 
 loadExam().catch((error) => {
   $('startPanel').innerHTML = `<h2>Exam unavailable</h2><p class="muted">${escapeHtml(error.message)}</p>`;
