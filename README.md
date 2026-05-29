@@ -58,6 +58,7 @@ npm test
 - Student `/api/exam` responses do not include correct answers.
 - Teacher endpoints are temporarily open for fast school-side use. Restore access-code protection before production.
 - Production can use PostgreSQL by setting `DATABASE_URL`; the current server uses the local Supabase Postgres container while remaining available at the IP plus port URL.
+- `scripts/start-production.sh` discovers the local `supabase-db` container at startup and exports `DATABASE_URL` automatically for the live systemd service.
 - Exam sessions are timed, single-use tokens.
 - Helmet security headers are enabled.
 - The student UI blocks context menu and copy during the exam and records focus warnings.
