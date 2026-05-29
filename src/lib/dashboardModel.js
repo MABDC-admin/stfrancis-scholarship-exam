@@ -9,9 +9,11 @@ export const PALETTE = {
 
 export const SCHOLARSHIP_CONFIG = {
   passingScore: 75,
-  availableSlots: 5,
+  availableSlotsPerGrade: 5,
   gradeLevels: ['Grade 7', 'Grade 8', 'Grade 9', 'Grade 10']
 };
+
+SCHOLARSHIP_CONFIG.availableSlots = SCHOLARSHIP_CONFIG.availableSlotsPerGrade * SCHOLARSHIP_CONFIG.gradeLevels.length;
 
 export function performanceLevel(percentage) {
   const value = Number(percentage ?? 0);
@@ -37,10 +39,12 @@ function buildGradeLevelSummaries(students) {
 
     return {
       name: gradeLevel,
+      availableSlots: SCHOLARSHIP_CONFIG.availableSlotsPerGrade,
       totalStudents,
       averageScore,
       qualifiedStudents,
       acceptedStudents,
+      remainingSlots: Math.max(0, SCHOLARSHIP_CONFIG.availableSlotsPerGrade - acceptedStudents),
       completionRate: totalStudents ? 100 : 0,
       level: performanceLevel(averageScore)
     };
@@ -49,18 +53,26 @@ function buildGradeLevelSummaries(students) {
 
 export function rankScholarshipApplicants(students, {
   passingScore = SCHOLARSHIP_CONFIG.passingScore,
-  availableSlots = SCHOLARSHIP_CONFIG.availableSlots
+  availableSlotsPerGrade = SCHOLARSHIP_CONFIG.availableSlotsPerGrade
 } = {}) {
-  const ranked = [...students].sort((a, b) => {
-    const scoreDiff = Number(b.percentage ?? 0) - Number(a.percentage ?? 0);
-    if (scoreDiff !== 0) return scoreDiff;
-    return new Date(a.submittedAt ?? 0).getTime() - new Date(b.submittedAt ?? 0).getTime();
-  });
+  const gradeRankings = new Map();
+  for (const gradeLevel of SCHOLARSHIP_CONFIG.gradeLevels) {
+    const ranked = students
+      .filter((student) => student.section === gradeLevel && Number(student.percentage ?? 0) >= passingScore)
+      .sort((a, b) => {
+        const scoreDiff = Number(b.percentage ?? 0) - Number(a.percentage ?? 0);
+        if (scoreDiff !== 0) return scoreDiff;
+        return new Date(a.submittedAt ?? 0).getTime() - new Date(b.submittedAt ?? 0).getTime();
+      });
+    ranked.forEach((student, index) => {
+      gradeRankings.set(student.id, index + 1);
+    });
+  }
 
-  return ranked.map((student, index) => {
-    const rank = Number(student.percentage ?? 0) >= passingScore ? index + 1 : null;
+  return students.map((student) => {
+    const rank = gradeRankings.get(student.id) ?? null;
     let scholarshipStatus = 'not-qualified';
-    if (rank && rank <= availableSlots) scholarshipStatus = 'accepted';
+    if (rank && rank <= availableSlotsPerGrade) scholarshipStatus = 'accepted';
     else if (rank) scholarshipStatus = 'waitlisted';
 
     return {
@@ -108,6 +120,7 @@ export function buildDashboardModel({ exam, submissions, expectedStudents }) {
     scholarship: {
       passingScore: SCHOLARSHIP_CONFIG.passingScore,
       availableSlots: SCHOLARSHIP_CONFIG.availableSlots,
+      availableSlotsPerGrade: SCHOLARSHIP_CONFIG.availableSlotsPerGrade,
       acceptedStudents,
       qualifiedStudents,
       remainingSlots: Math.max(0, SCHOLARSHIP_CONFIG.availableSlots - acceptedStudents),

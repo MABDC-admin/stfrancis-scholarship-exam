@@ -46,6 +46,31 @@ button, input, select { font: inherit; }
   margin-bottom: 22px;
 }
 
+.brand-lockup {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-width: 0;
+}
+
+.school-logo,
+.intro-logo {
+  display: block;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: rgba(255,255,255,.74);
+  box-shadow: 0 14px 36px rgba(34,52,61,.14);
+}
+
+.intro-logo {
+  width: 112px;
+  height: 112px;
+  margin-bottom: 18px;
+}
+
 .eyebrow, .label {
   margin: 0 0 6px;
   color: var(--accent-strong);
@@ -869,6 +894,8 @@ input:focus, select:focus, textarea:focus {
     grid-template-columns: 1fr;
   }
   .topbar { align-items: stretch; }
+  .brand-lockup { grid-template-columns: 60px minmax(0, 1fr); }
+  .school-logo { width: 60px; height: 60px; }
   .mode-switch { width: 100%; justify-self: stretch; }
   .mode-button { flex: 1; }
   h1 { font-size: clamp(2rem, 10vw, 3rem); }

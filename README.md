@@ -7,13 +7,14 @@ Interactive scholarship entrance exam app for Grade 7 to Grade 10 applicants.
 - Student exam interface with timer, Grade 7-10 applicant intake, progress tracking, one-question flow, answer feedback, and responsive layout.
 - Teacher dashboard with student submissions, scores, percentage bars, item-by-item answer comparison, and question review/edit tools.
 - Enhanced teacher analytics with test status cards, completion rate, recent activity, searchable/sortable student results, per-question timing, and color-coded performance levels.
-- Scholarship ranking rules: applicants need at least 75%, and the top 5 passing students are marked accepted.
+- Scholarship ranking rules: applicants need at least 75%, and the top 5 passing students per grade level are marked accepted.
 - Dynamic question support for multiple choice, short answer, and true/false, plus rich prompt HTML and image/audio/video attachment metadata.
 - DOCX importer for the original exam paper.
 - PostgreSQL storage in production when `DATABASE_URL` is set, with local SQLite fallback through `sql.js` at `data/exam.sqlite`.
 - Teacher dashboard is temporarily open for fast school-side use. Add the production access code before public rollout.
 - DOCX imports create a timestamped database backup before replacing the exam and clearing submissions.
 - Student submissions validate applicant grade level and question IDs, and duplicate applicant attempts are rejected.
+- School logo is included in the header and student start panel.
 - Seed exam data at `data/questions.json`, extracted from the DOCX file.
 
 ## Run Locally

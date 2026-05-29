@@ -342,7 +342,8 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
   $('scholarshipSummary').innerHTML = `
     <div>
       <p class="eyebrow">Scholarship Program</p>
-      <h2>Top ${scholarship.availableSlots} passing applicants accepted</h2>
+      <h2>Top ${scholarship.availableSlotsPerGrade} passing applicants per grade accepted</h2>
+      <p class="muted">Each grade level has ${scholarship.availableSlotsPerGrade} scholarship slots, for ${scholarship.availableSlots} total slots.</p>
       <p class="muted">Eligible grade levels: ${scholarship.gradeLevels.join(', ')} · Passing score: ${scholarship.passingScore}% · Qualified: ${scholarship.qualifiedStudents}</p>
     </div>
     <div class="slot-meter" aria-label="${scholarship.acceptedStudents} scholarship slots filled out of ${scholarship.availableSlots}">
@@ -365,7 +366,7 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
       <dl>
         <div><dt>Applicants</dt><dd>${grade.totalStudents}</dd></div>
         <div><dt>Qualified</dt><dd>${grade.qualifiedStudents}</dd></div>
-        <div><dt>Accepted</dt><dd>${grade.acceptedStudents}</dd></div>
+        <div><dt>Accepted</dt><dd>${grade.acceptedStudents}/${grade.availableSlots}</dd></div>
       </dl>
     </article>
   `).join('');
@@ -512,8 +513,8 @@ async function saveQuestionReview(event) {
 }
 
 function scholarshipBadgeText(student) {
-  if (student.scholarshipStatus === 'accepted') return `Accepted · Rank ${student.scholarshipRank}`;
-  if (student.scholarshipStatus === 'waitlisted') return `Passed · Waitlisted rank ${student.scholarshipRank}`;
+  if (student.scholarshipStatus === 'accepted') return `Accepted · ${student.section} rank ${student.scholarshipRank}`;
+  if (student.scholarshipStatus === 'waitlisted') return `Passed · ${student.section} waitlist rank ${student.scholarshipRank}`;
   return 'Below 75% passing score';
 }
 

@@ -23,7 +23,7 @@ const submissions = [
     id: 1,
     studentName: 'Ana Cruz',
     studentEmail: 'ana@example.com',
-    section: 'Grade 4',
+    section: 'Grade 7',
     score: 9,
     maxScore: 10,
     percentage: 90,
@@ -34,7 +34,7 @@ const submissions = [
     id: 2,
     studentName: 'Ben Santos',
     studentEmail: 'ben@example.com',
-    section: 'Grade 4',
+    section: 'Grade 7',
     score: 5,
     maxScore: 10,
     percentage: 50,
@@ -73,15 +73,16 @@ test('performanceLevel maps score bands to accessible labels and colors', () => 
   assert.deepEqual(performanceLevel(40), { label: 'Needs Support', tone: 'support', color: '#FB7185' });
 });
 
-test('rankScholarshipApplicants accepts only the top 5 students at or above 75 percent', () => {
+test('rankScholarshipApplicants accepts top 5 students per grade level at or above 75 percent', () => {
   const ranked = rankScholarshipApplicants([
-    { id: 1, studentName: 'A', percentage: 99, submittedAt: '2026-05-29T01:00:00.000Z' },
-    { id: 2, studentName: 'B', percentage: 92, submittedAt: '2026-05-29T01:00:00.000Z' },
-    { id: 3, studentName: 'C', percentage: 88, submittedAt: '2026-05-29T01:00:00.000Z' },
-    { id: 4, studentName: 'D', percentage: 83, submittedAt: '2026-05-29T01:00:00.000Z' },
-    { id: 5, studentName: 'E', percentage: 80, submittedAt: '2026-05-29T01:00:00.000Z' },
-    { id: 6, studentName: 'F', percentage: 79, submittedAt: '2026-05-29T01:00:00.000Z' },
-    { id: 7, studentName: 'G', percentage: 74, submittedAt: '2026-05-29T01:00:00.000Z' }
+    { id: 1, studentName: 'A', section: 'Grade 7', percentage: 99, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 2, studentName: 'B', section: 'Grade 7', percentage: 92, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 3, studentName: 'C', section: 'Grade 7', percentage: 88, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 4, studentName: 'D', section: 'Grade 7', percentage: 83, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 5, studentName: 'E', section: 'Grade 7', percentage: 80, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 6, studentName: 'F', section: 'Grade 7', percentage: 79, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 7, studentName: 'G', section: 'Grade 7', percentage: 74, submittedAt: '2026-05-29T01:00:00.000Z' },
+    { id: 8, studentName: 'H', section: 'Grade 8', percentage: 78, submittedAt: '2026-05-29T01:00:00.000Z' }
   ]);
 
   assert.deepEqual(
@@ -93,7 +94,8 @@ test('rankScholarshipApplicants accepts only the top 5 students at or above 75 p
       ['D', 4, 'accepted'],
       ['E', 5, 'accepted'],
       ['F', 6, 'waitlisted'],
-      ['G', null, 'not-qualified']
+      ['G', null, 'not-qualified'],
+      ['H', 1, 'accepted']
     ]
   );
 });
@@ -102,7 +104,8 @@ test('buildDashboardModel exposes scholarship program totals', () => {
   const model = buildDashboardModel({ exam, submissions, expectedStudents: 4 });
 
   assert.equal(model.scholarship.passingScore, 75);
-  assert.equal(model.scholarship.availableSlots, 5);
+  assert.equal(model.scholarship.availableSlots, 20);
+  assert.equal(model.scholarship.availableSlotsPerGrade, 5);
   assert.equal(model.scholarship.acceptedStudents, 1);
   assert.equal(model.students[0].scholarshipStatus, 'accepted');
   assert.equal(model.students[1].scholarshipStatus, 'not-qualified');
@@ -125,6 +128,8 @@ test('buildDashboardModel always exposes Grade 7 to Grade 10 dashboard summaries
   assert.equal(model.gradeLevels[0].totalStudents, 1);
   assert.equal(model.gradeLevels[0].averageScore, 90);
   assert.equal(model.gradeLevels[0].qualifiedStudents, 1);
+  assert.equal(model.gradeLevels[0].availableSlots, 5);
+  assert.equal(model.gradeLevels[0].remainingSlots, 4);
   assert.equal(model.gradeLevels[3].totalStudents, 1);
   assert.equal(model.gradeLevels[3].averageScore, 50);
 });
