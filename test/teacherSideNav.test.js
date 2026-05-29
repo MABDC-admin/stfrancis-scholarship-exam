@@ -6,11 +6,13 @@ const indexHtml = readFileSync(new URL('../public/index.html', import.meta.url),
 const stylesCss = readFileSync(new URL('../public/styles.css', import.meta.url), 'utf8');
 const appJs = readFileSync(new URL('../public/app.js', import.meta.url), 'utf8');
 
-test('teacher dashboard includes side navigation for major modules', () => {
+test('teacher dashboard keeps navigation focused on grade workspaces only', () => {
   assert.match(indexHtml, /class="teacher-shell"/);
   assert.match(indexHtml, /class="teacher-side-nav"/);
+  assert.match(indexHtml, /Grade Workspaces/);
+  assert.doesNotMatch(indexHtml, /Teacher Modules/);
   for (const label of ['Dashboard', 'Question Bank', 'Exam Builder', 'Examinees', 'Live Monitoring', 'Submissions', 'Scores & Results', 'Reports', 'Resources']) {
-    assert.match(indexHtml, new RegExp(label.replace('&', '&amp;|&')));
+    assert.doesNotMatch(indexHtml, new RegExp(`>${label.replace('&', '&amp;|&')}<`));
   }
 });
 
@@ -19,6 +21,12 @@ test('teacher dashboard exposes a grade-level module for each scholarship level'
   for (const gradeLevel of ['Grade 7', 'Grade 8', 'Grade 9', 'Grade 10']) {
     assert.match(indexHtml, new RegExp(`<a[^>]+data-grade="${gradeLevel}"[\\s\\S]*?${gradeLevel}`));
   }
+});
+
+test('teacher dashboard requests data for the active grade workspace', () => {
+  assert.match(appJs, /selectedTeacherGrade:\s*'Grade 7'/);
+  assert.match(appJs, /gradeLevel=\$\{encodeURIComponent\(state\.selectedTeacherGrade\)\}/);
+  assert.match(appJs, /renderWorkspaceDashboard/);
 });
 
 test('teacher layout uses a wide application shell for dashboard work', () => {

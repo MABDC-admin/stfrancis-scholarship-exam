@@ -150,7 +150,12 @@ app.get('/api/teacher/dashboard', requireTeacher, async (req, res) => {
   const exam = await store.getExam();
   const submissions = await store.listSubmissions();
   const expectedStudents = Number(req.query.expectedStudents ?? submissions.length);
-  const model = buildDashboardModel({ exam, submissions, expectedStudents });
+  const model = buildDashboardModel({
+    exam,
+    submissions,
+    expectedStudents,
+    gradeLevel: String(req.query.gradeLevel ?? '')
+  });
   model.students = filterAndSortStudents(model.students, {
     search: String(req.query.search ?? ''),
     status: String(req.query.status ?? 'all'),

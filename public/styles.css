@@ -580,8 +580,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .grade-module-nav {
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
+  padding-top: 0;
+  border-top: 0;
 }
 
 .grade-module-nav a {

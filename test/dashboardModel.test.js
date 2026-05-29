@@ -133,3 +133,24 @@ test('buildDashboardModel always exposes Grade 7 to Grade 10 dashboard summaries
   assert.equal(model.gradeLevels[3].totalStudents, 1);
   assert.equal(model.gradeLevels[3].averageScore, 50);
 });
+
+test('buildDashboardModel can scope the dashboard to one grade workspace', () => {
+  const model = buildDashboardModel({
+    exam,
+    submissions: [
+      { ...submissions[0], id: 1, section: 'Grade 7', percentage: 90 },
+      { ...submissions[1], id: 2, section: 'Grade 8', percentage: 50 }
+    ],
+    expectedStudents: 4,
+    gradeLevel: 'Grade 7'
+  });
+
+  assert.equal(model.workspace.gradeLevel, 'Grade 7');
+  assert.equal(model.overview.totalStudents, 1);
+  assert.equal(model.overview.averageScore, 90);
+  assert.equal(model.scholarship.availableSlots, 5);
+  assert.equal(model.scholarship.acceptedStudents, 1);
+  assert.deepEqual(model.gradeLevels.map((grade) => grade.name), ['Grade 7']);
+  assert.deepEqual(model.students.map((student) => student.section), ['Grade 7']);
+  assert.equal(model.recentActivity.length, 1);
+});

@@ -9,7 +9,8 @@ const state = {
   questionStartedAt: Date.now(),
   warnings: 0,
   submitting: false,
-  teacherExam: null
+  teacherExam: null,
+  selectedTeacherGrade: 'Grade 7'
 };
 
 const $ = (id) => document.getElementById(id);
@@ -352,7 +353,7 @@ function answerDisplay(item, value) {
 }
 
 function focusTeacherGrade(gradeLevel, targetId = 'submissionList') {
-  $('studentSearch').value = gradeLevel;
+  state.selectedTeacherGrade = gradeLevel;
   document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
     item.classList.toggle('active', item.dataset.grade === gradeLevel);
   });
@@ -364,11 +365,20 @@ function focusTeacherGrade(gradeLevel, targetId = 'submissionList') {
 async function loadDashboard({ refreshQuestions = true } = {}) {
   const search = encodeURIComponent($('studentSearch').value.trim());
   const sort = encodeURIComponent($('studentSort').value);
-  const dashboard = await api(`/api/teacher/dashboard?search=${search}&sort=${sort}`);
-  const { overview, scholarship, tests, students, recentActivity, gradeLevels } = dashboard;
+  const dashboard = await api(`/api/teacher/dashboard?gradeLevel=${encodeURIComponent(state.selectedTeacherGrade)}&search=${search}&sort=${sort}`);
+  renderWorkspaceDashboard(dashboard);
+
+  if (refreshQuestions) await loadQuestionEditor();
+}
+
+function renderWorkspaceDashboard(dashboard) {
+  const { workspace, overview, scholarship, tests, students, recentActivity, gradeLevels } = dashboard;
+  document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
+    item.classList.toggle('active', item.dataset.grade === workspace.gradeLevel);
+  });
 
   $('dashboardSummary').innerHTML = [
-    ['Students', overview.totalStudents, 'blue'],
+    [`${workspace.gradeLevel} Applicants`, overview.totalStudents, 'blue'],
     ['Average', `${overview.averageScore}%`, 'teal'],
     ['Completion', `${overview.completionRate}%`, 'green'],
     ['Accepted', `${scholarship.acceptedStudents}/${scholarship.availableSlots}`, 'coral']
@@ -376,10 +386,10 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
 
   $('scholarshipSummary').innerHTML = `
     <div>
-      <p class="eyebrow">Scholarship Program</p>
-      <h2>Top ${scholarship.availableSlotsPerGrade} passing applicants per grade accepted</h2>
-      <p class="muted">Each grade level has ${scholarship.availableSlotsPerGrade} scholarship slots, for ${scholarship.availableSlots} total slots.</p>
-      <p class="muted">Eligible grade levels: ${scholarship.gradeLevels.join(', ')} · Passing score: ${scholarship.passingScore}% · Qualified: ${scholarship.qualifiedStudents}</p>
+      <p class="eyebrow">Grade Workspace</p>
+      <h2>${escapeHtml(workspace.gradeLevel)} Scholarship Dashboard</h2>
+      <p class="muted">This workspace shows only ${escapeHtml(workspace.gradeLevel)} applicants, results, activity, and scholarship slots.</p>
+      <p class="muted">Available slots: ${scholarship.availableSlots} | Passing score: ${scholarship.passingScore}% | Qualified: ${scholarship.qualifiedStudents}</p>
     </div>
     <div class="slot-meter" aria-label="${scholarship.acceptedStudents} scholarship slots filled out of ${scholarship.availableSlots}">
       ${Array.from({ length: scholarship.availableSlots }, (_, index) => (
@@ -460,8 +470,6 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
       </article>
     `;
   }).join('') : '<section class="panel result-panel"><h2>No submissions yet</h2></section>';
-
-  if (refreshQuestions) await loadQuestionEditor();
 }
 
 async function loadQuestionEditor() {

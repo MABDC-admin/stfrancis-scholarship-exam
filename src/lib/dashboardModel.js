@@ -83,14 +83,20 @@ export function rankScholarshipApplicants(students, {
   });
 }
 
-export function buildDashboardModel({ exam, submissions, expectedStudents }) {
-  const completed = submissions.length;
+export function buildDashboardModel({ exam, submissions, expectedStudents, gradeLevel = '' }) {
+  const activeGradeLevel = SCHOLARSHIP_CONFIG.gradeLevels.includes(gradeLevel) ? gradeLevel : '';
+  const workspaceSubmissions = activeGradeLevel
+    ? submissions.filter((submission) => submission.section === activeGradeLevel)
+    : submissions;
+  const workspaceGradeLevels = activeGradeLevel ? [activeGradeLevel] : SCHOLARSHIP_CONFIG.gradeLevels;
+  const workspaceSlots = SCHOLARSHIP_CONFIG.availableSlotsPerGrade * workspaceGradeLevels.length;
+  const completed = workspaceSubmissions.length;
   const studentTarget = Math.max(Number(expectedStudents ?? completed), completed, 1);
   const averageScore = completed
-    ? Math.round(submissions.reduce((sum, submission) => sum + Number(submission.percentage ?? 0), 0) / completed)
+    ? Math.round(workspaceSubmissions.reduce((sum, submission) => sum + Number(submission.percentage ?? 0), 0) / completed)
     : 0;
 
-  const baseStudents = submissions.map((submission) => ({
+  const baseStudents = workspaceSubmissions.map((submission) => ({
     id: submission.id,
     studentName: submission.studentName,
     studentEmail: submission.studentEmail ?? '',
@@ -107,10 +113,18 @@ export function buildDashboardModel({ exam, submissions, expectedStudents }) {
   const rankedStudents = rankScholarshipApplicants(baseStudents);
   const studentsById = new Map(rankedStudents.map((student) => [student.id, student]));
   const students = baseStudents.map((student) => studentsById.get(student.id));
-  const acceptedStudents = rankedStudents.filter((student) => student.scholarshipStatus === 'accepted').length;
-  const qualifiedStudents = rankedStudents.filter((student) => student.scholarshipRank).length;
+  const acceptedStudents = rankedStudents.filter((student) => (
+    workspaceGradeLevels.includes(student.section) && student.scholarshipStatus === 'accepted'
+  )).length;
+  const qualifiedStudents = rankedStudents.filter((student) => (
+    workspaceGradeLevels.includes(student.section) && student.scholarshipRank
+  )).length;
 
   return {
+    workspace: {
+      gradeLevel: activeGradeLevel || 'All Grades',
+      isGradeScoped: Boolean(activeGradeLevel)
+    },
     overview: {
       totalStudents: completed,
       averageScore,
@@ -119,12 +133,12 @@ export function buildDashboardModel({ exam, submissions, expectedStudents }) {
     },
     scholarship: {
       passingScore: SCHOLARSHIP_CONFIG.passingScore,
-      availableSlots: SCHOLARSHIP_CONFIG.availableSlots,
+      availableSlots: workspaceSlots,
       availableSlotsPerGrade: SCHOLARSHIP_CONFIG.availableSlotsPerGrade,
       acceptedStudents,
       qualifiedStudents,
-      remainingSlots: Math.max(0, SCHOLARSHIP_CONFIG.availableSlots - acceptedStudents),
-      gradeLevels: SCHOLARSHIP_CONFIG.gradeLevels
+      remainingSlots: Math.max(0, workspaceSlots - acceptedStudents),
+      gradeLevels: workspaceGradeLevels
     },
     tests: exam ? [{
       id: 'mapeh-4th-quarter',
@@ -136,7 +150,7 @@ export function buildDashboardModel({ exam, submissions, expectedStudents }) {
       averageScore,
       updatedAt: exam.updatedAt ?? null
     }] : [],
-    gradeLevels: buildGradeLevelSummaries(students),
+    gradeLevels: buildGradeLevelSummaries(students).filter((grade) => workspaceGradeLevels.includes(grade.name)),
     students,
     recentActivity: [...students]
       .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime())
