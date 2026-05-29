@@ -396,9 +396,22 @@ function preserveTeacherScroll(left, top) {
   });
 }
 
+function showTeacherModule(module) {
+  const showQuestionReview = module === 'questionReview';
+  $('gradeWorkspaceContent').classList.toggle('hidden', showQuestionReview);
+  $('questionReview').classList.toggle('hidden', !showQuestionReview);
+  document.querySelectorAll('.teacher-tool-nav [data-teacher-tool]').forEach((item) => {
+    item.classList.toggle('active', item.dataset.teacherTool === module);
+  });
+  if (showQuestionReview) {
+    loadQuestionEditor().catch((error) => alert(error.message));
+  }
+}
+
 function focusTeacherGrade(gradeLevel) {
   const previousScrollY = state.teacherStableScrollY || window.scrollY;
   const previousScrollX = window.scrollX;
+  showTeacherModule('workspace');
   state.selectedTeacherGrade = gradeLevel;
   state.selectedExamineeId = '';
   $('workspaceGradeSelect').value = gradeLevel;
@@ -732,6 +745,12 @@ document.querySelectorAll('.grade-module-nav [data-grade]').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
     focusTeacherGrade(link.dataset.grade);
+  });
+});
+document.querySelectorAll('.teacher-tool-nav [data-teacher-tool]').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    showTeacherModule(button.dataset.teacherTool);
   });
 });
 $('startForm').addEventListener('submit', beginExam);

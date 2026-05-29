@@ -27,7 +27,21 @@ test('teacher dashboard exposes a grade-level module for each scholarship level'
 test('question review is exposed as its own side navigation module', () => {
   assert.match(indexHtml, /id="questionReview"/);
   assert.match(indexHtml, /class="teacher-tool-nav"/);
-  assert.match(indexHtml, /href="#questionReview"[\s\S]*?Question Review/);
+  assert.match(indexHtml, /data-teacher-tool="questionReview"[\s\S]*?Question Review/);
+  assert.doesNotMatch(indexHtml, /href="#questionReview"/);
+});
+
+test('question review is not rendered inside each grade workspace flow', () => {
+  const workspaceStart = indexHtml.indexOf('id="gradeWorkspaceContent"');
+  const workspaceEnd = indexHtml.indexOf('id="questionReview"', workspaceStart);
+  const workspaceBlock = indexHtml.slice(workspaceStart, workspaceEnd);
+
+  assert.ok(workspaceStart > -1, 'grade workspace content wrapper is present');
+  assert.doesNotMatch(workspaceBlock, /Question Review/);
+  assert.match(indexHtml, /id="questionReview" class="question-review panel hidden"/);
+  assert.match(appJs, /function showTeacherModule/);
+  assert.match(appJs, /showTeacherModule\('workspace'\)/);
+  assert.match(appJs, /loadQuestionEditor\(\)/);
 });
 
 test('teacher dashboard requests data for the active grade workspace', () => {

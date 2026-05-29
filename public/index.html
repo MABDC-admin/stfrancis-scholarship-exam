@@ -10,7 +10,7 @@
     <style>
       body{margin:0;background:#eef4f7;color:#172026;font-family:Inter,system-ui,sans-serif}.shell{width:calc(100% - 24px);max-width:1680px;margin:0 auto;padding:28px 0}.hidden,.view:not(.active){display:none!important}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center}.mode-switch{display:inline-flex;gap:4px}.panel,.question-card,.exam-status,.dashboard-toolbar,.submission-card{background:#fff;border:1px solid #d9e3e8;border-radius:8px}.primary{background:#087f8c;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:800}
     </style>
-    <link rel="stylesheet" href="/styles.css?v=20260529-stable-grade-scroll-1">
+    <link rel="stylesheet" href="/styles.css?v=20260529-question-review-module-1">
   </head>
   <body>
     <main class="shell">
@@ -94,36 +94,48 @@
             </div>
             <div class="teacher-tool-nav" aria-label="Teacher tools">
               <p class="eyebrow">Exam Tools</p>
-              <a href="#questionReview"><strong>Question Review</strong><span>Edit imported questions</span></a>
+              <button type="button" data-teacher-tool="questionReview"><strong>Question Review</strong><span>Edit imported questions</span></button>
             </div>
           </aside>
 
           <div class="teacher-main">
-            <section id="scholarshipSummary" class="scholarship-banner"></section>
-            <section id="dashboardSummary" class="summary-grid"></section>
-            <section class="dashboard-toolbar">
-              <div class="workspace-picker">
-                <label>
-                  Grade workspace
-                  <select id="workspaceGradeSelect" aria-label="Grade workspace">
-                    <option>Grade 7</option>
-                    <option>Grade 8</option>
-                    <option>Grade 9</option>
-                    <option>Grade 10</option>
-                  </select>
-                </label>
-                <label>
-                  Examinee
-                  <select id="examineeSelect" aria-label="Examinee">
-                    <option value="">Select examinee</option>
-                  </select>
-                </label>
-              </div>
-            </section>
-            <section id="examineeDetail" class="examinee-detail panel" aria-live="polite"></section>
-            <section id="gradeLevelGrid" class="grade-level-grid" aria-label="Grade level performance"></section>
-            <section id="testStatusGrid" class="test-grid"></section>
-            <section id="questionReview" class="question-review panel">
+            <div id="gradeWorkspaceContent">
+              <section id="scholarshipSummary" class="scholarship-banner"></section>
+              <section id="dashboardSummary" class="summary-grid"></section>
+              <section class="dashboard-toolbar">
+                <div class="workspace-picker">
+                  <label>
+                    Grade workspace
+                    <select id="workspaceGradeSelect" aria-label="Grade workspace">
+                      <option>Grade 7</option>
+                      <option>Grade 8</option>
+                      <option>Grade 9</option>
+                      <option>Grade 10</option>
+                    </select>
+                  </label>
+                  <label>
+                    Examinee
+                    <select id="examineeSelect" aria-label="Examinee">
+                      <option value="">Select examinee</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+              <section id="examineeDetail" class="examinee-detail panel" aria-live="polite"></section>
+              <section id="gradeLevelGrid" class="grade-level-grid" aria-label="Grade level performance"></section>
+              <section id="testStatusGrid" class="test-grid"></section>
+              <section id="activityFeed" class="activity-feed"></section>
+              <section id="submissionList" class="submission-list"></section>
+              <section id="adminModule" class="admin-module panel">
+                <div>
+                  <p class="eyebrow">Admin Module</p>
+                  <h2>Results Management</h2>
+                  <p class="muted">Delete all submissions and results when you need to reset applicant records. This does not delete the exam or question bank.</p>
+                </div>
+                <button id="deleteAllResults" class="danger-button" type="button">Delete all submissions and results</button>
+              </section>
+            </div>
+            <section id="questionReview" class="question-review panel hidden">
               <div class="section-heading">
                 <div>
                   <p class="eyebrow">Question Review</p>
@@ -136,16 +148,6 @@
                   <p class="muted">Load the dashboard to review imported questions.</p>
                 </div>
               </form>
-            </section>
-            <section id="activityFeed" class="activity-feed"></section>
-            <section id="submissionList" class="submission-list"></section>
-            <section id="adminModule" class="admin-module panel">
-              <div>
-                <p class="eyebrow">Admin Module</p>
-                <h2>Results Management</h2>
-                <p class="muted">Delete all submissions and results when you need to reset applicant records. This does not delete the exam or question bank.</p>
-              </div>
-              <button id="deleteAllResults" class="danger-button" type="button">Delete all submissions and results</button>
             </section>
           </div>
         </div>
@@ -166,6 +168,6 @@
         </div>
       </div>
     </section>
-    <script src="/app.js?v=20260529-stable-grade-scroll-1" type="module"></script>
+    <script src="/app.js?v=20260529-question-review-module-1" type="module"></script>
   </body>
 </html>
