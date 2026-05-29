@@ -10,7 +10,7 @@
     <style>
       body{margin:0;background:#eef4f7;color:#172026;font-family:Inter,system-ui,sans-serif}.shell{width:calc(100% - 24px);max-width:1680px;margin:0 auto;padding:28px 0}.hidden,.view:not(.active){display:none!important}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center}.mode-switch{display:inline-flex;gap:4px}.panel,.question-card,.exam-status,.dashboard-toolbar,.submission-card{background:#fff;border:1px solid #d9e3e8;border-radius:8px}.primary{background:#087f8c;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:800}
     </style>
-    <link rel="stylesheet" href="/styles.css?v=20260529-examinee-detail-1">
+    <link rel="stylesheet" href="/styles.css?v=20260529-clean-workspace-header-1">
   </head>
   <body>
     <main class="shell">
@@ -113,24 +113,6 @@
                   </select>
                 </label>
               </div>
-              <label>
-                Search
-                <input id="studentSearch" type="search" autocomplete="off" placeholder="Name, email, section">
-              </label>
-              <label>
-                Sort
-                <select id="studentSort" aria-label="Sort students">
-                  <option value="recent">Recent</option>
-                  <option value="name-asc">Name</option>
-                  <option value="performance-desc">Top scores</option>
-                  <option value="performance-asc">Needs support</option>
-                </select>
-              </label>
-              <button id="loadDashboard" class="primary" type="button">Load Dashboard</button>
-              <label class="upload-button">
-                Import DOCX
-                <input id="docxUpload" type="file" accept=".docx">
-              </label>
             </section>
 
             <section id="dashboardSummary" class="summary-grid"></section>
@@ -173,6 +155,6 @@
         </div>
       </div>
     </section>
-    <script src="/app.js?v=20260529-examinee-detail-1" type="module"></script>
+    <script src="/app.js?v=20260529-clean-workspace-header-1" type="module"></script>
   </body>
 </html>

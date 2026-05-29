@@ -65,6 +65,9 @@ function switchMode(mode) {
   modes.forEach((button) => button.classList.toggle('active', button.dataset.mode === mode));
   $('studentView').classList.toggle('active', mode === 'student');
   $('teacherView').classList.toggle('active', mode === 'teacher');
+  if (mode === 'teacher') {
+    loadDashboard({ refreshQuestions: !state.teacherExam }).catch((error) => alert(error.message));
+  }
 }
 
 function answeredCount() {
@@ -451,8 +454,8 @@ function renderSelectedExaminee(students) {
 }
 
 async function loadDashboard({ refreshQuestions = true } = {}) {
-  const search = encodeURIComponent($('studentSearch').value.trim());
-  const sort = encodeURIComponent($('studentSort').value);
+  const search = encodeURIComponent($('studentSearch')?.value.trim() ?? '');
+  const sort = encodeURIComponent($('studentSort')?.value ?? 'recent');
   const dashboard = await api(`/api/teacher/dashboard?gradeLevel=${encodeURIComponent(state.selectedTeacherGrade)}&search=${search}&sort=${sort}`);
   renderWorkspaceDashboard(dashboard);
 
@@ -689,7 +692,6 @@ $('unansweredModal').addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !$('unansweredModal').classList.contains('hidden')) hideUnansweredModal();
 });
-$('loadDashboard').addEventListener('click', () => loadDashboard().catch((error) => alert(error.message)));
 $('workspaceGradeSelect').addEventListener('change', () => {
   focusTeacherGrade($('workspaceGradeSelect').value, 'dashboardSummary');
 });
@@ -697,9 +699,6 @@ $('examineeSelect').addEventListener('change', () => {
   state.selectedExamineeId = $('examineeSelect').value;
   loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
 });
-$('studentSearch').addEventListener('input', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
-$('studentSort').addEventListener('change', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
-$('docxUpload').addEventListener('change', () => importDocx().catch((error) => alert(error.message)));
 $('questionReviewForm').addEventListener('submit', (event) => saveQuestionReview(event).catch((error) => alert(error.message)));
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) showIntegrityWarning();

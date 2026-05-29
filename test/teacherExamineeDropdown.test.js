@@ -15,6 +15,20 @@ test('teacher dashboard has hierarchical grade and examinee dropdowns', () => {
   }
 });
 
+test('teacher workspace header removes bulky search sort load and import controls', () => {
+  for (const removedId of ['studentSearch', 'studentSort', 'loadDashboard', 'docxUpload']) {
+    assert.doesNotMatch(indexHtml, new RegExp(`id="${removedId}"`));
+  }
+  for (const removedText of ['Search', 'Sort', 'Load Dashboard', 'Import DOCX']) {
+    assert.doesNotMatch(indexHtml, new RegExp(`>${removedText}<`));
+  }
+});
+
+test('teacher dashboard auto-loads when switching to teacher mode', () => {
+  assert.match(appJs, /mode === 'teacher'/);
+  assert.match(appJs, /loadDashboard\(\{ refreshQuestions: false \}\)/);
+});
+
 test('teacher dashboard populates examinees from the selected grade workspace', () => {
   assert.match(appJs, /populateExamineeSelect\(students\)/);
   assert.match(appJs, /selectedExamineeId/);
