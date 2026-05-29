@@ -68,3 +68,28 @@ test('exam store scores submissions against the applicant grade level questions 
   assert.equal(saved.score, 2);
   assert.deepEqual(saved.items.map((item) => item.questionId), ['g8-q01', 'g8-q02']);
 });
+
+test('clearSubmissions removes results without changing the exam', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'exam-store-clear-results-'));
+  const store = await createExamStore({ dbPath: join(dir, 'exam.sqlite') });
+  const exam = {
+    title: 'Scholarship Grade Bank',
+    totalPoints: 1,
+    questions: [
+      { id: 'g7-q01', gradeLevel: 'Grade 7', type: 'multiple-choice', prompt: 'G7 pick', choices: { a: 'Right', b: 'Wrong' }, correctAnswer: 'a', points: 1 }
+    ]
+  };
+
+  await store.saveExam(exam);
+  await store.saveSubmission({
+    studentName: 'Cara Reyes',
+    section: 'Grade 7',
+    answers: { 'g7-q01': 'a' },
+    timings: { 'g7-q01': 9 }
+  });
+
+  await store.clearSubmissions();
+
+  assert.equal((await store.listSubmissions()).length, 0);
+  assert.deepEqual(await store.getExam(), exam);
+});

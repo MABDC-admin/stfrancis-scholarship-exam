@@ -10,7 +10,7 @@
     <style>
       body{margin:0;background:#eef4f7;color:#172026;font-family:Inter,system-ui,sans-serif}.shell{width:calc(100% - 24px);max-width:1680px;margin:0 auto;padding:28px 0}.hidden,.view:not(.active){display:none!important}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center}.mode-switch{display:inline-flex;gap:4px}.panel,.question-card,.exam-status,.dashboard-toolbar,.submission-card{background:#fff;border:1px solid #d9e3e8;border-radius:8px}.primary{background:#087f8c;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:800}
     </style>
-    <link rel="stylesheet" href="/styles.css?v=20260529-clean-workspace-header-1">
+    <link rel="stylesheet" href="/styles.css?v=20260529-admin-results-1">
   </head>
   <body>
     <main class="shell">
@@ -136,6 +136,14 @@
             </section>
             <section id="activityFeed" class="activity-feed"></section>
             <section id="submissionList" class="submission-list"></section>
+            <section id="adminModule" class="admin-module panel">
+              <div>
+                <p class="eyebrow">Admin Module</p>
+                <h2>Results Management</h2>
+                <p class="muted">Delete all submissions and results when you need to reset applicant records. This does not delete the exam or question bank.</p>
+              </div>
+              <button id="deleteAllResults" class="danger-button" type="button">Delete all submissions and results</button>
+            </section>
           </div>
         </div>
       </section>
@@ -155,6 +163,6 @@
         </div>
       </div>
     </section>
-    <script src="/app.js?v=20260529-passing-fill-answers-1" type="module"></script>
+    <script src="/app.js?v=20260529-admin-results-1" type="module"></script>
   </body>
 </html>

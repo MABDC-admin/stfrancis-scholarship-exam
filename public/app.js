@@ -684,6 +684,15 @@ async function importDocx() {
   alert(`Imported ${payload.imported} questions.`);
 }
 
+async function deleteAllResults() {
+  const confirmed = confirm('Delete all submissions and results? This does not delete the exam or question bank.');
+  if (!confirmed) return;
+  const result = await api('/api/teacher/submissions', { method: 'DELETE' });
+  state.selectedExamineeId = '';
+  await loadDashboard({ refreshQuestions: false });
+  alert(`Deleted ${result.deleted} submissions/results. The exam was not changed.`);
+}
+
 modes.forEach((button) => button.addEventListener('click', () => switchMode(button.dataset.mode)));
 document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((link) => {
   link.addEventListener('click', (event) => {
@@ -710,6 +719,7 @@ $('examineeSelect').addEventListener('change', () => {
   state.selectedExamineeId = $('examineeSelect').value;
   loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
 });
+$('deleteAllResults').addEventListener('click', () => deleteAllResults().catch((error) => alert(error.message)));
 $('questionReviewForm').addEventListener('submit', (event) => saveQuestionReview(event).catch((error) => alert(error.message)));
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) showIntegrityWarning();

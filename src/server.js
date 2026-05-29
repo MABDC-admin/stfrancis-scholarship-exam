@@ -146,6 +146,12 @@ app.get('/api/teacher/submissions', requireTeacher, async (req, res) => {
   res.json({ submissions: await store.listSubmissions() });
 });
 
+app.delete('/api/teacher/submissions', requireTeacher, async (req, res) => {
+  const deleted = (await store.listSubmissions()).length;
+  await store.clearSubmissions();
+  res.json({ deleted, examPreserved: true });
+});
+
 app.get('/api/teacher/dashboard', requireTeacher, async (req, res) => {
   const exam = await store.getExam();
   const submissions = await store.listSubmissions();
