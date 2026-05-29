@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
+  createLoginRateLimiter,
   createTeacherSessionStore,
   extractCookieValue,
   verifyTeacherPin
@@ -26,6 +27,18 @@ test('teacher session store creates single-purpose tokens and expires old tokens
   assert.equal(sessions.has(token), false);
 });
 
+test('teacher login rate limiter blocks repeated failed attempts per client', () => {
+  const limiter = createLoginRateLimiter({ maxAttempts: 2, windowMs: 1000 });
+
+  assert.equal(limiter.consume('10.0.0.1').allowed, true);
+  assert.equal(limiter.consume('10.0.0.1').allowed, true);
+  assert.equal(limiter.consume('10.0.0.1').allowed, false);
+  assert.equal(limiter.consume('10.0.0.2').allowed, true);
+
+  limiter.reset('10.0.0.1');
+  assert.equal(limiter.consume('10.0.0.1').allowed, true);
+});
+
 test('extractCookieValue reads a named cookie from the request header', () => {
   assert.equal(extractCookieValue('theme=dark; teacher_session=abc123; other=yes', 'teacher_session'), 'abc123');
   assert.equal(extractCookieValue('theme=dark', 'teacher_session'), '');
@@ -43,9 +56,11 @@ test('teacher page has an access-code gate before dashboard modules', () => {
 test('teacher API routes use session-cookie authentication when access code is configured', () => {
   assert.match(serverJs, /TEACHER_ACCESS_CODE/);
   assert.match(serverJs, /createTeacherSessionStore/);
+  assert.match(serverJs, /createLoginRateLimiter/);
   assert.match(serverJs, /app\.post\('\/api\/teacher\/login'/);
   assert.match(serverJs, /app\.get\('\/api\/teacher\/session'/);
   assert.match(serverJs, /extractCookieValue\(req\.headers\.cookie/);
   assert.match(serverJs, /res\.status\(401\)\.json\(\{ error: 'Teacher access required\.' \}\)/);
+  assert.match(serverJs, /res\.status\(429\)\.json\(\{ error: 'Too many access attempts\. Try again shortly\.' \}\)/);
   assert.doesNotMatch(serverJs, /Temporarily open for fast school-side use/);
 });

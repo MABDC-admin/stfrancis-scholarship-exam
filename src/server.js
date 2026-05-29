@@ -14,6 +14,7 @@ import { buildHelmetOptions } from './lib/security.js';
 import { validateStudentSubmission } from './lib/validation.js';
 import { examForGrade } from './lib/gradeExam.js';
 import {
+  createLoginRateLimiter,
   createTeacherSessionStore,
   expiredTeacherCookie,
   extractCookieValue,
@@ -30,6 +31,7 @@ const upload = multer({
 const store = await createExamStore();
 const sessions = new Map();
 const teacherSessions = createTeacherSessionStore();
+const teacherLoginLimiter = createLoginRateLimiter();
 const teacherAccessCode = String(process.env.TEACHER_ACCESS_CODE ?? '');
 const teacherAuthRequired = Boolean(teacherAccessCode);
 const durationMinutes = Number(process.env.EXAM_DURATION_MINUTES ?? 60);
@@ -149,10 +151,17 @@ app.post('/api/teacher/login', (req, res) => {
     res.json({ authenticated: true, required: false });
     return;
   }
+  const clientKey = req.ip ?? req.socket?.remoteAddress ?? 'unknown';
+  const limit = teacherLoginLimiter.consume(clientKey);
+  if (!limit.allowed) {
+    res.status(429).json({ error: 'Too many access attempts. Try again shortly.' });
+    return;
+  }
   if (!verifyTeacherPin(req.body?.accessCode, teacherAccessCode)) {
     res.status(401).json({ error: 'Invalid teacher access code.' });
     return;
   }
+  teacherLoginLimiter.reset(clientKey);
   const token = teacherSessions.create();
   res.setHeader('Set-Cookie', teacherCookie(token, { secure: false }));
   res.json({ authenticated: true, required: true });

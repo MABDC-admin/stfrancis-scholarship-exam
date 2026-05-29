@@ -49,6 +49,36 @@ export function createTeacherSessionStore({ ttlMs = 4 * 60 * 60 * 1000 } = {}) {
   };
 }
 
+export function createLoginRateLimiter({ maxAttempts = 5, windowMs = 10 * 60 * 1000 } = {}) {
+  const attempts = new Map();
+
+  function currentRecord(key) {
+    const now = Date.now();
+    const record = attempts.get(key);
+    if (!record || record.expiresAt <= now) {
+      const fresh = { count: 0, expiresAt: now + windowMs };
+      attempts.set(key, fresh);
+      return fresh;
+    }
+    return record;
+  }
+
+  return {
+    consume(key = 'unknown') {
+      const record = currentRecord(String(key));
+      record.count += 1;
+      return {
+        allowed: record.count <= maxAttempts,
+        remaining: Math.max(0, maxAttempts - record.count),
+        retryAfterMs: Math.max(0, record.expiresAt - Date.now())
+      };
+    },
+    reset(key = 'unknown') {
+      attempts.delete(String(key));
+    }
+  };
+}
+
 export function teacherCookie(token, { maxAgeSeconds = 4 * 60 * 60, secure = false } = {}) {
   const parts = [
     `${TEACHER_COOKIE}=${encodeURIComponent(token)}`,
