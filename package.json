@@ -1,0 +1,19 @@
+{
+  "name": "stfrancis-entrance-exam",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test",
+    "import:docx": "node scripts/import-docx.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "multer": "^2.0.2",
+    "jszip": "^3.10.1",
+    "sql.js": "^1.12.0"
+  }
+}

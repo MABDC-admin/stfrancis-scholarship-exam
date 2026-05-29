@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>St. Francis Online Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body{margin:0;background:#eef4f7;color:#172026;font-family:Inter,system-ui,sans-serif}.shell{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0}.hidden,.view:not(.active){display:none!important}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center}.mode-switch{display:inline-flex;gap:4px}.panel,.question-card,.exam-status,.dashboard-toolbar,.submission-card{background:#fff;border:1px solid #d9e3e8;border-radius:8px}.primary{background:#087f8c;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:800}
+    </style>
+    <link rel="stylesheet" href="/styles.css?v=20260529-entrance-2">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Saint Francis Xavier Smart Academy Inc.</p>
+          <h1 id="examTitle">Scholarship Entrance Exam</h1>
+        </div>
+        <nav class="mode-switch" aria-label="Mode">
+          <button class="mode-button active" data-mode="student">Student</button>
+          <button class="mode-button" data-mode="teacher">Teacher</button>
+        </nav>
+      </header>
+
+      <section id="studentView" class="view active">
+        <section id="startPanel" class="panel intro-panel">
+          <div>
+            <p class="eyebrow">Grades 7 to 10</p>
+            <h2>Scholarship Entrance Exam</h2>
+            <p class="muted">Top 5 qualified students with at least 75% will be accepted for the scholarship program.</p>
+          </div>
+          <form id="startForm" class="student-form">
+            <label>
+              Student name
+              <input id="studentName" name="studentName" autocomplete="name" required>
+            </label>
+            <label>
+              Email
+              <input id="studentEmail" name="studentEmail" type="email" autocomplete="email" placeholder="student@example.com">
+            </label>
+            <label>
+              Grade level
+              <select id="studentSection" name="section" aria-label="Grade level" required>
+                <option value="">Select grade level</option>
+                <option>Grade 7</option>
+                <option>Grade 8</option>
+                <option>Grade 9</option>
+                <option>Grade 10</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">Start Exam</button>
+          </form>
+        </section>
+
+        <section id="examPanel" class="exam-layout hidden">
+          <aside class="exam-status">
+            <div class="timer-box">
+              <span class="label">Time</span>
+              <strong id="timer">60:00</strong>
+            </div>
+            <div>
+              <span class="label">Progress</span>
+              <div class="progress-track"><span id="progressBar"></span></div>
+              <p id="progressText" class="muted">0 of 0 answered</p>
+            </div>
+            <div id="questionDots" class="question-dots" aria-label="Questions"></div>
+            <button id="sidebarSubmit" class="primary sidebar-submit" type="button">Submit Exam</button>
+            <p id="integrityNotice" class="integrity-note hidden"></p>
+          </aside>
+
+          <article id="questionCard" class="question-card"></article>
+        </section>
+
+        <section id="resultPanel" class="panel result-panel hidden"></section>
+      </section>
+
+      <section id="teacherView" class="view">
+        <section class="dashboard-toolbar">
+          <label>
+            Teacher PIN
+            <input id="teacherPin" type="password" autocomplete="current-password" placeholder="Enter PIN">
+          </label>
+          <label>
+            Search
+            <input id="studentSearch" type="search" autocomplete="off" placeholder="Name, email, section">
+          </label>
+          <label>
+            Sort
+            <select id="studentSort" aria-label="Sort students">
+              <option value="recent">Recent</option>
+              <option value="name-asc">Name</option>
+              <option value="performance-desc">Top scores</option>
+              <option value="performance-asc">Needs support</option>
+            </select>
+          </label>
+          <button id="loadDashboard" class="primary" type="button">Load Dashboard</button>
+          <label class="upload-button">
+            Import DOCX
+            <input id="docxUpload" type="file" accept=".docx">
+          </label>
+        </section>
+
+        <section id="dashboardSummary" class="summary-grid"></section>
+        <section id="scholarshipSummary" class="scholarship-banner"></section>
+        <section id="testStatusGrid" class="test-grid"></section>
+        <section id="activityFeed" class="activity-feed"></section>
+        <section id="submissionList" class="submission-list"></section>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

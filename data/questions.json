@@ -1,0 +1,763 @@
+{
+  "title": "4th Quarter Exam in MAPEH 4",
+  "source": "MAPEH 4TH QUARTER.docx",
+  "totalPoints": 50,
+  "questions": [
+    {
+      "id": "q01",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "An event that is usually staged by a local community which centers on a theme or a unique aspect of the community, often honoring a patron saint.",
+      "choices": {
+        "a": "Day of dead",
+        "b": "Aurora mass",
+        "c": "Fiesta"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q02",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which festival is famous for colorful masks in the Philippines?",
+      "choices": {
+        "a": "Pahiyas Festival",
+        "b": "MassKara Festival",
+        "c": "Panagbenga Festival"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q03",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "The Sinulog Festival is celebrated in honor of which religious figure?",
+      "choices": {
+        "a": "Santo Niño",
+        "b": "San Pedro",
+        "c": "San Isidro"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q04",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which festival is known as the Flower Festival in Baguio City?",
+      "choices": {
+        "a": "Panagbenga Festival",
+        "b": "Ati-Atihan Festival",
+        "c": "Kadayawan Festival"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q05",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which festival in Aklan is known for people wearing black face paint and tribal costumes?",
+      "choices": {
+        "a": "Ati-Atihan Festival",
+        "b": "Pahiyas Festival",
+        "c": "MassKara Festival"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q06",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which festival shows houses decorated with colorful rice wafers and fruits?",
+      "choices": {
+        "a": "Moriones Festival",
+        "b": "Pahiyas Festival",
+        "c": "Panagbenga Festival"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q07",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which festival is celebrated in Davao City to give thanks for a bountiful harvest?",
+      "choices": {
+        "a": "Kadayawan Festival",
+        "b": "Ati-Atihan Festival",
+        "c": "MassKara Festival"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q08",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "What do festivals show about Filipino culture?",
+      "choices": {
+        "a": "Only games",
+        "b": "Traditions and celebrations",
+        "c": "Only delicious food"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q09",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which festival in Angono, Rizal is known for its giant colorful puppets?",
+      "choices": {
+        "a": "Moriones Festival",
+        "b": "Higantes Festival",
+        "c": "Giant Lantern Festival"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q10",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "The Moriones Festival is celebrated during which season?",
+      "choices": {
+        "a": "Christmas",
+        "b": "Summer",
+        "c": "Holy Week"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q11",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "What is the main attraction of the Higantes Festival?",
+      "choices": {
+        "a": "Giant puppets",
+        "b": "Flower floats",
+        "c": "Street dancing"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q12",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "The Giant Lantern Festival is celebrated in which province?",
+      "choices": {
+        "a": "Pampanga",
+        "b": "Rizal",
+        "c": "Marinduque"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q13",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "What do participants cover themselves with during the Taong Putik Festival?",
+      "choices": {
+        "a": "Colorful paint",
+        "b": "Mud and dried banana leaves",
+        "c": "Lanterns"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q14",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "What is the main activity during the Feast of the Black Nazarene?",
+      "choices": {
+        "a": "Throwing flowers",
+        "b": "Grand procession (Traslación) where devotees touch or pull the statue",
+        "c": "Street dancing with masks"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q15",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Why are festivals important to a community?",
+      "choices": {
+        "a": "They make people tired",
+        "b": "They help people remember their culture and traditions",
+        "c": "They only provide entertainment"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q16",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Known as the Philippines’ premiere national art fair and is a significant event for filipino artist.",
+      "choices": {
+        "a": "Museo",
+        "b": "ManilArt",
+        "c": "Opera"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q17",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "What is a live performance?",
+      "choices": {
+        "a": "A movie you watch at home",
+        "b": "A show presented in front of an audience at the same time",
+        "c": "A picture in a book"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q18",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is an example of a live performance?",
+      "choices": {
+        "a": "Street dance",
+        "b": "Television show recorded last year",
+        "c": "Watching a movie on Netflix"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q19",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "What do you call a dramatic form of musical theater where the story is told through acting, singing, and dancing?",
+      "choices": {
+        "a": "Opera",
+        "b": "Musical",
+        "c": "Ballet"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q20",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "A group of musicians who perform while marching.",
+      "choices": {
+        "a": "Marching band",
+        "b": "Singer",
+        "c": "Artists"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q21",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a type of live performance?",
+      "choices": {
+        "a": "Concert",
+        "b": "Watching a movie online",
+        "c": "Reading a poster",
+        "d": "Looking at a painting"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q22",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a type of live performance?",
+      "choices": {
+        "a": "Street dance",
+        "b": "Printed brochure",
+        "c": "Recorded cartoon",
+        "d": "Silent reading"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q23",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a type of live performance?",
+      "choices": {
+        "a": "Theater play",
+        "b": "Notebook drawing",
+        "c": "Product label",
+        "d": "Text message"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q24",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a type of live performance?",
+      "choices": {
+        "a": "Ballet",
+        "b": "Recipe book",
+        "c": "Photo album",
+        "d": "Online game"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q25",
+      "section": "Music & Arts",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a type of live performance?",
+      "choices": {
+        "a": "Marching band",
+        "b": "Library card",
+        "c": "Food package",
+        "d": "Wall calendar"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q26",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "What is a basic health right?",
+      "choices": {
+        "a": "The right to play video games",
+        "b": "The right to access healthcare and live a healthy life",
+        "c": "The right to sleep all day"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q27",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Who is responsible for helping people enjoy their basic health rights?",
+      "choices": {
+        "a": "Only the teachers",
+        "b": "Government, healthcare providers, and the community",
+        "c": "Only children"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q28",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Why are basic health rights important?",
+      "choices": {
+        "a": "They help people stay healthy and prevent diseases",
+        "b": "They let people skip school",
+        "c": "They allow people to eat as much candy as they want"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q29",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "What does the right to good health mean?",
+      "choices": {
+        "a": "Being able to eat only candy",
+        "b": "Having access to proper medical care, clean water, and nutritious food",
+        "c": "Sleeping all day"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q30",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Who helps ensure that people enjoy their right to good health?",
+      "choices": {
+        "a": "Government and healthcare workers",
+        "b": "Only teachers",
+        "c": "Only parents"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q31",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "What law protects the rights of consumers in the Philippines?",
+      "choices": {
+        "a": "Labor Code of the Philippines",
+        "b": "Republic Act 7394 (Consumer Act of the Philippines)",
+        "c": "Civil Code of the Philippines"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q32",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "What does the “Right to Redress” allow a consumer to do?",
+      "choices": {
+        "a": "Demand a replacement, refund, or compensation for defective products",
+        "b": "Right to inform consumers about the ingredients",
+        "c": "Buy unlimited products for free"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q33",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "A trend or practice about health, diet, or fitness that becomes popular quickly but usually has little scientific proof to show that it really works.",
+      "choices": {
+        "a": "Fitness",
+        "b": "Health fad",
+        "c": "Fitness bud"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q34",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Solidarity in consumer responsibility means:",
+      "choices": {
+        "a": "Working together to promote fair trade and protect consumer rights",
+        "b": "Buying products only for yourself",
+        "c": "Ignoring other consumers"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q35",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Why is consumer education important?",
+      "choices": {
+        "a": "It teaches people how to make informed decisions when buying products",
+        "b": "It teaches people to sleep",
+        "c": "It teaches people to ignore rules"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q36",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Juan bought a toy that broke on the first day. He asked the store to replace it.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q37",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Maria wants to know the ingredients of the food she buys to make sure it is safe.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q38",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "A store offers different brands of soap. Anna chooses the one she likes best.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q39",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Pedro reports a problem with his electricity bill to the local consumer council.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "d",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q40",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "The government teaches students how to check product labels before buying.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "e",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q41",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Lina buys clean water and nutritious food for her family.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "f",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q42",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "A child avoids using a toy that has sharp edges that could hurt him.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "g",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q43",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Miguel wants to learn about his rights as a buyer before purchasing online.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "e",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q44",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "A store clearly displays the prices and product information on all items.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q45",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Rose gets a refund when the blender she bought stopped working within a week.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q46",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Carlo complains to the store because the shoes he bought do not fit properly and asks for an exchange.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q47",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Ella attends a seminar to learn how to compare prices and choose quality products.",
+      "choices": {
+        "a": "Right to Redress",
+        "b": "Right to Information",
+        "c": "Right to Choose",
+        "d": "Right to Representation",
+        "e": "Right to Consumer Education",
+        "f": "Right to Basic Needs",
+        "g": "Right to Safety"
+      },
+      "correctAnswer": "e",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q48",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a skill of a responsible Filipino consumer?",
+      "choices": {
+        "a": "Critical thinking",
+        "b": "Impulse buying",
+        "c": "Ignoring labels",
+        "d": "Wasting money"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q49",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a skill of a responsible Filipino consumer?",
+      "choices": {
+        "a": "Decision making",
+        "b": "Guessing randomly",
+        "c": "Following every advertisement",
+        "d": "Skipping comparison"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "q50",
+      "section": "P.E & HEALTH",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a skill of a responsible Filipino consumer?",
+      "choices": {
+        "a": "Comparing products",
+        "b": "Buying without checking",
+        "c": "Throwing receipts away",
+        "d": "Ignoring prices"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    }
+  ]
+}
