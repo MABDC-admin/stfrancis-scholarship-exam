@@ -64,6 +64,33 @@ function answeredCount() {
   return state.exam.questions.filter((question) => String(state.answers[question.id] ?? '').trim()).length;
 }
 
+function unansweredQuestions() {
+  return state.exam.questions.filter((question) => !String(state.answers[question.id] ?? '').trim());
+}
+
+function hideUnansweredModal() {
+  $('unansweredModal').classList.add('hidden');
+}
+
+function showUnansweredModal(unanswered) {
+  $('unansweredCount').textContent = String(unanswered);
+  $('unansweredPlural').classList.toggle('hidden', unanswered === 1);
+  $('unansweredModal').classList.remove('hidden');
+  $('confirmSubmitAnyway').focus();
+}
+
+function reviewUnansweredQuestions() {
+  const firstUnanswered = unansweredQuestions()[0];
+  hideUnansweredModal();
+  if (!firstUnanswered) return;
+  const index = state.exam.questions.findIndex((question) => question.id === firstUnanswered.id);
+  if (index >= 0) {
+    recordQuestionTime();
+    state.current = index;
+    renderQuestion();
+  }
+}
+
 function updateProgress() {
   const count = answeredCount();
   const total = state.exam.questions.length;
@@ -236,13 +263,14 @@ async function beginExam(event) {
   startTimer();
 }
 
-async function submitExam() {
+async function submitExam({ skipUnansweredCheck = false } = {}) {
   if (!state.session || state.submitting) return;
   const unanswered = state.exam.questions.length - answeredCount();
-  if (unanswered > 0 && !state.forceSubmit) {
-    const shouldSubmit = confirm(`You still have ${unanswered} unanswered question${unanswered === 1 ? '' : 's'}. Submit anyway?`);
-    if (!shouldSubmit) return;
+  if (unanswered > 0 && !state.forceSubmit && !skipUnansweredCheck) {
+    showUnansweredModal(unanswered);
+    return;
   }
+  hideUnansweredModal();
   recordQuestionTime();
   const session = state.session;
   state.submitting = true;
@@ -509,6 +537,15 @@ async function importDocx() {
 modes.forEach((button) => button.addEventListener('click', () => switchMode(button.dataset.mode)));
 $('startForm').addEventListener('submit', beginExam);
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));
+$('closeUnansweredModal').addEventListener('click', hideUnansweredModal);
+$('reviewUnansweredQuestions').addEventListener('click', reviewUnansweredQuestions);
+$('confirmSubmitAnyway').addEventListener('click', () => submitExam({ skipUnansweredCheck: true }).catch((error) => alert(error.message)));
+$('unansweredModal').addEventListener('click', (event) => {
+  if (event.target === $('unansweredModal')) hideUnansweredModal();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !$('unansweredModal').classList.contains('hidden')) hideUnansweredModal();
+});
 $('loadDashboard').addEventListener('click', () => loadDashboard().catch((error) => alert(error.message)));
 $('studentSearch').addEventListener('input', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
 $('studentSort').addEventListener('change', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));

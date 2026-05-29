@@ -121,6 +121,21 @@
         <section id="submissionList" class="submission-list"></section>
       </section>
     </main>
+    <section id="unansweredModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="unansweredModalTitle" aria-describedby="unansweredModalCopy">
+      <div class="modal-dialog">
+        <button id="closeUnansweredModal" class="modal-close" type="button" aria-label="Close unanswered questions warning">×</button>
+        <p class="eyebrow">Unanswered Questions</p>
+        <h2 id="unansweredModalTitle">Submit anyway?</h2>
+        <p id="unansweredModalCopy">
+          You still have <strong id="unansweredCount">0</strong> unanswered question<span id="unansweredPlural">s</span>.
+          Review them before submitting, or submit your current answers now.
+        </p>
+        <div class="modal-actions">
+          <button id="reviewUnansweredQuestions" class="ghost modal-review" type="button">Review</button>
+          <button id="confirmSubmitAnyway" class="primary modal-confirm" type="button">Yes, submit anyway</button>
+        </div>
+      </div>
+    </section>
     <script src="/app.js" type="module"></script>
   </body>
 </html>
