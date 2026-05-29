@@ -15,6 +15,11 @@ const state = {
 const $ = (id) => document.getElementById(id);
 const modes = document.querySelectorAll('.mode-button');
 
+function isTestingMode() {
+  const params = new URLSearchParams(window.location.search);
+  return params.has('testing') || params.has('test');
+}
+
 function api(path, options = {}) {
   return fetch(path, {
     credentials: 'same-origin',
@@ -205,6 +210,25 @@ function normalizeChoices(question) {
   return Object.entries(question.choices).map(([key, label]) => ({ key, label }));
 }
 
+function firstTestingAnswerFor(question) {
+  const choices = normalizeChoices(question);
+  if (choices?.length) return choices[0].key;
+  if (question.type === 'true-false') return 'true';
+  return 'Testing answer';
+}
+
+function fillTestAnswers() {
+  if (!state.exam) return;
+  state.exam.questions.forEach((question) => {
+    if (!String(state.answers[question.id] ?? '').trim()) {
+      state.answers[question.id] = firstTestingAnswerFor(question);
+    }
+    state.timings[question.id] = Math.max(1, Number(state.timings[question.id] ?? 1));
+  });
+  updateProgress();
+  renderQuestion();
+}
+
 function renderAttachments(attachments) {
   if (!attachments.length) return '';
   return `<div class="attachments" aria-label="Question attachments">${attachments.map((attachment) => {
@@ -260,6 +284,7 @@ async function beginExam(event) {
   state.session = await api('/api/session', { method: 'POST', body: '{}' });
   $('startPanel').classList.add('hidden');
   $('examPanel').classList.remove('hidden');
+  $('fillTestAnswers').classList.toggle('hidden', !isTestingMode());
   renderQuestionDots();
   renderQuestion();
   startTimer();
@@ -276,7 +301,7 @@ async function submitExam({ skipUnansweredCheck = false } = {}) {
   recordQuestionTime();
   const session = state.session;
   state.submitting = true;
-  document.querySelectorAll('#questionCard button, #sidebarSubmit').forEach((button) => {
+  document.querySelectorAll('#questionCard button, #sidebarSubmit, #fillTestAnswers').forEach((button) => {
     button.disabled = true;
   });
 
@@ -301,7 +326,7 @@ async function submitExam({ skipUnansweredCheck = false } = {}) {
     `;
   } catch (error) {
     state.submitting = false;
-    document.querySelectorAll('#questionCard button, #sidebarSubmit').forEach((button) => {
+    document.querySelectorAll('#questionCard button, #sidebarSubmit, #fillTestAnswers').forEach((button) => {
       button.disabled = false;
     });
     alert(error.message);
@@ -554,6 +579,7 @@ document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((link) => {
   });
 });
 $('startForm').addEventListener('submit', beginExam);
+$('fillTestAnswers').addEventListener('click', fillTestAnswers);
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));
 $('closeUnansweredModal').addEventListener('click', hideUnansweredModal);
 $('reviewUnansweredQuestions').addEventListener('click', reviewUnansweredQuestions);

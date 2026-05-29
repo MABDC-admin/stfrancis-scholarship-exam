@@ -309,6 +309,19 @@ input:focus, select:focus, textarea:focus {
   min-height: 48px;
 }
 
+.testing-only {
+  width: 100%;
+  color: #9f1239;
+  border-color: rgba(251,113,133,.42);
+  background: rgba(251,113,133,.10);
+}
+
+.testing-only:hover {
+  color: white;
+  background: linear-gradient(135deg, var(--coral), var(--amber));
+  box-shadow: 0 12px 26px rgba(251,113,133,.18);
+}
+
 .integrity-note {
   margin: 0;
   padding: 12px;
