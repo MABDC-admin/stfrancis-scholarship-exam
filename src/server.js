@@ -13,6 +13,7 @@ import { buildDashboardModel, filterAndSortStudents } from './lib/dashboardModel
 import { buildHelmetOptions } from './lib/security.js';
 import { validateStudentSubmission } from './lib/validation.js';
 import { examForGrade } from './lib/gradeExam.js';
+import { buildResultsCsv, csvFileName } from './lib/reports.js';
 import {
   createLoginRateLimiter,
   createTeacherSessionStore,
@@ -252,6 +253,22 @@ app.get('/api/teacher/dashboard', requireTeacher, async (req, res) => {
     sort: String(req.query.sort ?? 'recent')
   });
   res.json(model);
+});
+
+app.get('/api/teacher/reports/results.csv', requireTeacher, async (req, res) => {
+  const exam = await store.getExam();
+  const submissions = await store.listSubmissions();
+  const gradeLevel = String(req.query.gradeLevel ?? '');
+  const model = buildDashboardModel({
+    exam,
+    submissions,
+    expectedStudents: submissions.length,
+    gradeLevel
+  });
+  const csv = buildResultsCsv(model);
+  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+  res.setHeader('Content-Disposition', `attachment; filename="${csvFileName(model.workspace.gradeLevel)}"`);
+  res.send(csv);
 });
 
 app.get('/api/teacher/students/:id/answers', requireTeacher, async (req, res) => {
