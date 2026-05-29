@@ -11,14 +11,6 @@ import { parseExamText } from './lib/examParser.js';
 import { buildDashboardModel, filterAndSortStudents } from './lib/dashboardModel.js';
 import { buildHelmetOptions } from './lib/security.js';
 import { validateStudentSubmission } from './lib/validation.js';
-import {
-  createTeacherSessionStore,
-  expiredTeacherCookie,
-  extractCookieValue,
-  teacherCookie,
-  TEACHER_COOKIE,
-  verifyTeacherPin
-} from './lib/teacherAuth.js';
 
 const app = express();
 const upload = multer({
@@ -27,8 +19,6 @@ const upload = multer({
 });
 const store = await createExamStore();
 const sessions = new Map();
-const teacherSessions = createTeacherSessionStore();
-const teacherPin = process.env.TEACHER_PIN ?? 'stfrancis2026';
 const durationMinutes = Number(process.env.EXAM_DURATION_MINUTES ?? 60);
 const publicDir = resolve(fileURLToPath(new URL('../public', import.meta.url)));
 
@@ -51,11 +41,7 @@ function sanitizeExam(exam) {
 }
 
 function requireTeacher(req, res, next) {
-  const token = extractCookieValue(req.get('cookie'), TEACHER_COOKIE);
-  if (!teacherSessions.has(token)) {
-    res.status(401).json({ error: 'Teacher PIN is required.' });
-    return;
-  }
+  // Temporarily open for fast school-side use. Re-enable access-code auth before production.
   next();
 }
 
@@ -98,24 +84,6 @@ app.post('/api/session', (req, res) => {
     used: false
   });
   res.json({ token, startedAt: startedAt.toISOString(), expiresAt: expiresAt.toISOString(), durationMinutes });
-});
-
-app.post('/api/teacher/login', (req, res) => {
-  if (!verifyTeacherPin(req.body?.pin, teacherPin)) {
-    res.status(401).json({ error: 'Invalid teacher PIN.' });
-    return;
-  }
-  const token = teacherSessions.create();
-  const isSecure = req.secure || req.get('x-forwarded-proto') === 'https';
-  res.setHeader('Set-Cookie', teacherCookie(token, { secure: isSecure }));
-  res.json({ ok: true });
-});
-
-app.post('/api/teacher/logout', (req, res) => {
-  const token = extractCookieValue(req.get('cookie'), TEACHER_COOKIE);
-  teacherSessions.delete(token);
-  res.setHeader('Set-Cookie', expiredTeacherCookie());
-  res.json({ ok: true });
 });
 
 app.post('/api/submissions', (req, res) => {

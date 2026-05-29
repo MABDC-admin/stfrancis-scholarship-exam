@@ -287,16 +287,6 @@ function showIntegrityWarning() {
   }
 }
 
-async function ensureTeacherSession() {
-  const pin = $('teacherPin').value.trim();
-  if (!pin) return;
-  await api('/api/teacher/login', {
-    method: 'POST',
-    body: JSON.stringify({ pin })
-  });
-  $('teacherPin').value = '';
-}
-
 function answerDisplay(item, value) {
   if (item.choices && item.choices[value]) return `${String(value).toUpperCase()}. ${item.choices[value]}`;
   if (item.choices && Array.isArray(item.choices)) {
@@ -308,7 +298,6 @@ function answerDisplay(item, value) {
 }
 
 async function loadDashboard() {
-  await ensureTeacherSession();
   const search = encodeURIComponent($('studentSearch').value.trim());
   const sort = encodeURIComponent($('studentSort').value);
   const dashboard = await api(`/api/teacher/dashboard?search=${search}&sort=${sort}`);
@@ -417,7 +406,6 @@ function scholarshipBadgeText(student) {
 async function importDocx() {
   const file = $('docxUpload').files[0];
   if (!file) return;
-  await ensureTeacherSession();
   const form = new FormData();
   form.append('docx', file);
   const response = await fetch('/api/teacher/import-docx', {

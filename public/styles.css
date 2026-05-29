@@ -385,7 +385,7 @@ input:focus, select:focus {
 }
 
 .dashboard-toolbar {
-  grid-template-columns: minmax(180px, 1.2fr) minmax(180px, .9fr) 150px auto auto;
+  grid-template-columns: minmax(220px, 1fr) 150px auto auto;
   align-items: end;
   padding: 18px;
   margin-bottom: 18px;

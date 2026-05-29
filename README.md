@@ -11,7 +11,7 @@ Interactive scholarship entrance exam app for Grade 7 to Grade 10 applicants.
 - Dynamic question support for multiple choice, short answer, and true/false, plus rich prompt HTML and image/audio/video attachment metadata.
 - DOCX importer for the original exam paper.
 - SQLite storage through `sql.js`, persisted at `data/exam.sqlite`.
-- Teacher dashboard login uses an HTTP-only session cookie after PIN verification.
+- Teacher dashboard is temporarily open for fast school-side use. Add the production access code before public rollout.
 - DOCX imports create a timestamped database backup before replacing the exam and clearing submissions.
 - Student submissions validate applicant grade level and question IDs, and duplicate applicant attempts are rejected.
 - Seed exam data at `data/questions.json`, extracted from the DOCX file.
@@ -35,18 +35,6 @@ If port `3000` is busy:
 $env:PORT='3001'; npm start
 ```
 
-Teacher dashboard PIN:
-
-```text
-stfrancis2026
-```
-
-Override it with:
-
-```powershell
-$env:TEACHER_PIN='your-new-pin'; npm start
-```
-
 ## Re-import The DOCX
 
 ```bash
@@ -64,7 +52,7 @@ npm test
 ## Security Notes
 
 - Student `/api/exam` responses do not include correct answers.
-- Teacher endpoints require a teacher session cookie created by `/api/teacher/login`.
+- Teacher endpoints are temporarily open. Restore access-code protection before production.
 - Exam sessions are timed, single-use tokens.
 - Helmet security headers are enabled.
 - The student UI blocks context menu and copy during the exam and records focus warnings.
