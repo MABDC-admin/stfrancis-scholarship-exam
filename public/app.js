@@ -279,7 +279,7 @@ async function submitExam({ skipUnansweredCheck = false } = {}) {
   });
 
   try {
-    const result = await api('/api/submissions', {
+    await api('/api/submissions', {
       method: 'POST',
       body: JSON.stringify({
         ...state.student,
@@ -292,12 +292,10 @@ async function submitExam({ skipUnansweredCheck = false } = {}) {
     state.session = null;
     $('examPanel').classList.add('hidden');
     $('resultPanel').classList.remove('hidden');
-    $('resultPanel').style.setProperty('--score', `${result.percentage}%`);
     $('resultPanel').innerHTML = `
       <p class="eyebrow">Submitted</p>
-      <h2>${result.score}/${result.maxScore}</h2>
-      <div class="score-ring"><span>${result.percentage}%</span></div>
-      <p class="muted">Your teacher can review the item-by-item result in the dashboard.</p>
+      <h2>Exam submitted</h2>
+      <p class="muted">Your answers were received. Scholarship results will be reviewed by the school.</p>
     `;
   } catch (error) {
     state.submitting = false;
@@ -324,6 +322,16 @@ function answerDisplay(item, value) {
   }
   if (typeof value === 'boolean') return value ? 'True' : 'False';
   return value || 'No answer';
+}
+
+function focusTeacherGrade(gradeLevel, targetId = 'submissionList') {
+  $('studentSearch').value = gradeLevel;
+  document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
+    item.classList.toggle('active', item.dataset.grade === gradeLevel);
+  });
+  loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
+  const target = $(targetId);
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 async function loadDashboard({ refreshQuestions = true } = {}) {
@@ -368,6 +376,14 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
         <div><dt>Qualified</dt><dd>${grade.qualifiedStudents}</dd></div>
         <div><dt>Accepted</dt><dd>${grade.acceptedStudents}/${grade.availableSlots}</dd></div>
       </dl>
+      <div class="grade-module-actions" aria-label="${escapeHtml(grade.name)} teacher modules">
+        <a href="#questionReviewForm" data-grade="${escapeHtml(grade.name)}" data-target="questionReviewForm">Question Bank</a>
+        <a href="#questionReviewForm" data-grade="${escapeHtml(grade.name)}" data-target="questionReviewForm">Exam Builder</a>
+        <a href="#submissionList" data-grade="${escapeHtml(grade.name)}" data-target="submissionList">Examinees</a>
+        <a href="#submissionList" data-grade="${escapeHtml(grade.name)}" data-target="submissionList">Submissions</a>
+        <a href="#scholarshipSummary" data-grade="${escapeHtml(grade.name)}" data-target="scholarshipSummary">Scores &amp; Results</a>
+        <a href="#submissionList" data-grade="${escapeHtml(grade.name)}" data-target="submissionList">Reports</a>
+      </div>
     </article>
   `).join('');
 
@@ -536,6 +552,18 @@ async function importDocx() {
 }
 
 modes.forEach((button) => button.addEventListener('click', () => switchMode(button.dataset.mode)));
+document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    focusTeacherGrade(link.dataset.grade);
+  });
+});
+$('gradeLevelGrid').addEventListener('click', (event) => {
+  const link = event.target.closest('a[data-grade][data-target]');
+  if (!link) return;
+  event.preventDefault();
+  focusTeacherGrade(link.dataset.grade, link.dataset.target);
+});
 $('startForm').addEventListener('submit', beginExam);
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));
 $('closeUnansweredModal').addEventListener('click', hideUnansweredModal);

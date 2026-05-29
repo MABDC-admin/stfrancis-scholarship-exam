@@ -512,6 +512,80 @@ input:focus, select:focus, textarea:focus {
   font-weight: 900;
 }
 
+.teacher-shell {
+  display: grid;
+  grid-template-columns: 238px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.teacher-main {
+  min-width: 0;
+}
+
+.teacher-side-nav {
+  position: sticky;
+  top: 18px;
+  display: grid;
+  gap: 18px;
+  padding: 16px;
+  border: 1px solid rgba(217, 227, 232, 0.9);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,251,252,.90)),
+    white;
+  box-shadow: var(--shadow);
+}
+
+.teacher-side-nav a,
+.grade-module-nav a {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 800;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+.teacher-side-nav a:hover,
+.grade-module-nav a:hover,
+.grade-module-nav a.active {
+  color: white;
+  background: linear-gradient(135deg, var(--blue), var(--accent) 62%, var(--teal));
+  box-shadow: 0 14px 28px rgba(8, 127, 140, 0.18);
+  transform: translateY(-1px);
+}
+
+.teacher-side-nav > div:first-child,
+.grade-module-nav {
+  display: grid;
+  gap: 6px;
+}
+
+.grade-module-nav {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.grade-module-nav a {
+  border: 1px solid rgba(217, 227, 232, .88);
+  background: rgba(255,255,255,.72);
+}
+
+.grade-module-nav span {
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 800;
+}
+
+.grade-module-nav a:hover span,
+.grade-module-nav a.active span {
+  color: rgba(255,255,255,.82);
+}
+
 .dashboard-toolbar {
   grid-template-columns: minmax(220px, 1fr) 150px auto auto;
   align-items: end;
@@ -659,6 +733,35 @@ input:focus, select:focus, textarea:focus {
   margin: 0;
   color: var(--ink);
   font-weight: 900;
+}
+
+.grade-module-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.grade-module-actions a {
+  display: grid;
+  min-height: 42px;
+  place-items: center;
+  padding: 9px 10px;
+  border: 1px solid rgba(217, 227, 232, .95);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: #f7fbfc;
+  font-size: .78rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+.grade-module-actions a:hover {
+  color: white;
+  background: linear-gradient(135deg, var(--accent), var(--coral));
+  box-shadow: 0 12px 24px rgba(8, 127, 140, .14);
+  transform: translateY(-1px);
 }
 
 .scholarship-banner .eyebrow,
@@ -873,8 +976,18 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 980px) {
   .shell { width: min(100% - 20px, 1180px); padding-top: 16px; }
-  .exam-layout, .dashboard-toolbar, .submission-head, .summary-grid, .grade-level-grid, .test-grid, .scholarship-banner, .section-heading {
+  .exam-layout, .teacher-shell, .dashboard-toolbar, .submission-head, .summary-grid, .grade-level-grid, .test-grid, .scholarship-banner, .section-heading {
     grid-template-columns: 1fr;
+  }
+  .teacher-side-nav {
+    position: static;
+  }
+  .teacher-side-nav > div:first-child,
+  .grade-module-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .teacher-side-nav .eyebrow {
+    grid-column: 1 / -1;
   }
   .section-heading { display: grid; }
   .scholarship-banner {
@@ -909,6 +1022,11 @@ input:focus, select:focus, textarea:focus {
   .modal-actions button { width: 100%; }
   .choice-editor-grid { grid-template-columns: 1fr; }
   .editable-question-head { grid-template-columns: 1fr; }
+  .teacher-side-nav > div:first-child,
+  .grade-module-nav,
+  .grade-module-actions {
+    grid-template-columns: 1fr;
+  }
   .question-actions .primary,
   .question-actions .ghost { width: 100%; }
 }

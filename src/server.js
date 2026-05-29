@@ -126,9 +126,6 @@ app.post('/api/submissions', async (req, res) => {
 
   res.status(201).json({
     id: submission.id,
-    score: submission.score,
-    maxScore: submission.maxScore,
-    percentage: submission.percentage,
     submittedAt: submission.submittedAt
   });
 });

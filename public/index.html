@@ -82,47 +82,73 @@
       </section>
 
       <section id="teacherView" class="view">
-        <section class="dashboard-toolbar">
-          <label>
-            Search
-            <input id="studentSearch" type="search" autocomplete="off" placeholder="Name, email, section">
-          </label>
-          <label>
-            Sort
-            <select id="studentSort" aria-label="Sort students">
-              <option value="recent">Recent</option>
-              <option value="name-asc">Name</option>
-              <option value="performance-desc">Top scores</option>
-              <option value="performance-asc">Needs support</option>
-            </select>
-          </label>
-          <button id="loadDashboard" class="primary" type="button">Load Dashboard</button>
-          <label class="upload-button">
-            Import DOCX
-            <input id="docxUpload" type="file" accept=".docx">
-          </label>
-        </section>
-
-        <section id="dashboardSummary" class="summary-grid"></section>
-        <section id="scholarshipSummary" class="scholarship-banner"></section>
-        <section id="gradeLevelGrid" class="grade-level-grid" aria-label="Grade level performance"></section>
-        <section id="testStatusGrid" class="test-grid"></section>
-        <section class="question-review panel">
-          <div class="section-heading">
+        <div class="teacher-shell">
+          <aside class="teacher-side-nav" aria-label="Teacher modules">
             <div>
-              <p class="eyebrow">Question Review</p>
-              <h2>Review and edit imported questions</h2>
+              <p class="eyebrow">Teacher Modules</p>
+              <a href="#dashboardSummary">Dashboard</a>
+              <a href="#questionReviewForm">Question Bank</a>
+              <a href="#questionReviewForm">Exam Builder</a>
+              <a href="#submissionList">Examinees</a>
+              <a href="#activityFeed">Live Monitoring</a>
+              <a href="#submissionList">Submissions</a>
+              <a href="#scholarshipSummary">Scores &amp; Results</a>
+              <a href="#submissionList">Reports</a>
+              <a href="#questionReviewForm">Resources</a>
             </div>
-            <button form="questionReviewForm" class="primary" type="submit">Save Changes</button>
+            <div class="grade-module-nav" aria-label="Grade level modules">
+              <p class="eyebrow">Grade Workspaces</p>
+              <a href="#submissionList" data-grade="Grade 7"><strong>Grade 7</strong><span>5 scholarship slots</span></a>
+              <a href="#submissionList" data-grade="Grade 8"><strong>Grade 8</strong><span>5 scholarship slots</span></a>
+              <a href="#submissionList" data-grade="Grade 9"><strong>Grade 9</strong><span>5 scholarship slots</span></a>
+              <a href="#submissionList" data-grade="Grade 10"><strong>Grade 10</strong><span>5 scholarship slots</span></a>
+            </div>
+          </aside>
+
+          <div class="teacher-main">
+            <section class="dashboard-toolbar">
+              <label>
+                Search
+                <input id="studentSearch" type="search" autocomplete="off" placeholder="Name, email, section">
+              </label>
+              <label>
+                Sort
+                <select id="studentSort" aria-label="Sort students">
+                  <option value="recent">Recent</option>
+                  <option value="name-asc">Name</option>
+                  <option value="performance-desc">Top scores</option>
+                  <option value="performance-asc">Needs support</option>
+                </select>
+              </label>
+              <button id="loadDashboard" class="primary" type="button">Load Dashboard</button>
+              <label class="upload-button">
+                Import DOCX
+                <input id="docxUpload" type="file" accept=".docx">
+              </label>
+            </section>
+
+            <section id="dashboardSummary" class="summary-grid"></section>
+            <section id="scholarshipSummary" class="scholarship-banner"></section>
+            <section id="gradeLevelGrid" class="grade-level-grid" aria-label="Grade level performance"></section>
+            <section id="testStatusGrid" class="test-grid"></section>
+            <section class="question-review panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Question Review</p>
+                  <h2>Review and edit imported questions</h2>
+                </div>
+                <button form="questionReviewForm" class="primary" type="submit">Save Changes</button>
+              </div>
+              <form id="questionReviewForm">
+                <div id="questionEditorList" class="question-editor-list">
+                  <p class="muted">Load the dashboard to review imported questions.</p>
+                </div>
+              </form>
+            </section>
+            <section id="activityFeed" class="activity-feed"></section>
+            <section id="submissionList" class="submission-list"></section>
           </div>
-          <form id="questionReviewForm">
-            <div id="questionEditorList" class="question-editor-list">
-              <p class="muted">Load the dashboard to review imported questions.</p>
-            </div>
-          </form>
-        </section>
-        <section id="activityFeed" class="activity-feed"></section>
-        <section id="submissionList" class="submission-list"></section>
+        </div>
       </section>
     </main>
     <section id="unansweredModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="unansweredModalTitle" aria-describedby="unansweredModalCopy">
