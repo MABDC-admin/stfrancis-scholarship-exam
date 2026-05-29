@@ -376,14 +376,6 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
         <div><dt>Qualified</dt><dd>${grade.qualifiedStudents}</dd></div>
         <div><dt>Accepted</dt><dd>${grade.acceptedStudents}/${grade.availableSlots}</dd></div>
       </dl>
-      <div class="grade-module-actions" aria-label="${escapeHtml(grade.name)} teacher modules">
-        <a href="#questionReviewForm" data-grade="${escapeHtml(grade.name)}" data-target="questionReviewForm">Question Bank</a>
-        <a href="#questionReviewForm" data-grade="${escapeHtml(grade.name)}" data-target="questionReviewForm">Exam Builder</a>
-        <a href="#submissionList" data-grade="${escapeHtml(grade.name)}" data-target="submissionList">Examinees</a>
-        <a href="#submissionList" data-grade="${escapeHtml(grade.name)}" data-target="submissionList">Submissions</a>
-        <a href="#scholarshipSummary" data-grade="${escapeHtml(grade.name)}" data-target="scholarshipSummary">Scores &amp; Results</a>
-        <a href="#submissionList" data-grade="${escapeHtml(grade.name)}" data-target="submissionList">Reports</a>
-      </div>
     </article>
   `).join('');
 
@@ -557,12 +549,6 @@ document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((link) => {
     event.preventDefault();
     focusTeacherGrade(link.dataset.grade);
   });
-});
-$('gradeLevelGrid').addEventListener('click', (event) => {
-  const link = event.target.closest('a[data-grade][data-target]');
-  if (!link) return;
-  event.preventDefault();
-  focusTeacherGrade(link.dataset.grade, link.dataset.target);
 });
 $('startForm').addEventListener('submit', beginExam);
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));

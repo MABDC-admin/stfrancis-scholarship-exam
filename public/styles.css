@@ -33,7 +33,8 @@ body {
 button, input, select { font: inherit; }
 
 .shell {
-  width: min(1180px, calc(100% - 32px));
+  width: calc(100% - 24px);
+  max-width: 1680px;
   margin: 0 auto;
   padding: 24px 0 44px;
 }
@@ -735,35 +736,6 @@ input:focus, select:focus, textarea:focus {
   font-weight: 900;
 }
 
-.grade-module-actions {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.grade-module-actions a {
-  display: grid;
-  min-height: 42px;
-  place-items: center;
-  padding: 9px 10px;
-  border: 1px solid rgba(217, 227, 232, .95);
-  border-radius: 8px;
-  color: var(--accent-strong);
-  background: #f7fbfc;
-  font-size: .78rem;
-  font-weight: 900;
-  text-align: center;
-  text-decoration: none;
-  transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
-}
-
-.grade-module-actions a:hover {
-  color: white;
-  background: linear-gradient(135deg, var(--accent), var(--coral));
-  box-shadow: 0 12px 24px rgba(8, 127, 140, .14);
-  transform: translateY(-1px);
-}
-
 .scholarship-banner .eyebrow,
 .scholarship-banner .muted {
   color: rgba(255,255,255,.86);
@@ -975,7 +947,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 980px) {
-  .shell { width: min(100% - 20px, 1180px); padding-top: 16px; }
+  .shell { width: calc(100% - 16px); max-width: none; padding-top: 16px; }
   .exam-layout, .teacher-shell, .dashboard-toolbar, .submission-head, .summary-grid, .grade-level-grid, .test-grid, .scholarship-banner, .section-heading {
     grid-template-columns: 1fr;
   }
@@ -1023,8 +995,7 @@ input:focus, select:focus, textarea:focus {
   .choice-editor-grid { grid-template-columns: 1fr; }
   .editable-question-head { grid-template-columns: 1fr; }
   .teacher-side-nav > div:first-child,
-  .grade-module-nav,
-  .grade-module-actions {
+  .grade-module-nav {
     grid-template-columns: 1fr;
   }
   .question-actions .primary,

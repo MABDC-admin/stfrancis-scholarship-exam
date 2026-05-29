@@ -21,17 +21,21 @@ test('teacher dashboard exposes a grade-level module for each scholarship level'
   }
 });
 
-test('grade level cards expose core teacher module shortcuts', () => {
-  assert.match(appJs, /grade-module-actions/);
-  for (const label of ['Question Bank', 'Exam Builder', 'Examinees', 'Submissions', 'Scores & Results', 'Reports']) {
-    assert.match(appJs, new RegExp(label.replace('&', '&amp;|&')));
-  }
+test('teacher layout uses a wide application shell for dashboard work', () => {
+  assert.doesNotMatch(indexHtml, /\.shell\{width:min\(1180px/);
+  assert.doesNotMatch(stylesCss, /\.shell\s*\{[\s\S]*?1180px/);
+  assert.match(stylesCss, /\.shell\s*\{[\s\S]*?width:\s*calc\(100% - 24px\)/);
+  assert.match(stylesCss, /\.shell\s*\{[\s\S]*?max-width:\s*1680px/);
+});
+
+test('grade level cards avoid duplicate module shortcuts already covered by navigation', () => {
+  assert.doesNotMatch(appJs, /grade-module-actions/);
+  assert.doesNotMatch(stylesCss, /\.grade-module-actions/);
 });
 
 test('teacher side navigation has responsive layout styling', () => {
   assert.match(stylesCss, /\.teacher-shell/);
   assert.match(stylesCss, /\.teacher-side-nav/);
   assert.match(stylesCss, /\.grade-module-nav/);
-  assert.match(stylesCss, /\.grade-module-actions/);
   assert.match(stylesCss, /position:\s*sticky/);
 });
