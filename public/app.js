@@ -312,7 +312,7 @@ async function loadDashboard() {
   const search = encodeURIComponent($('studentSearch').value.trim());
   const sort = encodeURIComponent($('studentSort').value);
   const dashboard = await api(`/api/teacher/dashboard?search=${search}&sort=${sort}`);
-  const { overview, scholarship, tests, students, recentActivity } = dashboard;
+  const { overview, scholarship, tests, students, recentActivity, gradeLevels } = dashboard;
 
   $('dashboardSummary').innerHTML = [
     ['Students', overview.totalStudents, 'blue'],
@@ -333,6 +333,24 @@ async function loadDashboard() {
       )).join('')}
     </div>
   `;
+
+  $('gradeLevelGrid').innerHTML = (gradeLevels ?? []).map((grade) => `
+    <article class="grade-card">
+      <div class="grade-card-head">
+        <div>
+          <span class="label">Grade Level</span>
+          <h3>${escapeHtml(grade.name)}</h3>
+        </div>
+        <strong>${grade.averageScore}%</strong>
+      </div>
+      <div class="score-bar" style="--score-width:${grade.averageScore}%;--bar-color:${grade.level.color}"><span></span></div>
+      <dl>
+        <div><dt>Applicants</dt><dd>${grade.totalStudents}</dd></div>
+        <div><dt>Qualified</dt><dd>${grade.qualifiedStudents}</dd></div>
+        <div><dt>Accepted</dt><dd>${grade.acceptedStudents}</dd></div>
+      </dl>
+    </article>
+  `).join('');
 
   $('testStatusGrid').innerHTML = tests.map((test) => `
     <article class="test-card">

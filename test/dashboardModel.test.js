@@ -107,3 +107,24 @@ test('buildDashboardModel exposes scholarship program totals', () => {
   assert.equal(model.students[0].scholarshipStatus, 'accepted');
   assert.equal(model.students[1].scholarshipStatus, 'not-qualified');
 });
+
+test('buildDashboardModel always exposes Grade 7 to Grade 10 dashboard summaries', () => {
+  const model = buildDashboardModel({
+    exam,
+    submissions: [
+      { ...submissions[0], section: 'Grade 7', percentage: 90 },
+      { ...submissions[1], section: 'Grade 10', percentage: 50 }
+    ],
+    expectedStudents: 8
+  });
+
+  assert.deepEqual(
+    model.gradeLevels.map((grade) => grade.name),
+    ['Grade 7', 'Grade 8', 'Grade 9', 'Grade 10']
+  );
+  assert.equal(model.gradeLevels[0].totalStudents, 1);
+  assert.equal(model.gradeLevels[0].averageScore, 90);
+  assert.equal(model.gradeLevels[0].qualifiedStudents, 1);
+  assert.equal(model.gradeLevels[3].totalStudents, 1);
+  assert.equal(model.gradeLevels[3].averageScore, 50);
+});

@@ -25,6 +25,28 @@ function sumTime(details = []) {
   return details.reduce((sum, item) => sum + Number(item.timeTakenSeconds ?? 0), 0);
 }
 
+function buildGradeLevelSummaries(students) {
+  return SCHOLARSHIP_CONFIG.gradeLevels.map((gradeLevel) => {
+    const gradeStudents = students.filter((student) => student.section === gradeLevel);
+    const totalStudents = gradeStudents.length;
+    const averageScore = totalStudents
+      ? Math.round(gradeStudents.reduce((sum, student) => sum + Number(student.percentage ?? 0), 0) / totalStudents)
+      : 0;
+    const acceptedStudents = gradeStudents.filter((student) => student.scholarshipStatus === 'accepted').length;
+    const qualifiedStudents = gradeStudents.filter((student) => student.scholarshipRank).length;
+
+    return {
+      name: gradeLevel,
+      totalStudents,
+      averageScore,
+      qualifiedStudents,
+      acceptedStudents,
+      completionRate: totalStudents ? 100 : 0,
+      level: performanceLevel(averageScore)
+    };
+  });
+}
+
 export function rankScholarshipApplicants(students, {
   passingScore = SCHOLARSHIP_CONFIG.passingScore,
   availableSlots = SCHOLARSHIP_CONFIG.availableSlots
@@ -101,6 +123,7 @@ export function buildDashboardModel({ exam, submissions, expectedStudents }) {
       averageScore,
       updatedAt: exam.updatedAt ?? null
     }] : [],
+    gradeLevels: buildGradeLevelSummaries(students),
     students,
     recentActivity: [...students]
       .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime())
