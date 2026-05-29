@@ -659,7 +659,7 @@ input:focus, select:focus, textarea:focus {
 
 .workspace-picker {
   display: grid;
-  grid-template-columns: 160px minmax(220px, 1fr) auto;
+  grid-template-columns: 160px minmax(220px, 1fr) auto auto;
   gap: 12px;
   align-items: end;
   min-width: 0;

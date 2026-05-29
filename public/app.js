@@ -792,6 +792,11 @@ function exportResultsCsv() {
   window.location.href = `/api/teacher/reports/results.csv?gradeLevel=${gradeLevel}`;
 }
 
+function exportResultsPdf() {
+  const gradeLevel = encodeURIComponent(state.selectedTeacherGrade);
+  window.location.href = `/api/teacher/reports/results.pdf?gradeLevel=${gradeLevel}`;
+}
+
 modes.forEach((button) => button.addEventListener('click', () => switchMode(button.dataset.mode)));
 document.querySelectorAll('.grade-module-nav [data-grade]').forEach((link) => {
   link.addEventListener('mousedown', (event) => {
@@ -828,6 +833,7 @@ $('examineeSelect').addEventListener('change', () => {
   state.selectedExamineeId = $('examineeSelect').value;
   loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
 });
+$('exportPdf').addEventListener('click', exportResultsPdf);
 $('exportResults').addEventListener('click', exportResultsCsv);
 $('deleteAllResults').addEventListener('click', () => deleteAllResults().catch((error) => alert(error.message)));
 $('questionReviewForm').addEventListener('submit', (event) => saveQuestionReview(event).catch((error) => alert(error.message)));

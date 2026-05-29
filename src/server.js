@@ -14,6 +14,7 @@ import { buildHelmetOptions } from './lib/security.js';
 import { validateStudentSubmission } from './lib/validation.js';
 import { examForGrade } from './lib/gradeExam.js';
 import { buildResultsCsv, csvFileName } from './lib/reports.js';
+import { buildResultsPdf, pdfFileName } from './lib/pdfReport.js';
 import {
   createLoginRateLimiter,
   createTeacherSessionStore,
@@ -269,6 +270,27 @@ app.get('/api/teacher/reports/results.csv', requireTeacher, async (req, res) => 
   res.setHeader('Content-Type', 'text/csv; charset=utf-8');
   res.setHeader('Content-Disposition', `attachment; filename="${csvFileName(model.workspace.gradeLevel)}"`);
   res.send(csv);
+});
+
+app.get('/api/teacher/reports/results.pdf', requireTeacher, async (req, res, next) => {
+  try {
+    const exam = await store.getExam();
+    const submissions = await store.listSubmissions();
+    const gradeLevel = String(req.query.gradeLevel ?? '');
+    const model = buildDashboardModel({
+      exam,
+      submissions,
+      expectedStudents: submissions.length,
+      gradeLevel
+    });
+    const logoPath = resolve(publicDir, 'assets/sfxsai-school-logo.png');
+    const pdf = await buildResultsPdf(model, { logoPath });
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${pdfFileName(model.workspace.gradeLevel)}"`);
+    res.send(pdf);
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.get('/api/teacher/students/:id/answers', requireTeacher, async (req, res) => {
