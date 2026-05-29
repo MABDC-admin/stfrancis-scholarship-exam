@@ -5,6 +5,7 @@ import { dirname, join, resolve } from 'node:path';
 import { gradeSubmission } from './lib/scoring.js';
 import { questionsForGrade } from './lib/gradeExam.js';
 import { ensureProductionSchema } from './lib/productionSchema.js';
+import { recordNormalizedSubmission, syncQuestionBankFromExam } from './lib/productionData.js';
 
 const { Pool } = pg;
 
@@ -251,8 +252,8 @@ function mapPostgresSubmission(row) {
   };
 }
 
-async function createPostgresExamStore({ connectionString }) {
-  const pool = new Pool({ connectionString });
+export async function createPostgresExamStore({ connectionString, pool: providedPool } = {}) {
+  const pool = providedPool ?? new Pool({ connectionString });
   await ensurePostgresSchema(pool);
 
   return {
@@ -274,16 +275,27 @@ async function createPostgresExamStore({ connectionString }) {
         );
       }
 
-      await pool.query(
-        `INSERT INTO stfrancis_exams (id, title, total_points, payload, updated_at)
-         VALUES (1, $1, $2, $3::jsonb, now())
-         ON CONFLICT (id) DO UPDATE SET
-           title = excluded.title,
-           total_points = excluded.total_points,
-           payload = excluded.payload,
-           updated_at = excluded.updated_at`,
-        [exam.title, exam.totalPoints, JSON.stringify(exam)]
-      );
+      const client = await pool.connect();
+      try {
+        await client.query('BEGIN');
+        await client.query(
+          `INSERT INTO stfrancis_exams (id, title, total_points, payload, updated_at)
+           VALUES (1, $1, $2, $3::jsonb, now())
+           ON CONFLICT (id) DO UPDATE SET
+             title = excluded.title,
+             total_points = excluded.total_points,
+             payload = excluded.payload,
+             updated_at = excluded.updated_at`,
+          [exam.title, exam.totalPoints, JSON.stringify(exam)]
+        );
+        await syncQuestionBankFromExam(client, exam);
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally {
+        client.release();
+      }
       return exam;
     },
 
@@ -292,33 +304,73 @@ async function createPostgresExamStore({ connectionString }) {
       return result.rows[0] ? parseJsonColumn(result.rows[0].payload) : null;
     },
 
+    async syncProductionData() {
+      const exam = await this.getExam();
+      if (!exam) return { synced: false, questions: 0 };
+
+      const client = await pool.connect();
+      try {
+        await client.query('BEGIN');
+        await syncQuestionBankFromExam(client, exam);
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally {
+        client.release();
+      }
+
+      return { synced: true, questions: exam.questions?.length ?? 0 };
+    },
+
     async saveSubmission({ studentName, studentEmail = '', section = '', answers, timings = {}, startedAt = null }) {
       const exam = await this.getExam();
       if (!exam) throw new Error('No exam has been imported yet.');
 
       const grading = gradeSubmission(questionsForGrade(exam, section), answers, timings);
       const submittedAt = new Date().toISOString();
-      const result = await pool.query(
-        `INSERT INTO stfrancis_submissions
-          (student_name, student_email, section, answers, details, score, max_score, percentage, started_at, submitted_at)
-         VALUES ($1, $2, $3, $4::jsonb, $5::jsonb, $6, $7, $8, $9, $10)
-         RETURNING id`,
-        [
+      const client = await pool.connect();
+      let insertedId;
+      try {
+        await client.query('BEGIN');
+        const result = await client.query(
+          `INSERT INTO stfrancis_submissions
+            (student_name, student_email, section, answers, details, score, max_score, percentage, started_at, submitted_at)
+           VALUES ($1, $2, $3, $4::jsonb, $5::jsonb, $6, $7, $8, $9, $10)
+           RETURNING id`,
+          [
+            studentName,
+            studentEmail,
+            section,
+            JSON.stringify(answers),
+            JSON.stringify(grading.items),
+            grading.score,
+            grading.maxScore,
+            grading.percentage,
+            startedAt,
+            submittedAt
+          ]
+        );
+        insertedId = Number(result.rows[0].id);
+        await recordNormalizedSubmission(client, {
+          submissionId: insertedId,
           studentName,
           studentEmail,
           section,
-          JSON.stringify(answers),
-          JSON.stringify(grading.items),
-          grading.score,
-          grading.maxScore,
-          grading.percentage,
           startedAt,
-          submittedAt
-        ]
-      );
+          submittedAt,
+          grading
+        });
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally {
+        client.release();
+      }
 
       return {
-        id: Number(result.rows[0].id),
+        id: insertedId,
         studentName,
         studentEmail,
         section,
@@ -352,7 +404,20 @@ async function createPostgresExamStore({ connectionString }) {
     },
 
     async clearSubmissions() {
-      await pool.query('DELETE FROM stfrancis_submissions');
+      const client = await pool.connect();
+      try {
+        await client.query('BEGIN');
+        await client.query('DELETE FROM stfrancis_submission_answers');
+        await client.query('DELETE FROM stfrancis_exam_sessions');
+        await client.query('DELETE FROM stfrancis_examinees');
+        await client.query('DELETE FROM stfrancis_submissions');
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally {
+        client.release();
+      }
     },
 
     async close() {

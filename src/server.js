@@ -57,6 +57,7 @@ function cleanupSessions() {
 }
 
 await seedExamIfEmpty();
+await store.syncProductionData?.();
 
 app.use(helmet(buildHelmetOptions()));
 app.use(express.json({ limit: '1mb' }));
