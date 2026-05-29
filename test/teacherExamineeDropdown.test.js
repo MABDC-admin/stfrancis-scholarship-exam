@@ -15,6 +15,21 @@ test('teacher dashboard has hierarchical grade and examinee dropdowns', () => {
   }
 });
 
+test('teacher workspace shows grade dashboard before picker controls', () => {
+  const bannerIndex = indexHtml.indexOf('id="scholarshipSummary"');
+  const summaryIndex = indexHtml.indexOf('id="dashboardSummary"');
+  const toolbarIndex = indexHtml.indexOf('class="dashboard-toolbar"');
+  const detailIndex = indexHtml.indexOf('id="examineeDetail"');
+
+  assert.ok(bannerIndex > -1, 'grade dashboard banner is present');
+  assert.ok(summaryIndex > -1, 'summary metric cards are present');
+  assert.ok(toolbarIndex > -1, 'picker toolbar is present');
+  assert.ok(detailIndex > -1, 'examinee detail is present');
+  assert.ok(bannerIndex < summaryIndex, 'grade dashboard banner appears before metric cards');
+  assert.ok(summaryIndex < toolbarIndex, 'metric cards appear before picker controls');
+  assert.ok(toolbarIndex < detailIndex, 'picker controls stay near examinee detail');
+});
+
 test('teacher workspace header removes bulky search sort load and import controls', () => {
   for (const removedId of ['studentSearch', 'studentSort', 'loadDashboard', 'docxUpload']) {
     assert.doesNotMatch(indexHtml, new RegExp(`id="${removedId}"`));
