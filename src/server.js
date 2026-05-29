@@ -13,6 +13,14 @@ import { buildDashboardModel, filterAndSortStudents } from './lib/dashboardModel
 import { buildHelmetOptions } from './lib/security.js';
 import { validateStudentSubmission } from './lib/validation.js';
 import { examForGrade } from './lib/gradeExam.js';
+import {
+  createTeacherSessionStore,
+  expiredTeacherCookie,
+  extractCookieValue,
+  teacherCookie,
+  TEACHER_COOKIE,
+  verifyTeacherPin
+} from './lib/teacherAuth.js';
 
 const app = express();
 const upload = multer({
@@ -21,6 +29,9 @@ const upload = multer({
 });
 const store = await createExamStore();
 const sessions = new Map();
+const teacherSessions = createTeacherSessionStore();
+const teacherAccessCode = String(process.env.TEACHER_ACCESS_CODE ?? '');
+const teacherAuthRequired = Boolean(teacherAccessCode);
 const durationMinutes = Number(process.env.EXAM_DURATION_MINUTES ?? 60);
 const publicDir = resolve(fileURLToPath(new URL('../public', import.meta.url)));
 
@@ -45,8 +56,18 @@ function sanitizeExam(exam, gradeLevel = '') {
 }
 
 function requireTeacher(req, res, next) {
-  // Temporarily open for fast school-side use. Re-enable access-code auth before production.
-  next();
+  if (!teacherAuthRequired) {
+    next();
+    return;
+  }
+
+  const token = extractCookieValue(req.headers.cookie, TEACHER_COOKIE);
+  if (teacherSessions.has(token)) {
+    next();
+    return;
+  }
+
+  res.status(401).json({ error: 'Teacher access required.' });
 }
 
 function cleanupSessions() {
@@ -86,6 +107,12 @@ app.get('/api/health', async (req, res, next) => {
   }
 });
 
+app.get('/api/config', (req, res) => {
+  res.json({
+    testingToolsEnabled: process.env.ENABLE_TESTING_TOOLS === '1' && process.env.NODE_ENV !== 'production'
+  });
+});
+
 app.get('/api/exam', async (req, res) => {
   const exam = await store.getExam();
   if (!exam) {
@@ -106,6 +133,36 @@ app.post('/api/session', (req, res) => {
     used: false
   });
   res.json({ token, startedAt: startedAt.toISOString(), expiresAt: expiresAt.toISOString(), durationMinutes });
+});
+
+app.get('/api/teacher/session', (req, res) => {
+  if (!teacherAuthRequired) {
+    res.json({ authenticated: true, required: false });
+    return;
+  }
+  const token = extractCookieValue(req.headers.cookie, TEACHER_COOKIE);
+  res.json({ authenticated: teacherSessions.has(token), required: true });
+});
+
+app.post('/api/teacher/login', (req, res) => {
+  if (!teacherAuthRequired) {
+    res.json({ authenticated: true, required: false });
+    return;
+  }
+  if (!verifyTeacherPin(req.body?.accessCode, teacherAccessCode)) {
+    res.status(401).json({ error: 'Invalid teacher access code.' });
+    return;
+  }
+  const token = teacherSessions.create();
+  res.setHeader('Set-Cookie', teacherCookie(token, { secure: false }));
+  res.json({ authenticated: true, required: true });
+});
+
+app.post('/api/teacher/logout', (req, res) => {
+  const token = extractCookieValue(req.headers.cookie, TEACHER_COOKIE);
+  teacherSessions.delete(token);
+  res.setHeader('Set-Cookie', expiredTeacherCookie());
+  res.json({ authenticated: false });
 });
 
 app.post('/api/submissions', async (req, res) => {

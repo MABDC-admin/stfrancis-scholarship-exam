@@ -83,7 +83,22 @@
       </section>
 
       <section id="teacherView" class="view">
-        <div class="teacher-shell">
+        <section id="teacherLoginPanel" class="panel teacher-login-panel hidden">
+          <div>
+            <p class="eyebrow">Teacher Access</p>
+            <h2>Enter access code</h2>
+            <p class="muted">Teacher tools are protected for production use.</p>
+          </div>
+          <form id="teacherLoginForm" class="teacher-login-form">
+            <label>
+              Access code
+              <input id="teacherAccessCode" name="accessCode" type="password" autocomplete="current-password" required>
+            </label>
+            <button class="primary" type="submit">Open Teacher Dashboard</button>
+            <p id="teacherLoginMessage" class="form-message" aria-live="polite"></p>
+          </form>
+        </section>
+        <div id="teacherShell" class="teacher-shell hidden">
           <aside class="teacher-side-nav" aria-label="Grade workspaces">
             <div class="grade-module-nav" aria-label="Grade level modules">
               <p class="eyebrow">Grade Workspaces</p>

@@ -14,7 +14,8 @@ const state = {
   selectedExamineeId: '',
   teacherStableScrollY: 0,
   teacherScrollTimer: null,
-  teacherPreservingScroll: false
+  teacherPreservingScroll: false,
+  testingToolsEnabled: false
 };
 
 const $ = (id) => document.getElementById(id);
@@ -38,7 +39,7 @@ function applyProductionRouteLock() {
 
 function isTestingMode() {
   const params = new URLSearchParams(window.location.search);
-  return params.has('testing') || params.has('test');
+  return state.testingToolsEnabled && (params.has('testing') || params.has('test'));
 }
 
 function api(path, options = {}) {
@@ -85,7 +86,51 @@ function switchMode(mode) {
   $('studentView').classList.toggle('active', mode === 'student');
   $('teacherView').classList.toggle('active', mode === 'teacher');
   if (mode === 'teacher') {
-    loadDashboard({ refreshQuestions: !state.teacherExam }).catch((error) => alert(error.message));
+    ensureTeacherAccess()
+      .then((authenticated) => {
+        if (authenticated) return loadDashboard({ refreshQuestions: !state.teacherExam });
+        return null;
+      })
+      .catch((error) => alert(error.message));
+  }
+}
+
+function showTeacherLogin(message = '') {
+  $('teacherLoginPanel').classList.remove('hidden');
+  $('teacherShell').classList.add('hidden');
+  $('teacherLoginMessage').textContent = message;
+  $('teacherAccessCode').focus();
+}
+
+function showTeacherShell() {
+  $('teacherLoginPanel').classList.add('hidden');
+  $('teacherShell').classList.remove('hidden');
+  $('teacherLoginMessage').textContent = '';
+}
+
+async function ensureTeacherAccess() {
+  const session = await api('/api/teacher/session');
+  if (session.authenticated) {
+    showTeacherShell();
+    return true;
+  }
+  showTeacherLogin();
+  return false;
+}
+
+async function loginTeacher(event) {
+  event.preventDefault();
+  const accessCode = $('teacherAccessCode').value;
+  try {
+    await api('/api/teacher/login', {
+      method: 'POST',
+      body: JSON.stringify({ accessCode })
+    });
+    $('teacherAccessCode').value = '';
+    showTeacherShell();
+    await loadDashboard({ refreshQuestions: !state.teacherExam });
+  } catch (error) {
+    showTeacherLogin(error.message);
   }
 }
 
@@ -300,6 +345,11 @@ async function loadExam(gradeLevel = '') {
   const path = gradeLevel ? `/api/exam?gradeLevel=${encodeURIComponent(gradeLevel)}` : '/api/exam';
   state.exam = await api(path);
   $('examTitle').textContent = 'Scholarship Entrance Exam';
+}
+
+async function loadClientConfig() {
+  const config = await api('/api/config');
+  state.testingToolsEnabled = Boolean(config.testingToolsEnabled);
 }
 
 async function beginExam(event) {
@@ -754,6 +804,7 @@ document.querySelectorAll('.teacher-tool-nav [data-teacher-tool]').forEach((butt
   });
 });
 $('startForm').addEventListener('submit', beginExam);
+$('teacherLoginForm').addEventListener('submit', loginTeacher);
 $('fillTestAnswers').addEventListener('click', () => fillTestAnswers().catch((error) => alert(error.message)));
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));
 $('closeUnansweredModal').addEventListener('click', hideUnansweredModal);
@@ -798,8 +849,14 @@ setInterval(() => {
 }, 300);
 
 applyProductionRouteLock();
-switchMode(routeMode());
 
-loadExam().catch((error) => {
-  $('startPanel').innerHTML = `<h2>Exam unavailable</h2><p class="muted">${escapeHtml(error.message)}</p>`;
-});
+loadClientConfig()
+  .catch(() => {
+    state.testingToolsEnabled = false;
+  })
+  .finally(() => {
+    switchMode(routeMode());
+    loadExam().catch((error) => {
+      $('startPanel').innerHTML = `<h2>Exam unavailable</h2><p class="muted">${escapeHtml(error.message)}</p>`;
+    });
+  });

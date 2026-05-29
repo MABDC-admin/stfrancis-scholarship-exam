@@ -7,7 +7,7 @@ const stylesCss = readFileSync(new URL('../public/styles.css', import.meta.url),
 const appJs = readFileSync(new URL('../public/app.js', import.meta.url), 'utf8');
 
 test('teacher dashboard keeps navigation focused on grade workspaces only', () => {
-  assert.match(indexHtml, /class="teacher-shell"/);
+  assert.match(indexHtml, /id="teacherShell" class="teacher-shell hidden"/);
   assert.match(indexHtml, /class="teacher-side-nav"/);
   assert.match(indexHtml, /Grade Workspaces/);
   assert.doesNotMatch(indexHtml, /Teacher Modules/);

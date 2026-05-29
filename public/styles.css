@@ -537,6 +537,27 @@ input:focus, select:focus, textarea:focus {
   align-items: start;
 }
 
+.teacher-login-panel {
+  max-width: 620px;
+  margin: 34px auto 0;
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(23, 32, 38, 0.12);
+}
+
+.teacher-login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.form-message {
+  min-height: 20px;
+  margin: 0;
+  color: var(--coral);
+  font-weight: 800;
+}
+
 .teacher-main {
   min-width: 0;
   overflow-anchor: none;

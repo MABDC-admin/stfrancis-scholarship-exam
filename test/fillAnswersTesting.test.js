@@ -18,6 +18,8 @@ test('fill answers control is only revealed by testing query parameters', () => 
   assert.match(appJs, /URLSearchParams\(window\.location\.search\)/);
   assert.match(appJs, /\.has\('testing'\)/);
   assert.match(appJs, /\.has\('test'\)/);
+  assert.match(appJs, /state\.testingToolsEnabled/);
+  assert.match(appJs, /\/api\/config/);
 });
 
 test('fill answers helper fills every question with correct testing answers for passing submissions', () => {
