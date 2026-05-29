@@ -10,7 +10,8 @@ const state = {
   warnings: 0,
   submitting: false,
   teacherExam: null,
-  selectedTeacherGrade: 'Grade 7'
+  selectedTeacherGrade: 'Grade 7',
+  selectedExamineeId: ''
 };
 
 const $ = (id) => document.getElementById(id);
@@ -352,14 +353,101 @@ function answerDisplay(item, value) {
   return value || 'No answer';
 }
 
-function focusTeacherGrade(gradeLevel, targetId = 'submissionList') {
+function focusTeacherGrade(gradeLevel, targetId = 'dashboardSummary') {
   state.selectedTeacherGrade = gradeLevel;
+  state.selectedExamineeId = '';
+  $('workspaceGradeSelect').value = gradeLevel;
   document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
     item.classList.toggle('active', item.dataset.grade === gradeLevel);
   });
   loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
   const target = $(targetId);
   if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function populateExamineeSelect(students) {
+  const select = $('examineeSelect');
+  const current = state.selectedExamineeId;
+  select.disabled = !students.length;
+  select.innerHTML = `
+    <option value="">${students.length ? 'Select examinee' : 'No examinees yet'}</option>
+    ${students.map((student) => `
+      <option value="${escapeHtml(student.id)}">
+        ${escapeHtml(student.studentName)} #${escapeHtml(student.id)} (${student.percentage}%)
+      </option>
+    `).join('')}
+  `;
+  if (students.some((student) => String(student.id) === String(current))) {
+    select.value = current;
+  } else {
+    state.selectedExamineeId = '';
+    select.value = '';
+  }
+}
+
+function progressLabel(student) {
+  if (!student) return 'Not-started';
+  if (student.status === 'completed') return 'Completed';
+  if (student.status === 'in-progress') return 'In-progress';
+  return 'Not-started';
+}
+
+function renderSelectedExaminee(students) {
+  const student = students.find((item) => String(item.id) === String(state.selectedExamineeId));
+  if (!student) {
+    $('examineeDetail').innerHTML = `
+      <div class="detail-empty">
+        <p class="eyebrow">Examinee Review</p>
+        <h2>${students.length ? 'Choose an examinee' : 'No examinees in this workspace yet'}</h2>
+        <p class="muted">${students.length ? 'Select a student from the examinee dropdown to view the complete submission, answer table, score breakdown, and session metadata.' : 'Submitted exams for this grade will appear here after applicants finish.'}</p>
+      </div>
+    `;
+    return;
+  }
+
+  const color = student.scholarshipStatus === 'accepted' ? 'var(--green)' : student.level.color;
+  const completedAt = student.submittedAt ? new Date(student.submittedAt).toLocaleString() : 'Not completed';
+  const rows = student.answers.map((item, index) => `
+    <tr>
+      <td>${index + 1}</td>
+      <td>${item.promptHtml ? safeRichHtml(item.promptHtml) : escapeHtml(item.prompt)}</td>
+      <td>${safeRichHtml(answerDisplay(item, item.studentAnswer))}</td>
+      <td>${safeRichHtml(answerDisplay(item, item.correctAnswer))}</td>
+      <td>${item.earnedPoints}/${item.maxPoints}</td>
+      <td>${item.timeTakenSeconds}s</td>
+      <td><span class="status-pill ${item.isCorrect ? 'correct' : 'wrong'}">${item.isCorrect ? 'Correct' : 'Review'}</span></td>
+    </tr>
+  `).join('');
+
+  $('examineeDetail').innerHTML = `
+    <div class="detail-heading">
+      <div>
+        <p class="eyebrow">Selected Examinee</p>
+        <h2>${escapeHtml(student.studentName)}</h2>
+        <p class="muted">${escapeHtml(student.studentEmail || 'No email')} | ${escapeHtml(student.section || 'No grade')}</p>
+      </div>
+      <div class="detail-score-card" style="--bar-color:${color};--score-width:${student.percentage}%">
+        <span class="label">Score Breakdown</span>
+        <strong>${student.score}/${student.maxScore}</strong>
+        <p>${student.percentage}% | ${escapeHtml(student.level.label)}</p>
+        <div class="score-bar"><span></span></div>
+      </div>
+    </div>
+    <dl class="detail-metadata">
+      <div><dt>Student ID</dt><dd>#${escapeHtml(student.id)}</dd></div>
+      <div><dt>Progress Status</dt><dd>${progressLabel(student)}</dd></div>
+      <div><dt>Completed At</dt><dd>${escapeHtml(completedAt)}</dd></div>
+      <div><dt>Total Time</dt><dd>${student.timeTakenSeconds}s</dd></div>
+      <div><dt>Scholarship Status</dt><dd>${escapeHtml(scholarshipBadgeText(student))}</dd></div>
+    </dl>
+    <div class="question-response-section">
+      <h3>Question Responses</h3>
+      <table class="answer-table">
+        <thead><tr><th>#</th><th>Question</th><th>Response</th><th>Correct Answer</th><th>Score</th><th>Time</th><th>Status</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
 }
 
 async function loadDashboard({ refreshQuestions = true } = {}) {
@@ -373,9 +461,12 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
 
 function renderWorkspaceDashboard(dashboard) {
   const { workspace, overview, scholarship, tests, students, recentActivity, gradeLevels } = dashboard;
+  $('workspaceGradeSelect').value = workspace.gradeLevel;
   document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
     item.classList.toggle('active', item.dataset.grade === workspace.gradeLevel);
   });
+  populateExamineeSelect(students);
+  renderSelectedExaminee(students);
 
   $('dashboardSummary').innerHTML = [
     [`${workspace.gradeLevel} Applicants`, overview.totalStudents, 'blue'],
@@ -599,6 +690,13 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !$('unansweredModal').classList.contains('hidden')) hideUnansweredModal();
 });
 $('loadDashboard').addEventListener('click', () => loadDashboard().catch((error) => alert(error.message)));
+$('workspaceGradeSelect').addEventListener('change', () => {
+  focusTeacherGrade($('workspaceGradeSelect').value, 'dashboardSummary');
+});
+$('examineeSelect').addEventListener('change', () => {
+  state.selectedExamineeId = $('examineeSelect').value;
+  loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
+});
 $('studentSearch').addEventListener('input', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
 $('studentSort').addEventListener('change', () => loadDashboard({ refreshQuestions: false }).catch(() => {}));
 $('docxUpload').addEventListener('change', () => importDocx().catch((error) => alert(error.message)));

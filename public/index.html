@@ -10,7 +10,7 @@
     <style>
       body{margin:0;background:#eef4f7;color:#172026;font-family:Inter,system-ui,sans-serif}.shell{width:calc(100% - 24px);max-width:1680px;margin:0 auto;padding:28px 0}.hidden,.view:not(.active){display:none!important}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:center}.mode-switch{display:inline-flex;gap:4px}.panel,.question-card,.exam-status,.dashboard-toolbar,.submission-card{background:#fff;border:1px solid #d9e3e8;border-radius:8px}.primary{background:#087f8c;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:800}
     </style>
-    <link rel="stylesheet" href="/styles.css?v=20260529-grade-workspace-1">
+    <link rel="stylesheet" href="/styles.css?v=20260529-examinee-detail-1">
   </head>
   <body>
     <main class="shell">
@@ -87,15 +87,32 @@
           <aside class="teacher-side-nav" aria-label="Grade workspaces">
             <div class="grade-module-nav" aria-label="Grade level modules">
               <p class="eyebrow">Grade Workspaces</p>
-              <a href="#submissionList" data-grade="Grade 7"><strong>Grade 7</strong><span>5 scholarship slots</span></a>
-              <a href="#submissionList" data-grade="Grade 8"><strong>Grade 8</strong><span>5 scholarship slots</span></a>
-              <a href="#submissionList" data-grade="Grade 9"><strong>Grade 9</strong><span>5 scholarship slots</span></a>
-              <a href="#submissionList" data-grade="Grade 10"><strong>Grade 10</strong><span>5 scholarship slots</span></a>
+              <a href="#dashboardSummary" data-grade="Grade 7"><strong>Grade 7</strong><span>5 scholarship slots</span></a>
+              <a href="#dashboardSummary" data-grade="Grade 8"><strong>Grade 8</strong><span>5 scholarship slots</span></a>
+              <a href="#dashboardSummary" data-grade="Grade 9"><strong>Grade 9</strong><span>5 scholarship slots</span></a>
+              <a href="#dashboardSummary" data-grade="Grade 10"><strong>Grade 10</strong><span>5 scholarship slots</span></a>
             </div>
           </aside>
 
           <div class="teacher-main">
             <section class="dashboard-toolbar">
+              <div class="workspace-picker">
+                <label>
+                  Grade workspace
+                  <select id="workspaceGradeSelect" aria-label="Grade workspace">
+                    <option>Grade 7</option>
+                    <option>Grade 8</option>
+                    <option>Grade 9</option>
+                    <option>Grade 10</option>
+                  </select>
+                </label>
+                <label>
+                  Examinee
+                  <select id="examineeSelect" aria-label="Examinee">
+                    <option value="">Select examinee</option>
+                  </select>
+                </label>
+              </div>
               <label>
                 Search
                 <input id="studentSearch" type="search" autocomplete="off" placeholder="Name, email, section">
@@ -118,6 +135,7 @@
 
             <section id="dashboardSummary" class="summary-grid"></section>
             <section id="scholarshipSummary" class="scholarship-banner"></section>
+            <section id="examineeDetail" class="examinee-detail panel" aria-live="polite"></section>
             <section id="gradeLevelGrid" class="grade-level-grid" aria-label="Grade level performance"></section>
             <section id="testStatusGrid" class="test-grid"></section>
             <section class="question-review panel">
@@ -155,6 +173,6 @@
         </div>
       </div>
     </section>
-    <script src="/app.js?v=20260529-grade-workspace-1" type="module"></script>
+    <script src="/app.js?v=20260529-examinee-detail-1" type="module"></script>
   </body>
 </html>

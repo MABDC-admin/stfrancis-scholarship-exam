@@ -601,10 +601,17 @@ input:focus, select:focus, textarea:focus {
 }
 
 .dashboard-toolbar {
-  grid-template-columns: minmax(220px, 1fr) 150px auto auto;
+  grid-template-columns: minmax(420px, 1.5fr) minmax(220px, 1fr) 150px auto auto;
   align-items: end;
   padding: 18px;
   margin-bottom: 18px;
+}
+
+.workspace-picker {
+  display: grid;
+  grid-template-columns: 160px minmax(220px, 1fr);
+  gap: 12px;
+  min-width: 0;
 }
 
 .upload-button {
@@ -690,6 +697,87 @@ input:focus, select:focus, textarea:focus {
 
 .grade-level-grid {
   margin-bottom: 18px;
+}
+
+.examinee-detail {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+  padding: 20px;
+}
+
+.detail-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+  gap: 18px;
+  align-items: start;
+}
+
+.detail-heading h2 {
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+}
+
+.detail-score-card {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(217, 227, 232, .92);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(247,251,252,.94));
+}
+
+.detail-score-card strong {
+  color: var(--ink);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.detail-score-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.detail-metadata {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.detail-metadata div {
+  min-width: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f7fbfc;
+  border: 1px solid rgba(217, 227, 232, .72);
+}
+
+.detail-metadata dt {
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.detail-metadata dd {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.question-response-section {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-empty {
+  padding: 10px 0;
+}
+
+.detail-empty h2 {
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
 }
 
 .grade-card {
@@ -961,7 +1049,7 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 980px) {
   .shell { width: calc(100% - 16px); max-width: none; padding-top: 16px; }
-  .exam-layout, .teacher-shell, .dashboard-toolbar, .submission-head, .summary-grid, .grade-level-grid, .test-grid, .scholarship-banner, .section-heading {
+  .exam-layout, .teacher-shell, .dashboard-toolbar, .workspace-picker, .submission-head, .summary-grid, .grade-level-grid, .test-grid, .scholarship-banner, .section-heading, .detail-heading, .detail-metadata {
     grid-template-columns: 1fr;
   }
   .teacher-side-nav {
