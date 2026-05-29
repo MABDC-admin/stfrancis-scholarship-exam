@@ -121,3 +121,44 @@ export async function recordNormalizedSubmission(client, {
     ['submission.recorded', json({ submissionId, examineeId, gradeLevel })]
   );
 }
+
+function parseJson(value, fallback) {
+  if (typeof value !== 'string') return value ?? fallback;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+}
+
+export async function backfillNormalizedSubmissions(client) {
+  const result = await client.query(
+    `SELECT id, student_name, student_email, section, details, started_at, submitted_at
+     FROM stfrancis_submissions
+     ORDER BY id`
+  );
+  let backfilled = 0;
+
+  for (const row of result.rows) {
+    const answerCount = await client.query(
+      `SELECT count(*)::int AS count
+       FROM stfrancis_submission_answers
+       WHERE submission_id = $1`,
+      [row.id]
+    );
+    if (Number(answerCount.rows[0]?.count ?? 0) > 0) continue;
+
+    await recordNormalizedSubmission(client, {
+      submissionId: Number(row.id),
+      studentName: row.student_name,
+      studentEmail: row.student_email ?? '',
+      section: row.section ?? '',
+      startedAt: row.started_at,
+      submittedAt: row.submitted_at,
+      grading: { items: parseJson(row.details, []) }
+    });
+    backfilled += 1;
+  }
+
+  return { scanned: result.rows.length, backfilled };
+}

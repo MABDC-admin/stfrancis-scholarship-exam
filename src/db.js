@@ -5,7 +5,11 @@ import { dirname, join, resolve } from 'node:path';
 import { gradeSubmission } from './lib/scoring.js';
 import { questionsForGrade } from './lib/gradeExam.js';
 import { ensureProductionSchema } from './lib/productionSchema.js';
-import { recordNormalizedSubmission, syncQuestionBankFromExam } from './lib/productionData.js';
+import {
+  backfillNormalizedSubmissions,
+  recordNormalizedSubmission,
+  syncQuestionBankFromExam
+} from './lib/productionData.js';
 
 const { Pool } = pg;
 
@@ -312,6 +316,7 @@ export async function createPostgresExamStore({ connectionString, pool: provided
       try {
         await client.query('BEGIN');
         await syncQuestionBankFromExam(client, exam);
+        await backfillNormalizedSubmissions(client);
         await client.query('COMMIT');
       } catch (error) {
         await client.query('ROLLBACK');

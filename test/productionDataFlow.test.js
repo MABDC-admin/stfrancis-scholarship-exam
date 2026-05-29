@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  backfillNormalizedSubmissions,
   recordNormalizedSubmission,
   syncQuestionBankFromExam
 } from '../src/lib/productionData.js';
@@ -107,4 +108,67 @@ test('recordNormalizedSubmission writes examinee, session, and per-question answ
   assert.deepEqual(client.queries[2].params, [12, 'g8-q01', 'b', 'b', true, 1, 1, 12]);
   assert.match(client.queries[3].sql, /INSERT INTO stfrancis_admin_audit_logs/);
   assert.equal(client.queries[3].params[0], 'submission.recorded');
+});
+
+test('backfillNormalizedSubmissions records legacy rows that do not have normalized answers yet', async () => {
+  const client = createRecordingClient([
+    {
+      rows: [
+        {
+          id: 15,
+          student_name: 'Legacy Student',
+          student_email: 'legacy@example.com',
+          section: 'Grade 9',
+          details: JSON.stringify([
+            {
+              questionId: 'g9-q01',
+              studentAnswer: 'a',
+              correctAnswer: 'b',
+              isCorrect: false,
+              earnedPoints: 0,
+              maxPoints: 1,
+              timeTakenSeconds: 4
+            }
+          ]),
+          started_at: '2026-05-29T10:00:00.000Z',
+          submitted_at: '2026-05-29T10:30:00.000Z'
+        }
+      ]
+    },
+    { rows: [{ count: 0 }] },
+    { rows: [{ id: 51 }] },
+    { rows: [{ id: 52 }] },
+    { rows: [] },
+    { rows: [] }
+  ]);
+
+  const result = await backfillNormalizedSubmissions(client);
+
+  assert.deepEqual(result, { scanned: 1, backfilled: 1 });
+  assert.ok(client.queries.some((query) => /SELECT id, student_name/.test(query.sql)));
+  assert.ok(client.queries.some((query) => /INSERT INTO stfrancis_submission_answers/.test(query.sql)));
+});
+
+test('backfillNormalizedSubmissions skips legacy rows that already have answer rows', async () => {
+  const client = createRecordingClient([
+    {
+      rows: [
+        {
+          id: 16,
+          student_name: 'Done Student',
+          student_email: 'done@example.com',
+          section: 'Grade 10',
+          details: '[]',
+          started_at: null,
+          submitted_at: '2026-05-29T10:30:00.000Z'
+        }
+      ]
+    },
+    { rows: [{ count: 2 }] }
+  ]);
+
+  const result = await backfillNormalizedSubmissions(client);
+
+  assert.deepEqual(result, { scanned: 1, backfilled: 0 });
+  assert.equal(client.queries.filter((query) => /INSERT INTO stfrancis_submission_answers/.test(query.sql)).length, 0);
 });
