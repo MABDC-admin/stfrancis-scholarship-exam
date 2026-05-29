@@ -3,6 +3,7 @@ import pg from 'pg';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { gradeSubmission } from './lib/scoring.js';
+import { questionsForGrade } from './lib/gradeExam.js';
 
 const { Pool } = pg;
 
@@ -114,7 +115,7 @@ async function createSqliteExamStore({ dbPath = resolve('data/exam.sqlite') } = 
       const exam = this.getExam();
       if (!exam) throw new Error('No exam has been imported yet.');
 
-      const grading = gradeSubmission(exam.questions, answers, timings);
+      const grading = gradeSubmission(questionsForGrade(exam, section), answers, timings);
       const submittedAt = new Date().toISOString();
       run(
         database,
@@ -279,7 +280,7 @@ async function createPostgresExamStore({ connectionString }) {
       const exam = await this.getExam();
       if (!exam) throw new Error('No exam has been imported yet.');
 
-      const grading = gradeSubmission(exam.questions, answers, timings);
+      const grading = gradeSubmission(questionsForGrade(exam, section), answers, timings);
       const submittedAt = new Date().toISOString();
       const result = await pool.query(
         `INSERT INTO stfrancis_submissions

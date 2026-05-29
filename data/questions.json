@@ -1,759 +1,1923 @@
 {
-  "title": "4th Quarter Exam in MAPEH 4",
-  "source": "MAPEH 4TH QUARTER.docx",
-  "totalPoints": 50,
+  "title": "Scholarship Entrance Exam Grade 7 to 10 Question Bank",
+  "source": "Grade_7_to_10_Online_MCQ_Question_Banks.zip",
+  "totalPoints": 120,
   "questions": [
     {
-      "id": "q01",
-      "section": "Music & Arts",
+      "id": "g7-q01",
+      "gradeLevel": "Grade 7",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "An event that is usually staged by a local community which centers on a theme or a unique aspect of the community, often honoring a patron saint.",
+      "prompt": "Which sentence shows correct subject-verb agreement?",
       "choices": {
-        "a": "Day of dead",
-        "b": "Aurora mass",
-        "c": "Fiesta"
+        "a": "The students is ready for class.",
+        "b": "The student are ready for class.",
+        "c": "The student is ready for class.",
+        "d": "The students was ready for class."
       },
       "correctAnswer": "c",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q02",
-      "section": "Music & Arts",
+      "id": "g7-q02",
+      "gradeLevel": "Grade 7",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "Which festival is famous for colorful masks in the Philippines?",
+      "prompt": "What does the word generous most nearly mean?",
       "choices": {
-        "a": "Pahiyas Festival",
-        "b": "MassKara Festival",
-        "c": "Panagbenga Festival"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q03",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "The Sinulog Festival is celebrated in honor of which religious figure?",
-      "choices": {
-        "a": "Santo Niño",
-        "b": "San Pedro",
-        "c": "San Isidro"
+        "a": "Willing to give or share",
+        "b": "Always late",
+        "c": "Difficult to understand",
+        "d": "Quick to become angry"
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q04",
-      "section": "Music & Arts",
+      "id": "g7-q03",
+      "gradeLevel": "Grade 7",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "Which festival is known as the Flower Festival in Baguio City?",
+      "prompt": "Read the sentence: 'Lina saved two jars for paper and plastic so her family could sort waste at home.' What is the main idea?",
       "choices": {
-        "a": "Panagbenga Festival",
-        "b": "Ati-Atihan Festival",
-        "c": "Kadayawan Festival"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q05",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which festival in Aklan is known for people wearing black face paint and tribal costumes?",
-      "choices": {
-        "a": "Ati-Atihan Festival",
-        "b": "Pahiyas Festival",
-        "c": "MassKara Festival"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q06",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which festival shows houses decorated with colorful rice wafers and fruits?",
-      "choices": {
-        "a": "Moriones Festival",
-        "b": "Pahiyas Festival",
-        "c": "Panagbenga Festival"
+        "a": "Lina likes buying jars.",
+        "b": "Lina is helping her family recycle.",
+        "c": "Lina is decorating the kitchen.",
+        "d": "Lina is preparing food."
       },
       "correctAnswer": "b",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q07",
-      "section": "Music & Arts",
+      "id": "g7-q04",
+      "gradeLevel": "Grade 7",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "Which festival is celebrated in Davao City to give thanks for a bountiful harvest?",
+      "prompt": "Which option is a complete sentence?",
       "choices": {
-        "a": "Kadayawan Festival",
-        "b": "Ati-Atihan Festival",
-        "c": "MassKara Festival"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q08",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "What do festivals show about Filipino culture?",
-      "choices": {
-        "a": "Only games",
-        "b": "Traditions and celebrations",
-        "c": "Only delicious food"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q09",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which festival in Angono, Rizal is known for its giant colorful puppets?",
-      "choices": {
-        "a": "Moriones Festival",
-        "b": "Higantes Festival",
-        "c": "Giant Lantern Festival"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q10",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "The Moriones Festival is celebrated during which season?",
-      "choices": {
-        "a": "Christmas",
-        "b": "Summer",
-        "c": "Holy Week"
+        "a": "Because the rain stopped.",
+        "b": "The bright red umbrella.",
+        "c": "Miko finished his homework before dinner.",
+        "d": "Running quickly to the gate."
       },
       "correctAnswer": "c",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q11",
-      "section": "Music & Arts",
+      "id": "g7-q05",
+      "gradeLevel": "Grade 7",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "What is the main attraction of the Higantes Festival?",
+      "prompt": "Which sentence uses the correct punctuation?",
       "choices": {
-        "a": "Giant puppets",
-        "b": "Flower floats",
-        "c": "Street dancing"
+        "a": "May I borrow your book?",
+        "b": "May I borrow your book.",
+        "c": "May I borrow your book,",
+        "d": "May I borrow your book!"
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q12",
-      "section": "Music & Arts",
+      "id": "g7-q06",
+      "gradeLevel": "Grade 7",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "The Giant Lantern Festival is celebrated in which province?",
+      "prompt": "Which transition word shows contrast?",
       "choices": {
-        "a": "Pampanga",
-        "b": "Rizal",
-        "c": "Marinduque"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q13",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "What do participants cover themselves with during the Taong Putik Festival?",
-      "choices": {
-        "a": "Colorful paint",
-        "b": "Mud and dried banana leaves",
-        "c": "Lanterns"
+        "a": "First",
+        "b": "However",
+        "c": "Therefore",
+        "d": "Also"
       },
       "correctAnswer": "b",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q14",
-      "section": "Music & Arts",
+      "id": "g7-q07",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
       "type": "multiple-choice",
-      "prompt": "What is the main activity during the Feast of the Black Nazarene?",
+      "prompt": "What is 18 + 27 - 9?",
       "choices": {
-        "a": "Throwing flowers",
-        "b": "Grand procession (Traslación) where devotees touch or pull the statue",
-        "c": "Street dancing with masks"
+        "a": "34",
+        "b": "36",
+        "c": "38",
+        "d": "44"
       },
       "correctAnswer": "b",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q15",
-      "section": "Music & Arts",
+      "id": "g7-q08",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
       "type": "multiple-choice",
-      "prompt": "Why are festivals important to a community?",
+      "prompt": "What is 3/4 of 40?",
       "choices": {
-        "a": "They make people tired",
-        "b": "They help people remember their culture and traditions",
-        "c": "They only provide entertainment"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q16",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Known as the Philippines’ premiere national art fair and is a significant event for filipino artist.",
-      "choices": {
-        "a": "Museo",
-        "b": "ManilArt",
-        "c": "Opera"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q17",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "What is a live performance?",
-      "choices": {
-        "a": "A movie you watch at home",
-        "b": "A show presented in front of an audience at the same time",
-        "c": "A picture in a book"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q18",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which of the following is an example of a live performance?",
-      "choices": {
-        "a": "Street dance",
-        "b": "Television show recorded last year",
-        "c": "Watching a movie on Netflix"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q19",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "What do you call a dramatic form of musical theater where the story is told through acting, singing, and dancing?",
-      "choices": {
-        "a": "Opera",
-        "b": "Musical",
-        "c": "Ballet"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q20",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "A group of musicians who perform while marching.",
-      "choices": {
-        "a": "Marching band",
-        "b": "Singer",
-        "c": "Artists"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q21",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which of the following is a type of live performance?",
-      "choices": {
-        "a": "Concert",
-        "b": "Watching a movie online",
-        "c": "Reading a poster",
-        "d": "Looking at a painting"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q22",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which of the following is a type of live performance?",
-      "choices": {
-        "a": "Street dance",
-        "b": "Printed brochure",
-        "c": "Recorded cartoon",
-        "d": "Silent reading"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q23",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which of the following is a type of live performance?",
-      "choices": {
-        "a": "Theater play",
-        "b": "Notebook drawing",
-        "c": "Product label",
-        "d": "Text message"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q24",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which of the following is a type of live performance?",
-      "choices": {
-        "a": "Ballet",
-        "b": "Recipe book",
-        "c": "Photo album",
-        "d": "Online game"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q25",
-      "section": "Music & Arts",
-      "type": "multiple-choice",
-      "prompt": "Which of the following is a type of live performance?",
-      "choices": {
-        "a": "Marching band",
-        "b": "Library card",
-        "c": "Food package",
-        "d": "Wall calendar"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q26",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "What is a basic health right?",
-      "choices": {
-        "a": "The right to play video games",
-        "b": "The right to access healthcare and live a healthy life",
-        "c": "The right to sleep all day"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q27",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Who is responsible for helping people enjoy their basic health rights?",
-      "choices": {
-        "a": "Only the teachers",
-        "b": "Government, healthcare providers, and the community",
-        "c": "Only children"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q28",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Why are basic health rights important?",
-      "choices": {
-        "a": "They help people stay healthy and prevent diseases",
-        "b": "They let people skip school",
-        "c": "They allow people to eat as much candy as they want"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q29",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "What does the right to good health mean?",
-      "choices": {
-        "a": "Being able to eat only candy",
-        "b": "Having access to proper medical care, clean water, and nutritious food",
-        "c": "Sleeping all day"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q30",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Who helps ensure that people enjoy their right to good health?",
-      "choices": {
-        "a": "Government and healthcare workers",
-        "b": "Only teachers",
-        "c": "Only parents"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q31",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "What law protects the rights of consumers in the Philippines?",
-      "choices": {
-        "a": "Labor Code of the Philippines",
-        "b": "Republic Act 7394 (Consumer Act of the Philippines)",
-        "c": "Civil Code of the Philippines"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q32",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "What does the “Right to Redress” allow a consumer to do?",
-      "choices": {
-        "a": "Demand a replacement, refund, or compensation for defective products",
-        "b": "Right to inform consumers about the ingredients",
-        "c": "Buy unlimited products for free"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q33",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "A trend or practice about health, diet, or fitness that becomes popular quickly but usually has little scientific proof to show that it really works.",
-      "choices": {
-        "a": "Fitness",
-        "b": "Health fad",
-        "c": "Fitness bud"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q34",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Solidarity in consumer responsibility means:",
-      "choices": {
-        "a": "Working together to promote fair trade and protect consumer rights",
-        "b": "Buying products only for yourself",
-        "c": "Ignoring other consumers"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q35",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Why is consumer education important?",
-      "choices": {
-        "a": "It teaches people how to make informed decisions when buying products",
-        "b": "It teaches people to sleep",
-        "c": "It teaches people to ignore rules"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q36",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Juan bought a toy that broke on the first day. He asked the store to replace it.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
-      },
-      "correctAnswer": "a",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q37",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Maria wants to know the ingredients of the food she buys to make sure it is safe.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
-      },
-      "correctAnswer": "b",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q38",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "A store offers different brands of soap. Anna chooses the one she likes best.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
+        "a": "20",
+        "b": "25",
+        "c": "30",
+        "d": "35"
       },
       "correctAnswer": "c",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q39",
-      "section": "P.E & HEALTH",
+      "id": "g7-q09",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
       "type": "multiple-choice",
-      "prompt": "Pedro reports a problem with his electricity bill to the local consumer council.",
+      "prompt": "A rectangle is 8 cm long and 5 cm wide. What is its perimeter?",
       "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
+        "a": "13 cm",
+        "b": "26 cm",
+        "c": "40 cm",
+        "d": "80 cm"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q10",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Solve for x: x + 7 = 19",
+      "choices": {
+        "a": "10",
+        "b": "11",
+        "c": "12",
+        "d": "13"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q11",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Write 0.6 as a fraction in simplest form.",
+      "choices": {
+        "a": "1/6",
+        "b": "3/5",
+        "c": "6/10",
+        "d": "2/3"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q12",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "In a class of 35 learners, 14 are boys. What percent of the class are boys?",
+      "choices": {
+        "a": "20%",
+        "b": "30%",
+        "c": "40%",
+        "d": "50%"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q13",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What is the average of 12, 15, and 18?",
+      "choices": {
+        "a": "14",
+        "b": "15",
+        "c": "16",
+        "d": "18"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q14",
+      "gradeLevel": "Grade 7",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "If 5 notebooks cost P75, how much does 1 notebook cost?",
+      "choices": {
+        "a": "P10",
+        "b": "P12",
+        "c": "P15",
+        "d": "P20"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q15",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What is the main source of energy for Earth's water cycle?",
+      "choices": {
+        "a": "The Moon",
+        "b": "The Sun",
+        "c": "Rocks",
+        "d": "Ocean salt"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q16",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which organ pumps blood through the body?",
+      "choices": {
+        "a": "Brain",
+        "b": "Lungs",
+        "c": "Heart",
+        "d": "Stomach"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q17",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What is the change from solid to liquid called?",
+      "choices": {
+        "a": "Freezing",
+        "b": "Melting",
+        "c": "Condensation",
+        "d": "Evaporation"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q18",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What process do plants use to make their own food?",
+      "choices": {
+        "a": "Digestion",
+        "b": "Respiration",
+        "c": "Photosynthesis",
+        "d": "Germination"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q19",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which force pulls objects toward Earth?",
+      "choices": {
+        "a": "Magnetism",
+        "b": "Friction",
+        "c": "Gravity",
+        "d": "Electricity"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q20",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which energy resource is nonrenewable?",
+      "choices": {
+        "a": "Solar energy",
+        "b": "Wind energy",
+        "c": "Coal",
+        "d": "Running water"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q21",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "An animal that eats only plants is called a ____.",
+      "choices": {
+        "a": "Carnivore",
+        "b": "Herbivore",
+        "c": "Omnivore",
+        "d": "Decomposer"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q22",
+      "gradeLevel": "Grade 7",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What is the smallest unit of life?",
+      "choices": {
+        "a": "Cell",
+        "b": "Organ",
+        "c": "Tissue",
+        "d": "System"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q23",
+      "gradeLevel": "Grade 7",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "The Philippines belongs to which region of Asia?",
+      "choices": {
+        "a": "Central Asia",
+        "b": "Southeast Asia",
+        "c": "West Asia",
+        "d": "North Asia"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q24",
+      "gradeLevel": "Grade 7",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "What does a map scale help you find?",
+      "choices": {
+        "a": "The real distance between places",
+        "b": "The weather tomorrow",
+        "c": "The population of a city",
+        "d": "The language of a country"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q25",
+      "gradeLevel": "Grade 7",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Why are laws important in a community?",
+      "choices": {
+        "a": "They remove all responsibilities.",
+        "b": "They help maintain order and protect people.",
+        "c": "They make maps easier to read.",
+        "d": "They stop people from learning."
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q26",
+      "gradeLevel": "Grade 7",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Who is usually the elected leader of a city or municipality?",
+      "choices": {
+        "a": "Mayor",
+        "b": "Senator",
+        "c": "President",
+        "d": "Judge"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q27",
+      "gradeLevel": "Grade 7",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "Find the next number: 2, 4, 8, 16, __",
+      "choices": {
+        "a": "18",
+        "b": "24",
+        "c": "30",
+        "d": "32"
       },
       "correctAnswer": "d",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q40",
-      "section": "P.E & HEALTH",
+      "id": "g7-q28",
+      "gradeLevel": "Grade 7",
+      "section": "Logic and Digital Skills",
       "type": "multiple-choice",
-      "prompt": "The government teaches students how to check product labels before buying.",
+      "prompt": "Which file type is commonly used for spreadsheets?",
       "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
-      },
-      "correctAnswer": "e",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q41",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Lina buys clean water and nutritious food for her family.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
-      },
-      "correctAnswer": "f",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q42",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "A child avoids using a toy that has sharp edges that could hurt him.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
-      },
-      "correctAnswer": "g",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q43",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "Miguel wants to learn about his rights as a buyer before purchasing online.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
-      },
-      "correctAnswer": "e",
-      "acceptedAnswers": [],
-      "points": 1
-    },
-    {
-      "id": "q44",
-      "section": "P.E & HEALTH",
-      "type": "multiple-choice",
-      "prompt": "A store clearly displays the prices and product information on all items.",
-      "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
+        "a": ".jpg",
+        "b": ".xlsx",
+        "c": ".mp3",
+        "d": ".png"
       },
       "correctAnswer": "b",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q45",
-      "section": "P.E & HEALTH",
+      "id": "g7-q29",
+      "gradeLevel": "Grade 7",
+      "section": "Logic and Digital Skills",
       "type": "multiple-choice",
-      "prompt": "Rose gets a refund when the blender she bought stopped working within a week.",
+      "prompt": "Which is the strongest password?",
       "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
+        "a": "password",
+        "b": "12345678",
+        "c": "Mango2026",
+        "d": "R3d!Cloud_92"
+      },
+      "correctAnswer": "d",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g7-q30",
+      "gradeLevel": "Grade 7",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "If all squares are rectangles and this shape is a square, what must be true?",
+      "choices": {
+        "a": "It is a circle.",
+        "b": "It is a triangle.",
+        "c": "It is a rectangle.",
+        "d": "It has no sides. Grade 7 Teacher"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q01",
+      "gradeLevel": "Grade 8",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "In the sentence 'The experiment was conducted by Ana,' which voice is used?",
+      "choices": {
+        "a": "Active voice",
+        "b": "Passive voice",
+        "c": "Imperative voice",
+        "d": "Question form"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q02",
+      "gradeLevel": "Grade 8",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which is the best thesis statement for an essay?",
+      "choices": {
+        "a": "Reading is a thing.",
+        "b": "Many students read books.",
+        "c": "Schools should promote daily reading because it improves vocabulary, focus, and imagination.",
+        "d": "Books are in the library."
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q03",
+      "gradeLevel": "Grade 8",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Rico opened his umbrella and ran to the covered walkway. What can you infer?",
+      "choices": {
+        "a": "It was raining.",
+        "b": "He was going swimming.",
+        "c": "He lost his bag.",
+        "d": "It was a holiday."
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q46",
-      "section": "P.E & HEALTH",
+      "id": "g8-q04",
+      "gradeLevel": "Grade 8",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "Carlo complains to the store because the shoes he bought do not fit properly and asks for an exchange.",
+      "prompt": "Which word is closest in meaning to accurate?",
       "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
+        "a": "Correct",
+        "b": "Colorful",
+        "c": "Broken",
+        "d": "Simple"
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q47",
-      "section": "P.E & HEALTH",
+      "id": "g8-q05",
+      "gradeLevel": "Grade 8",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "Ella attends a seminar to learn how to compare prices and choose quality products.",
+      "prompt": "Which sentence uses a comma correctly after an introductory phrase?",
       "choices": {
-        "a": "Right to Redress",
-        "b": "Right to Information",
-        "c": "Right to Choose",
-        "d": "Right to Representation",
-        "e": "Right to Consumer Education",
-        "f": "Right to Basic Needs",
-        "g": "Right to Safety"
+        "a": "After the bell rang the class began.",
+        "b": "After the bell rang, the class began.",
+        "c": "After, the bell rang the class began.",
+        "d": "After the bell, rang the class began."
       },
-      "correctAnswer": "e",
+      "correctAnswer": "b",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q48",
-      "section": "P.E & HEALTH",
+      "id": "g8-q06",
+      "gradeLevel": "Grade 8",
+      "section": "English",
       "type": "multiple-choice",
-      "prompt": "Which of the following is a skill of a responsible Filipino consumer?",
+      "prompt": "Which sentence contains a metaphor?",
       "choices": {
-        "a": "Critical thinking",
-        "b": "Impulse buying",
-        "c": "Ignoring labels",
-        "d": "Wasting money"
+        "a": "The classroom was as quiet as a library.",
+        "b": "The classroom became a busy beehive during group work.",
+        "c": "The classroom was very quiet.",
+        "d": "The classroom has many chairs."
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q07",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What is (-3) + 8?",
+      "choices": {
+        "a": "-11",
+        "b": "-5",
+        "c": "5",
+        "d": "11"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q08",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What is 20% of 150?",
+      "choices": {
+        "a": "15",
+        "b": "25",
+        "c": "30",
+        "d": "45"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q09",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Solve for x: 3x = 24",
+      "choices": {
+        "a": "6",
+        "b": "7",
+        "c": "8",
+        "d": "9"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q10",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "A triangle has a base of 12 cm and a height of 9 cm. What is its area?",
+      "choices": {
+        "a": "21 sq cm",
+        "b": "42 sq cm",
+        "c": "54 sq cm",
+        "d": "108 sq cm"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q11",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "The ratio of boys to girls is 2:3. If there are 25 learners, how many are boys?",
+      "choices": {
+        "a": "8",
+        "b": "10",
+        "c": "12",
+        "d": "15"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q12",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Simplify: 2^3 x 2^2",
+      "choices": {
+        "a": "2^5 = 32",
+        "b": "2^6 = 64",
+        "c": "4^5 = 1024",
+        "d": "2^1 = 2"
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q49",
-      "section": "P.E & HEALTH",
+      "id": "g8-q13",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
       "type": "multiple-choice",
-      "prompt": "Which of the following is a skill of a responsible Filipino consumer?",
+      "prompt": "A bus travels 60 km per hour for 2.5 hours. How far does it travel?",
       "choices": {
-        "a": "Decision making",
-        "b": "Guessing randomly",
-        "c": "Following every advertisement",
-        "d": "Skipping comparison"
+        "a": "120 km",
+        "b": "140 km",
+        "c": "150 km",
+        "d": "180 km"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q14",
+      "gradeLevel": "Grade 8",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "A bag has 3 red marbles and 5 blue marbles. What is the probability of choosing a red marble?",
+      "choices": {
+        "a": "3/5",
+        "b": "3/8",
+        "c": "5/8",
+        "d": "1/3"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q15",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Why does sugar dissolve faster in hot water than in cold water?",
+      "choices": {
+        "a": "Particles in hot water move faster.",
+        "b": "Hot water has no particles.",
+        "c": "Cold water is always heavier.",
+        "d": "Sugar becomes a magnet."
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],
       "points": 1
     },
     {
-      "id": "q50",
-      "section": "P.E & HEALTH",
+      "id": "g8-q16",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
       "type": "multiple-choice",
-      "prompt": "Which of the following is a skill of a responsible Filipino consumer?",
+      "prompt": "Which body system includes the brain, spinal cord, and nerves?",
       "choices": {
-        "a": "Comparing products",
-        "b": "Buying without checking",
-        "c": "Throwing receipts away",
-        "d": "Ignoring prices"
+        "a": "Digestive system",
+        "b": "Respiratory system",
+        "c": "Nervous system",
+        "d": "Circulatory system"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q17",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which set is needed for a balanced ecosystem?",
+      "choices": {
+        "a": "Producers, consumers, and decomposers",
+        "b": "Only predators",
+        "c": "Only plants",
+        "d": "Only water and rocks"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q18",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which is a physical change?",
+      "choices": {
+        "a": "Burning paper",
+        "b": "Rusting iron",
+        "c": "Melting ice",
+        "d": "Cooking an egg"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q19",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What element has the chemical symbol O?",
+      "choices": {
+        "a": "Gold",
+        "b": "Oxygen",
+        "c": "Osmium",
+        "d": "Oil"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q20",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which type of rock forms when magma or lava cools and hardens?",
+      "choices": {
+        "a": "Sedimentary",
+        "b": "Metamorphic",
+        "c": "Igneous",
+        "d": "Fossil"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q21",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which particle has a negative electric charge?",
+      "choices": {
+        "a": "Proton",
+        "b": "Neutron",
+        "c": "Electron",
+        "d": "Nucleus"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q22",
+      "gradeLevel": "Grade 8",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "In an experiment, the variable changed by the researcher is the ____ variable.",
+      "choices": {
+        "a": "Control",
+        "b": "Independent",
+        "c": "Dependent",
+        "d": "Random"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q23",
+      "gradeLevel": "Grade 8",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "What is a constitution?",
+      "choices": {
+        "a": "The highest law and basic rules of a country",
+        "b": "A list of grocery prices",
+        "c": "A type of map",
+        "d": "A weather report"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q24",
+      "gradeLevel": "Grade 8",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Longitude lines help measure distance east or west of the ____.",
+      "choices": {
+        "a": "Equator",
+        "b": "Prime Meridian",
+        "c": "Tropic of Cancer",
+        "d": "International Date Line only"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q25",
+      "gradeLevel": "Grade 8",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Why is trade important?",
+      "choices": {
+        "a": "It lets communities exchange goods and services they need.",
+        "b": "It stops countries from communicating.",
+        "c": "It removes all jobs.",
+        "d": "It makes resources unlimited."
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q26",
+      "gradeLevel": "Grade 8",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Which is a primary source?",
+      "choices": {
+        "a": "A diary written during an event",
+        "b": "A textbook chapter written later",
+        "c": "A summary website",
+        "d": "A movie review"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q27",
+      "gradeLevel": "Grade 8",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "Find the next number: 5, 10, 20, 40, __",
+      "choices": {
+        "a": "45",
+        "b": "50",
+        "c": "60",
+        "d": "80"
+      },
+      "correctAnswer": "d",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q28",
+      "gradeLevel": "Grade 8",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "In most spreadsheet apps, a formula begins with which symbol?",
+      "choices": {
+        "a": "#",
+        "b": "=",
+        "c": "@",
+        "d": "$"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q29",
+      "gradeLevel": "Grade 8",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "What is a benefit of cloud storage?",
+      "choices": {
+        "a": "Files can be accessed online from different devices.",
+        "b": "Files disappear after one day.",
+        "c": "It makes passwords unnecessary.",
+        "d": "It prevents all mistakes."
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g8-q30",
+      "gradeLevel": "Grade 8",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "What is an algorithm?",
+      "choices": {
+        "a": "A step-by-step procedure for solving a problem",
+        "b": "A type of computer monitor",
+        "c": "A random guess",
+        "d": "A printed picture Grade 8 Teacher"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q01",
+      "gradeLevel": "Grade 9",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "What is the tone of this sentence: 'Despite many obstacles, the team believed they could finish the project.'",
+      "choices": {
+        "a": "Hopeless",
+        "b": "Hopeful",
+        "c": "Angry",
+        "d": "Confused"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q02",
+      "gradeLevel": "Grade 9",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which sentence uses parallel structure?",
+      "choices": {
+        "a": "She likes reading, writing, and drawing.",
+        "b": "She likes reading, to write, and draws.",
+        "c": "She likes to read, writing, and drawing.",
+        "d": "She likes read, wrote, and drawn."
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q03",
+      "gradeLevel": "Grade 9",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which claim is best supported by evidence?",
+      "choices": {
+        "a": "Online practice can improve test readiness because one study showed regular practice increased scores.",
+        "b": "Online practice is good because I say so.",
+        "c": "Online practice is always perfect.",
+        "d": "Online practice is the only way to learn."
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q04",
+      "gradeLevel": "Grade 9",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "In the sentence 'Although the road was rough, the bus arrived on time,' which part is the dependent clause?",
+      "choices": {
+        "a": "The bus arrived on time",
+        "b": "Although the road was rough",
+        "c": "Arrived on time",
+        "d": "The road"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q05",
+      "gradeLevel": "Grade 9",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which word has the most positive connotation?",
+      "choices": {
+        "a": "Skinny",
+        "b": "Thin",
+        "c": "Slender",
+        "d": "Underweight"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q06",
+      "gradeLevel": "Grade 9",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which sentence uses pronouns clearly?",
+      "choices": {
+        "a": "When Ben met Carlo, he gave him his notes.",
+        "b": "The students submitted their projects before the deadline.",
+        "c": "Maria told Anna that she was late.",
+        "d": "The book was beside the bag, and it was blue."
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q07",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What is the slope of the line through (2, 3) and (4, 7)?",
+      "choices": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q08",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Solve for x: 2x - 5 = 13",
+      "choices": {
+        "a": "4",
+        "b": "6",
+        "c": "8",
+        "d": "9"
+      },
+      "correctAnswer": "d",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q09",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Expand: (x + 3)^2",
+      "choices": {
+        "a": "x^2 + 3x + 9",
+        "b": "x^2 + 6x + 9",
+        "c": "x^2 + 9",
+        "d": "2x + 6"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q10",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Compute: 7/8 - 1/4",
+      "choices": {
+        "a": "1/8",
+        "b": "3/8",
+        "c": "5/8",
+        "d": "6/8"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q11",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Using pi = 22/7, what is the circumference of a circle with radius 7 cm?",
+      "choices": {
+        "a": "22 cm",
+        "b": "28 cm",
+        "c": "44 cm",
+        "d": "154 cm"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q12",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Factor: x^2 - 9",
+      "choices": {
+        "a": "(x - 9)(x + 1)",
+        "b": "(x - 3)(x + 3)",
+        "c": "(x - 3)^2",
+        "d": "x(x - 9)"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q13",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Solve the system: y = x + 2 and y = 2x - 1",
+      "choices": {
+        "a": "x = 1, y = 3",
+        "b": "x = 2, y = 4",
+        "c": "x = 3, y = 5",
+        "d": "x = 4, y = 6"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q14",
+      "gradeLevel": "Grade 9",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "A right triangle has legs of 6 cm and 8 cm. What is the hypotenuse?",
+      "choices": {
+        "a": "10 cm",
+        "b": "12 cm",
+        "c": "14 cm",
+        "d": "48 cm"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q15",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What does the atomic number of an element represent?",
+      "choices": {
+        "a": "Number of protons",
+        "b": "Number of neutrons only",
+        "c": "Mass of the atom in grams",
+        "d": "Number of energy levels only"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q16",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Newton's first law is also known as the law of ____.",
+      "choices": {
+        "a": "Energy",
+        "b": "Inertia",
+        "c": "Acceleration",
+        "d": "Gravity"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q17",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which word equation best describes photosynthesis?",
+      "choices": {
+        "a": "Oxygen + glucose -> carbon dioxide + water",
+        "b": "Carbon dioxide + water + light -> glucose + oxygen",
+        "c": "Water + salt -> oxygen + heat",
+        "d": "Glucose + oxygen -> carbon dioxide + water + energy"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q18",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What molecule carries hereditary information in living things?",
+      "choices": {
+        "a": "DNA",
+        "b": "Water",
+        "c": "Salt",
+        "d": "Starch"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q19",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "A solution with a pH lower than 7 is ____.",
+      "choices": {
+        "a": "Neutral",
+        "b": "Basic",
+        "c": "Acidic",
+        "d": "Pure water"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q20",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What is Earth's outermost solid layer called?",
+      "choices": {
+        "a": "Core",
+        "b": "Mantle",
+        "c": "Crust",
+        "d": "Inner core"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q21",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "What must an electric circuit have for current to flow?",
+      "choices": {
+        "a": "An open path",
+        "b": "A closed path",
+        "c": "Only plastic parts",
+        "d": "No power source"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q22",
+      "gradeLevel": "Grade 9",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Acceleration is best described as ____.",
+      "choices": {
+        "a": "Distance divided by area",
+        "b": "Change in velocity over time",
+        "c": "Mass divided by volume",
+        "d": "Heat transfer by touch"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q23",
+      "gradeLevel": "Grade 9",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Industrialization usually changes an economy by increasing ____.",
+      "choices": {
+        "a": "Manufacturing and machine-based production",
+        "b": "Only hunting and gathering",
+        "c": "The use of barter only",
+        "d": "The absence of cities"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q24",
+      "gradeLevel": "Grade 9",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Which branch or institution interprets laws in many democratic governments?",
+      "choices": {
+        "a": "Court or judiciary",
+        "b": "Weather bureau",
+        "c": "Market vendors",
+        "d": "Sports committee"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q25",
+      "gradeLevel": "Grade 9",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Inflation means ____.",
+      "choices": {
+        "a": "A general rise in prices over time",
+        "b": "A decrease in all population",
+        "c": "A type of natural disaster",
+        "d": "A law about elections"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q26",
+      "gradeLevel": "Grade 9",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Sustainable development aims to balance ____.",
+      "choices": {
+        "a": "Environment, economy, and society",
+        "b": "Only factories",
+        "c": "Only forests",
+        "d": "Only short-term profit"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q27",
+      "gradeLevel": "Grade 9",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "If A is greater than B, and B is greater than C, which statement must be true?",
+      "choices": {
+        "a": "C is greater than A",
+        "b": "A is greater than C",
+        "c": "A equals C",
+        "d": "B is less than C"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q28",
+      "gradeLevel": "Grade 9",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "Binary code mainly uses which digits?",
+      "choices": {
+        "a": "0 and 1",
+        "b": "1 and 2",
+        "c": "2 and 3",
+        "d": "5 and 10"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q29",
+      "gradeLevel": "Grade 9",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "Why should sources be cited in research?",
+      "choices": {
+        "a": "To avoid plagiarism and show where information came from",
+        "b": "To make the page longer only",
+        "c": "To hide the author's name",
+        "d": "To remove evidence"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g9-q30",
+      "gradeLevel": "Grade 9",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "In a flowchart, a diamond shape usually represents a ____.",
+      "choices": {
+        "a": "Start or end",
+        "b": "Decision",
+        "c": "Database",
+        "d": "Printed page Grade 9 Teacher"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q01",
+      "gradeLevel": "Grade 10",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which evidence would best strengthen an author's argument about school gardens?",
+      "choices": {
+        "a": "A survey showing improved student nutrition after garden activities",
+        "b": "A random joke about vegetables",
+        "c": "A picture with no explanation",
+        "d": "A statement that gardens are nice"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q02",
+      "gradeLevel": "Grade 10",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which example shows situational irony?",
+      "choices": {
+        "a": "A fire station burns down.",
+        "b": "A teacher gives a quiz.",
+        "c": "A student studies and passes.",
+        "d": "A dog barks at a stranger."
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q03",
+      "gradeLevel": "Grade 10",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which sentence uses correct parallel structure?",
+      "choices": {
+        "a": "Not only did she review her notes, but also practiced problems.",
+        "b": "She not only reviewed her notes but also practiced problems.",
+        "c": "She reviewed not only her notes but also was practicing problems.",
+        "d": "She not only reviewing notes but also practiced problems."
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q04",
+      "gradeLevel": "Grade 10",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "Which is the strongest argumentative thesis?",
+      "choices": {
+        "a": "School libraries exist.",
+        "b": "Schools should extend library hours because students need safe access to books, computers, and study space after class.",
+        "c": "Libraries have books and tables.",
+        "d": "Some students like libraries."
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q05",
+      "gradeLevel": "Grade 10",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "In 'The meticulous student checked every answer twice,' what does meticulous mean?",
+      "choices": {
+        "a": "Careless",
+        "b": "Detailed and careful",
+        "c": "Fast but unsure",
+        "d": "Angry"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q06",
+      "gradeLevel": "Grade 10",
+      "section": "English",
+      "type": "multiple-choice",
+      "prompt": "In the sentence 'The report, which was submitted late, still received feedback,' the phrase between commas is a ____.",
+      "choices": {
+        "a": "Nonrestrictive clause",
+        "b": "Main verb",
+        "c": "Complete sentence only",
+        "d": "Question"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q07",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What are the roots of x^2 - 5x + 6 = 0?",
+      "choices": {
+        "a": "1 and 6",
+        "b": "2 and 3",
+        "c": "-2 and -3",
+        "d": "0 and 6"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q08",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What is the distance between points (1, 2) and (4, 6)?",
+      "choices": {
+        "a": "3",
+        "b": "4",
+        "c": "5",
+        "d": "7"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q09",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Solve the inequality: 2x + 3 < 11",
+      "choices": {
+        "a": "x < 4",
+        "b": "x > 4",
+        "c": "x < 7",
+        "d": "x > 7"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q10",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "In a right triangle, sin(theta) equals ____.",
+      "choices": {
+        "a": "Adjacent / hypotenuse",
+        "b": "Opposite / hypotenuse",
+        "c": "Opposite / adjacent",
+        "d": "Hypotenuse / opposite"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q11",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "An item costs P800 and has a 15% discount. What is the sale price?",
+      "choices": {
+        "a": "P620",
+        "b": "P650",
+        "c": "P680",
+        "d": "P720"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q12",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "If f(x) = 2x^2 - 3, what is f(4)?",
+      "choices": {
+        "a": "13",
+        "b": "21",
+        "c": "29",
+        "d": "35"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q13",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "Find the volume of a cylinder with radius 3 cm and height 5 cm. Use pi = 3.14.",
+      "choices": {
+        "a": "47.1 cu cm",
+        "b": "94.2 cu cm",
+        "c": "141.3 cu cm",
+        "d": "282.6 cu cm"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q14",
+      "gradeLevel": "Grade 10",
+      "section": "Mathematics",
+      "type": "multiple-choice",
+      "prompt": "What is the nth term of the arithmetic sequence 7, 11, 15, 19, ...?",
+      "choices": {
+        "a": "a_n = 3n + 4",
+        "b": "a_n = 4n + 3",
+        "c": "a_n = 7n + 4",
+        "d": "a_n = n + 6"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q15",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "The law of conservation of energy states that energy ____.",
+      "choices": {
+        "a": "Can be created from nothing",
+        "b": "Can be destroyed completely",
+        "c": "Can change form but cannot be created or destroyed in a closed system",
+        "d": "Exists only in living things"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q16",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Mitosis usually produces ____.",
+      "choices": {
+        "a": "Two genetically identical daughter cells",
+        "b": "Four genetically different cells",
+        "c": "Only one larger cell",
+        "d": "No new cells"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q17",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Greenhouse gases affect climate because they ____.",
+      "choices": {
+        "a": "Trap heat in the atmosphere",
+        "b": "Remove all sunlight",
+        "c": "Turn oceans into deserts instantly",
+        "d": "Stop Earth's rotation"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q18",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "An ionic bond commonly forms when electrons are ____.",
+      "choices": {
+        "a": "Shared equally between atoms",
+        "b": "Transferred from one atom to another",
+        "c": "Destroyed",
+        "d": "Changed into protons"
+      },
+      "correctAnswer": "b",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q19",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Sound generally travels fastest through ____.",
+      "choices": {
+        "a": "Solids",
+        "b": "Liquids only",
+        "c": "Gases only",
+        "d": "Empty space"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q20",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Osmosis is the movement of ____ through a semipermeable membrane.",
+      "choices": {
+        "a": "Water",
+        "b": "Light",
+        "c": "Sand",
+        "d": "Electric charge"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q21",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which equation represents Newton's second law of motion?",
+      "choices": {
+        "a": "F = ma",
+        "b": "E = mc",
+        "c": "V = IR only",
+        "d": "pH = 7"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q22",
+      "gradeLevel": "Grade 10",
+      "section": "Science",
+      "type": "multiple-choice",
+      "prompt": "Which is evidence that scientists use to study evolution?",
+      "choices": {
+        "a": "Fossils",
+        "b": "Rumors",
+        "c": "Random guesses",
+        "d": "Unlabeled pictures"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q23",
+      "gradeLevel": "Grade 10",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Globalization is best described as ____.",
+      "choices": {
+        "a": "Growing connection among countries through trade, communication, culture, and technology",
+        "b": "The closing of all borders forever",
+        "c": "The study of only one village",
+        "d": "A type of volcanic eruption"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q24",
+      "gradeLevel": "Grade 10",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Opportunity cost is ____.",
+      "choices": {
+        "a": "The next best alternative given up when a choice is made",
+        "b": "The total money in a bank",
+        "c": "A tax paid by tourists",
+        "d": "The price of every item combined"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q25",
+      "gradeLevel": "Grade 10",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "Human rights are important because they ____.",
+      "choices": {
+        "a": "Protect people's dignity and basic freedoms",
+        "b": "Apply only to leaders",
+        "c": "Remove all responsibilities",
+        "d": "Prevent education"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q26",
+      "gradeLevel": "Grade 10",
+      "section": "Social Studies",
+      "type": "multiple-choice",
+      "prompt": "What is the goal of disaster risk reduction?",
+      "choices": {
+        "a": "To reduce harm by preparing for and lessening disaster risks",
+        "b": "To ignore warnings",
+        "c": "To make hazards stronger",
+        "d": "To stop all weather"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q27",
+      "gradeLevel": "Grade 10",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "What should you do first if you receive a suspicious link from an unknown sender?",
+      "choices": {
+        "a": "Click it quickly",
+        "b": "Share it with classmates",
+        "c": "Do not click; verify the sender or report it",
+        "d": "Enter your password to test it"
+      },
+      "correctAnswer": "c",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q28",
+      "gradeLevel": "Grade 10",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "In a database table, one row usually represents a ____.",
+      "choices": {
+        "a": "Record",
+        "b": "Font",
+        "c": "Color",
+        "d": "Cable"
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q29",
+      "gradeLevel": "Grade 10",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "Given: If it rains, the ground gets wet. It rains. What conclusion follows?",
+      "choices": {
+        "a": "The ground gets wet.",
+        "b": "It is sunny.",
+        "c": "There is no ground.",
+        "d": "Rain is impossible."
+      },
+      "correctAnswer": "a",
+      "acceptedAnswers": [],
+      "points": 1
+    },
+    {
+      "id": "g10-q30",
+      "gradeLevel": "Grade 10",
+      "section": "Logic and Digital Skills",
+      "type": "multiple-choice",
+      "prompt": "Why is pseudocode useful?",
+      "choices": {
+        "a": "It helps plan program logic before writing actual code.",
+        "b": "It deletes all errors automatically.",
+        "c": "It replaces every programming language.",
+        "d": "It is only for drawing pictures. Grade 10 Teacher"
       },
       "correctAnswer": "a",
       "acceptedAnswers": [],

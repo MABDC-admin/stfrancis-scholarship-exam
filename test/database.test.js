@@ -41,3 +41,30 @@ test('exam store persists exams and scored submissions', async () => {
   assert.equal(submissions[0].details[0].timeTakenSeconds, 11);
   assert.equal(submissions[0].details[1].correctAnswer, 'Right to Redress');
 });
+
+test('exam store scores submissions against the applicant grade level questions only', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'exam-store-grade-'));
+  const store = await createExamStore({ dbPath: join(dir, 'exam.sqlite') });
+  const exam = {
+    title: 'Scholarship Grade Bank',
+    totalPoints: 4,
+    questions: [
+      { id: 'g7-q01', gradeLevel: 'Grade 7', type: 'multiple-choice', prompt: 'G7 pick', choices: { a: 'Right', b: 'Wrong' }, correctAnswer: 'a', points: 1 },
+      { id: 'g7-q02', gradeLevel: 'Grade 7', type: 'multiple-choice', prompt: 'G7 pick 2', choices: { a: 'Wrong', b: 'Right' }, correctAnswer: 'b', points: 1 },
+      { id: 'g8-q01', gradeLevel: 'Grade 8', type: 'multiple-choice', prompt: 'G8 pick', choices: { a: 'Right', b: 'Wrong' }, correctAnswer: 'a', points: 1 },
+      { id: 'g8-q02', gradeLevel: 'Grade 8', type: 'multiple-choice', prompt: 'G8 pick 2', choices: { a: 'Wrong', b: 'Right' }, correctAnswer: 'b', points: 1 }
+    ]
+  };
+
+  await store.saveExam(exam);
+  const saved = await store.saveSubmission({
+    studentName: 'Ben Cruz',
+    section: 'Grade 8',
+    answers: { 'g8-q01': 'a', 'g8-q02': 'b' },
+    timings: { 'g8-q01': 10, 'g8-q02': 12 }
+  });
+
+  assert.equal(saved.maxScore, 2);
+  assert.equal(saved.score, 2);
+  assert.deepEqual(saved.items.map((item) => item.questionId), ['g8-q01', 'g8-q02']);
+});

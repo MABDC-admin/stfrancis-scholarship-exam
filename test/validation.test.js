@@ -30,3 +30,21 @@ test('validateStudentSubmission rejects invalid grade levels and unknown answer 
   assert.equal(result.ok, false);
   assert.match(result.error, /grade level/i);
 });
+
+test('validateStudentSubmission only accepts answers from the selected grade question set', () => {
+  const gradeExam = {
+    questions: [
+      { id: 'g7-q01', gradeLevel: 'Grade 7', type: 'multiple-choice' },
+      { id: 'g8-q01', gradeLevel: 'Grade 8', type: 'multiple-choice' }
+    ]
+  };
+
+  const result = validateStudentSubmission({
+    studentName: 'Ana Cruz',
+    section: 'Grade 7',
+    answers: { 'g8-q01': 'a' }
+  }, gradeExam);
+
+  assert.equal(result.ok, false);
+  assert.match(result.error, /unknown questions/i);
+});

@@ -12,6 +12,7 @@ import { normalizeEditableExam } from './lib/examEditor.js';
 import { buildDashboardModel, filterAndSortStudents } from './lib/dashboardModel.js';
 import { buildHelmetOptions } from './lib/security.js';
 import { validateStudentSubmission } from './lib/validation.js';
+import { examForGrade } from './lib/gradeExam.js';
 
 const app = express();
 const upload = multer({
@@ -30,14 +31,16 @@ async function seedExamIfEmpty() {
   await store.saveExam(JSON.parse(readFileSync(seedPath, 'utf8')));
 }
 
-function sanitizeExam(exam) {
+function sanitizeExam(exam, gradeLevel = '') {
+  const selectedExam = examForGrade(exam, gradeLevel);
   return {
     title: 'Scholarship Entrance Exam',
-    sourceTitle: exam.title,
-    source: exam.source,
-    totalPoints: exam.totalPoints,
+    sourceTitle: selectedExam.title,
+    source: selectedExam.source,
+    gradeLevel: selectedExam.gradeLevel,
+    totalPoints: selectedExam.totalPoints,
     durationMinutes,
-    questions: exam.questions.map(({ correctAnswer, acceptedAnswers, ...question }) => question)
+    questions: selectedExam.questions.map(({ correctAnswer, acceptedAnswers, ...question }) => question)
   };
 }
 
@@ -71,7 +74,7 @@ app.get('/api/exam', async (req, res) => {
     res.status(404).json({ error: 'No exam has been imported yet.' });
     return;
   }
-  res.json(sanitizeExam(exam));
+  res.json(sanitizeExam(exam, req.query.gradeLevel));
 });
 
 app.post('/api/session', (req, res) => {

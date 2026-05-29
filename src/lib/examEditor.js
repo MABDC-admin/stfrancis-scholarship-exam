@@ -25,6 +25,7 @@ export function normalizeEditableExam(input) {
 
     return {
       id,
+      gradeLevel: cleanText(question.gradeLevel),
       section,
       type: 'multiple-choice',
       prompt,

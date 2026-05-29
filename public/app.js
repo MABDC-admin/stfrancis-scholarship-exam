@@ -237,8 +237,9 @@ function startTimer() {
   }, 250);
 }
 
-async function loadExam() {
-  state.exam = await api('/api/exam');
+async function loadExam(gradeLevel = '') {
+  const path = gradeLevel ? `/api/exam?gradeLevel=${encodeURIComponent(gradeLevel)}` : '/api/exam';
+  state.exam = await api(path);
   $('examTitle').textContent = 'Scholarship Entrance Exam';
 }
 
@@ -255,6 +256,7 @@ async function beginExam(event) {
     studentEmail: $('studentEmail').value.trim(),
     section: $('studentSection').value.trim()
   };
+  await loadExam(state.student.section);
   state.session = await api('/api/session', { method: 'POST', body: '{}' });
   $('startPanel').classList.add('hidden');
   $('examPanel').classList.remove('hidden');
@@ -497,6 +499,7 @@ async function saveQuestionReview(event) {
     ]));
     return {
       id: original.id,
+      gradeLevel: original.gradeLevel,
       section: card.querySelector('.edit-section').value.trim(),
       prompt: card.querySelector('.edit-prompt').value.trim(),
       choices,

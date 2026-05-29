@@ -22,6 +22,24 @@ test('normalizeEditableExam keeps teacher-edited questions and recalculates poin
   assert.equal(exam.questions[0].choices.b, 'Two');
 });
 
+test('normalizeEditableExam preserves grade level tags for per-grade question banks', () => {
+  const exam = normalizeEditableExam({
+    title: 'Scholarship Grade Bank',
+    questions: [
+      {
+        id: 'g7-q01',
+        gradeLevel: 'Grade 7',
+        section: 'English',
+        prompt: 'Edited prompt?',
+        choices: { a: 'One', b: 'Two' },
+        correctAnswer: 'a'
+      }
+    ]
+  });
+
+  assert.equal(exam.questions[0].gradeLevel, 'Grade 7');
+});
+
 test('normalizeEditableExam rejects questions without a matching correct choice', () => {
   assert.throws(
     () => normalizeEditableExam({

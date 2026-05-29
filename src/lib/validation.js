@@ -1,3 +1,5 @@
+import { questionsForGrade } from './gradeExam.js';
+
 export const GRADE_LEVELS = ['Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'];
 
 export function validateStudentSubmission(payload, exam) {
@@ -11,7 +13,7 @@ export function validateStudentSubmission(payload, exam) {
     return { ok: false, error: 'Answers must be submitted as an object.' };
   }
 
-  const questionIds = new Set((exam?.questions ?? []).map((question) => question.id));
+  const questionIds = new Set(questionsForGrade(exam, section).map((question) => question.id));
   const unknownAnswerIds = Object.keys(answers).filter((id) => !questionIds.has(id));
   if (unknownAnswerIds.length > 0) {
     return { ok: false, error: 'Submission contains answers for unknown questions.' };
