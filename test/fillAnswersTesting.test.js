@@ -20,11 +20,14 @@ test('fill answers control is only revealed by testing query parameters', () => 
   assert.match(appJs, /\.has\('test'\)/);
 });
 
-test('fill answers helper fills every unanswered question with a valid available choice', () => {
-  assert.match(appJs, /function fillTestAnswers\(\)/);
+test('fill answers helper fills every question with correct testing answers for passing submissions', () => {
+  assert.match(appJs, /async function fillTestAnswers\(\)/);
+  assert.match(appJs, /correctTestingAnswersById\(\)/);
+  assert.match(appJs, /api\('\/api\/teacher\/exam'\)/);
+  assert.match(appJs, /answerKeyByQuestionId\.get\(question\.id\)/);
   assert.match(appJs, /state\.exam\.questions\.forEach/);
-  assert.match(appJs, /firstTestingAnswerFor\(question\)/);
   assert.match(appJs, /state\.answers\[question\.id\]/);
+  assert.doesNotMatch(appJs, /if \(!String\(state\.answers\[question\.id\]/);
   assert.match(appJs, /updateProgress\(\)/);
 });
 

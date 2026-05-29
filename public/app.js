@@ -222,12 +222,23 @@ function firstTestingAnswerFor(question) {
   return 'Testing answer';
 }
 
-function fillTestAnswers() {
+async function correctTestingAnswersById() {
+  const teacherExam = await api('/api/teacher/exam');
+  return new Map((teacherExam.questions ?? [])
+    .filter((question) => String(question.correctAnswer ?? '').trim())
+    .map((question) => [question.id, question.correctAnswer]));
+}
+
+function testingAnswerFor(question, answerKeyByQuestionId) {
+  const correctAnswer = answerKeyByQuestionId.get(question.id);
+  return String(correctAnswer ?? '').trim() ? correctAnswer : firstTestingAnswerFor(question);
+}
+
+async function fillTestAnswers() {
   if (!state.exam) return;
+  const answerKeyByQuestionId = await correctTestingAnswersById();
   state.exam.questions.forEach((question) => {
-    if (!String(state.answers[question.id] ?? '').trim()) {
-      state.answers[question.id] = firstTestingAnswerFor(question);
-    }
+    state.answers[question.id] = testingAnswerFor(question, answerKeyByQuestionId);
     state.timings[question.id] = Math.max(1, Number(state.timings[question.id] ?? 1));
   });
   updateProgress();
@@ -681,7 +692,7 @@ document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((link) => {
   });
 });
 $('startForm').addEventListener('submit', beginExam);
-$('fillTestAnswers').addEventListener('click', fillTestAnswers);
+$('fillTestAnswers').addEventListener('click', () => fillTestAnswers().catch((error) => alert(error.message)));
 $('sidebarSubmit').addEventListener('click', () => submitExam().catch((error) => alert(error.message)));
 $('closeUnansweredModal').addEventListener('click', hideUnansweredModal);
 $('reviewUnansweredQuestions').addEventListener('click', reviewUnansweredQuestions);
