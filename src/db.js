@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { gradeSubmission } from './lib/scoring.js';
 import { questionsForGrade } from './lib/gradeExam.js';
+import { ensureProductionSchema } from './lib/productionSchema.js';
 
 const { Pool } = pg;
 
@@ -88,6 +89,13 @@ async function createSqliteExamStore({ dbPath = resolve('data/exam.sqlite') } = 
   }
 
   return {
+    storageBackend: 'sqlite',
+
+    async healthCheck() {
+      readRows(database, 'SELECT 1 AS ok');
+      return { ok: true, storage: 'sqlite' };
+    },
+
     saveExam(exam, { backup = false } = {}) {
       if (backup) backupDatabase(dbPath);
       const payload = JSON.stringify(exam);
@@ -220,6 +228,7 @@ async function ensurePostgresSchema(pool) {
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     );
   `);
+  await ensureProductionSchema(pool);
 }
 
 function parseJsonColumn(value) {
@@ -247,6 +256,13 @@ async function createPostgresExamStore({ connectionString }) {
   await ensurePostgresSchema(pool);
 
   return {
+    storageBackend: 'postgresql',
+
+    async healthCheck() {
+      await pool.query('SELECT 1 AS ok');
+      return { ok: true, storage: 'postgresql' };
+    },
+
     async saveExam(exam, { backup = false } = {}) {
       if (backup) {
         const current = await this.getExam();

@@ -93,3 +93,11 @@ test('clearSubmissions removes results without changing the exam', async () => {
   assert.equal((await store.listSubmissions()).length, 0);
   assert.deepEqual(await store.getExam(), exam);
 });
+
+test('sqlite exam store reports storage health', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'exam-store-health-'));
+  const store = await createExamStore({ dbPath: join(dir, 'exam.sqlite') });
+
+  assert.equal(store.storageBackend, 'sqlite');
+  assert.deepEqual(await store.healthCheck(), { ok: true, storage: 'sqlite' });
+});

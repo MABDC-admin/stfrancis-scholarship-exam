@@ -72,6 +72,19 @@ app.get(['/student', '/teacher'], (req, res) => {
   res.sendFile(resolve(publicDir, 'index.html'));
 });
 
+app.get('/api/health', async (req, res, next) => {
+  try {
+    const health = await store.healthCheck();
+    res.json({
+      ...health,
+      service: 'stfrancis-scholarship-exam',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get('/api/exam', async (req, res) => {
   const exam = await store.getExam();
   if (!exam) {
