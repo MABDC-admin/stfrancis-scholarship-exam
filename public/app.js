@@ -11,7 +11,10 @@ const state = {
   submitting: false,
   teacherExam: null,
   selectedTeacherGrade: 'Grade 7',
-  selectedExamineeId: ''
+  selectedExamineeId: '',
+  teacherStableScrollY: 0,
+  teacherScrollTimer: null,
+  teacherPreservingScroll: false
 };
 
 const $ = (id) => document.getElementById(id);
@@ -383,16 +386,28 @@ function answerDisplay(item, value) {
   return value || 'No answer';
 }
 
-function focusTeacherGrade(gradeLevel, targetId = 'dashboardSummary') {
+function preserveTeacherScroll(left, top) {
+  state.teacherPreservingScroll = true;
+  [0, 60, 180, 420, 900, 1500].forEach((delay) => {
+    setTimeout(() => {
+      window.scrollTo(left, top);
+      if (delay === 1500) state.teacherPreservingScroll = false;
+    }, delay);
+  });
+}
+
+function focusTeacherGrade(gradeLevel) {
+  const previousScrollY = state.teacherStableScrollY || window.scrollY;
+  const previousScrollX = window.scrollX;
   state.selectedTeacherGrade = gradeLevel;
   state.selectedExamineeId = '';
   $('workspaceGradeSelect').value = gradeLevel;
-  document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
+  document.querySelectorAll('.grade-module-nav [data-grade]').forEach((item) => {
     item.classList.toggle('active', item.dataset.grade === gradeLevel);
   });
-  loadDashboard({ refreshQuestions: false }).catch((error) => alert(error.message));
-  const target = $(targetId);
-  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  loadDashboard({ refreshQuestions: false })
+    .then(() => preserveTeacherScroll(previousScrollX, previousScrollY))
+    .catch((error) => alert(error.message));
 }
 
 function populateExamineeSelect(students) {
@@ -492,7 +507,7 @@ async function loadDashboard({ refreshQuestions = true } = {}) {
 function renderWorkspaceDashboard(dashboard) {
   const { workspace, overview, scholarship, tests, students, recentActivity, gradeLevels } = dashboard;
   $('workspaceGradeSelect').value = workspace.gradeLevel;
-  document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((item) => {
+  document.querySelectorAll('.grade-module-nav [data-grade]').forEach((item) => {
     item.classList.toggle('active', item.dataset.grade === workspace.gradeLevel);
   });
   populateExamineeSelect(students);
@@ -710,7 +725,10 @@ async function deleteAllResults() {
 }
 
 modes.forEach((button) => button.addEventListener('click', () => switchMode(button.dataset.mode)));
-document.querySelectorAll('.grade-module-nav a[data-grade]').forEach((link) => {
+document.querySelectorAll('.grade-module-nav [data-grade]').forEach((link) => {
+  link.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+  });
   link.addEventListener('click', (event) => {
     event.preventDefault();
     focusTeacherGrade(link.dataset.grade);
@@ -729,7 +747,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !$('unansweredModal').classList.contains('hidden')) hideUnansweredModal();
 });
 $('workspaceGradeSelect').addEventListener('change', () => {
-  focusTeacherGrade($('workspaceGradeSelect').value, 'dashboardSummary');
+  focusTeacherGrade($('workspaceGradeSelect').value);
 });
 $('examineeSelect').addEventListener('change', () => {
   state.selectedExamineeId = $('examineeSelect').value;
@@ -746,6 +764,19 @@ document.addEventListener('contextmenu', (event) => {
 document.addEventListener('copy', (event) => {
   if (!$('examPanel').classList.contains('hidden')) event.preventDefault();
 });
+document.addEventListener('scroll', () => {
+  clearTimeout(state.teacherScrollTimer);
+  state.teacherScrollTimer = setTimeout(() => {
+    if ($('teacherView').classList.contains('active') && !state.teacherPreservingScroll) {
+      state.teacherStableScrollY = window.scrollY;
+    }
+  }, 120);
+}, { passive: true });
+setInterval(() => {
+  if ($('teacherView').classList.contains('active') && !state.teacherPreservingScroll) {
+    state.teacherStableScrollY = window.scrollY;
+  }
+}, 300);
 
 applyProductionRouteLock();
 switchMode(routeMode());

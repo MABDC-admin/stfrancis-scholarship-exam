@@ -539,6 +539,7 @@ input:focus, select:focus, textarea:focus {
 
 .teacher-main {
   min-width: 0;
+  overflow-anchor: none;
 }
 
 .teacher-side-nav {
@@ -546,6 +547,7 @@ input:focus, select:focus, textarea:focus {
   top: 18px;
   display: grid;
   gap: 18px;
+  overflow-anchor: none;
   padding: 16px;
   border: 1px solid rgba(217, 227, 232, 0.9);
   border-radius: 8px;
@@ -556,21 +558,25 @@ input:focus, select:focus, textarea:focus {
 }
 
 .teacher-side-nav a,
-.grade-module-nav a {
+.grade-module-nav button {
   display: grid;
   gap: 2px;
   min-width: 0;
   padding: 10px 12px;
+  border: 0;
   border-radius: 8px;
   color: var(--ink);
+  background: transparent;
   text-decoration: none;
+  text-align: left;
   font-weight: 800;
+  cursor: pointer;
   transition: transform .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
 }
 
 .teacher-side-nav a:hover,
-.grade-module-nav a:hover,
-.grade-module-nav a.active {
+.grade-module-nav button:hover,
+.grade-module-nav button.active {
   color: white;
   background: linear-gradient(135deg, var(--blue), var(--accent) 62%, var(--teal));
   box-shadow: 0 14px 28px rgba(8, 127, 140, 0.18);
@@ -578,7 +584,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .teacher-side-nav > div:first-child,
-.grade-module-nav {
+.grade-module-nav,
+.teacher-tool-nav {
   display: grid;
   gap: 6px;
 }
@@ -588,20 +595,28 @@ input:focus, select:focus, textarea:focus {
   border-top: 0;
 }
 
-.grade-module-nav a {
+.grade-module-nav button,
+.teacher-tool-nav a {
   border: 1px solid rgba(217, 227, 232, .88);
   background: rgba(255,255,255,.72);
 }
 
-.grade-module-nav span {
+.grade-module-nav span,
+.teacher-tool-nav span {
   color: var(--muted);
   font-size: .76rem;
   font-weight: 800;
 }
 
-.grade-module-nav a:hover span,
-.grade-module-nav a.active span {
+.grade-module-nav button:hover span,
+.grade-module-nav button.active span,
+.teacher-tool-nav a:hover span {
   color: rgba(255,255,255,.82);
+}
+
+.teacher-tool-nav {
+  padding-top: 14px;
+  border-top: 1px solid rgba(217, 227, 232, .9);
 }
 
 .dashboard-toolbar {

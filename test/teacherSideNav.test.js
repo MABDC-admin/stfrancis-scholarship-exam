@@ -19,14 +19,38 @@ test('teacher dashboard keeps navigation focused on grade workspaces only', () =
 test('teacher dashboard exposes a grade-level module for each scholarship level', () => {
   assert.match(indexHtml, /class="grade-module-nav"/);
   for (const gradeLevel of ['Grade 7', 'Grade 8', 'Grade 9', 'Grade 10']) {
-    assert.match(indexHtml, new RegExp(`<a[^>]+data-grade="${gradeLevel}"[\\s\\S]*?${gradeLevel}`));
+    assert.match(indexHtml, new RegExp(`<button[^>]+data-grade="${gradeLevel}"[\\s\\S]*?${gradeLevel}`));
   }
+  assert.doesNotMatch(indexHtml, /href="#dashboardSummary" data-grade=/);
+});
+
+test('question review is exposed as its own side navigation module', () => {
+  assert.match(indexHtml, /id="questionReview"/);
+  assert.match(indexHtml, /class="teacher-tool-nav"/);
+  assert.match(indexHtml, /href="#questionReview"[\s\S]*?Question Review/);
 });
 
 test('teacher dashboard requests data for the active grade workspace', () => {
   assert.match(appJs, /selectedTeacherGrade:\s*'Grade 7'/);
   assert.match(appJs, /gradeLevel=\$\{encodeURIComponent\(state\.selectedTeacherGrade\)\}/);
   assert.match(appJs, /renderWorkspaceDashboard/);
+});
+
+test('changing grade workspaces updates data without auto-scrolling the page', () => {
+  const focusStart = appJs.indexOf('function focusTeacherGrade');
+  const focusEnd = appJs.indexOf('\n}\n\nfunction populateExamineeSelect', focusStart);
+  const focusBlock = appJs.slice(focusStart, focusEnd);
+
+  assert.match(focusBlock, /loadDashboard\(\{ refreshQuestions: false \}\)/);
+  assert.match(focusBlock, /previousScrollY/);
+  assert.match(focusBlock, /teacherStableScrollY/);
+  assert.match(focusBlock, /preserveTeacherScroll/);
+  assert.doesNotMatch(focusBlock, /scrollIntoView/);
+  assert.match(appJs, /mousedown[\s\S]*?preventDefault/);
+  assert.match(appJs, /scroll[\s\S]*?teacherStableScrollY/);
+  assert.match(appJs, /setInterval[\s\S]*?teacherStableScrollY/);
+  assert.match(appJs, /function preserveTeacherScroll/);
+  assert.match(appJs, /setTimeout[\s\S]*?window\.scrollTo/);
 });
 
 test('teacher layout uses a wide application shell for dashboard work', () => {
@@ -45,5 +69,7 @@ test('teacher side navigation has responsive layout styling', () => {
   assert.match(stylesCss, /\.teacher-shell/);
   assert.match(stylesCss, /\.teacher-side-nav/);
   assert.match(stylesCss, /\.grade-module-nav/);
+  assert.match(stylesCss, /\.teacher-tool-nav/);
+  assert.match(stylesCss, /overflow-anchor:\s*none/);
   assert.match(stylesCss, /position:\s*sticky/);
 });
